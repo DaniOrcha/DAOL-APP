@@ -1,0 +1,97 @@
+
+:root {
+    --line-size: 4px;
+}
+
+.lineAnim {
+    position: absolute;
+    animation: lineAnimation 12s linear infinite;
+}
+    .lineAnim.pause {
+        animation-play-state: paused;
+        background: rgb(255, 255, 255, 0);
+    }
+
+
+@keyframes lineAnimation {
+
+    0% {
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: var(--line-size);
+        background: linear-gradient(to right, #ffffff00, #00ffff);
+        transform: translateX(-100%);
+    }
+
+    25% {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: var(--line-size);
+        background: linear-gradient(to right, #ffffff00, #00ffff);
+        transform: translateX(100%);
+    }
+
+
+    25.01% {
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        width: var(--line-size);
+        background: linear-gradient(to bottom, #ffffff00,#00ffff );
+        transform: translateY( -100%);
+    }
+
+    50% {
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        width: var(--line-size);
+        background: linear-gradient(to bottom, #ffffff00,#00ffff );
+        transform: translateY(100%);
+    }
+
+
+
+
+    50.01% {
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: var(--line-size);
+        background: linear-gradient(to left, #ffffff00, #00ffff);
+        transform: translateX(100%);
+    }
+
+    75% {
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: var(--line-size);
+        background: linear-gradient(to left, #ffffff00, #00ffff);
+        transform: translateX(-100%);
+    }
+
+
+
+    75.01% {
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        width: var(--line-size);
+        background: linear-gradient(to top,#ffffff00,#00ffff );
+        transform: translateY(100%);
+    }
+
+    100% {
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        width: var(--line-size);
+        background: linear-gradient(to top,#ffffff00,#00ffff );
+        transform: translateY(-100%);
+    } 
+}
+
+ 
