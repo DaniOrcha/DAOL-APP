@@ -2,65 +2,47 @@
 import Head from '../Components/Header';
 import Footer from '../Components/Footer';
 
+import { WriteComent, read } from '../Functions/visits'; 
 
-import { WriteComent } from '../Functions/visits';
-import { read } from '../Functions/visits';
-import { useEffect } from 'react';
-//import React, { useState } from 'react';
+import React, { useRef, useState } from 'react'
 
-import React from "react";
-
-var ctrl = false;
-
+import * as Fn from '../Functions/commonFn'; 
 
 function Visit() {
 
-    useEffect(() => {
-        if (ctrl === false) {
-            read();
-            ctrl = !ctrl;
-            document.title = "Unity";
-        }
-    });
+    var commentobj = [{ name: "", message: "" }];
+    let refName = useRef();
+    let refMsg = useRef();
+    const [isLoad, setisLoad] = useState(false);
 
-
-    var name;
-    var message;
-
-    function getName(e) {
-        name = e.target.value;
-    }
-    function getMessage(e) {
-        message = e.target.value;
+    if (isLoad === false) {
+        read();
+        setisLoad(true);
+        document.title = "Visitas";
     }
 
-    function getSubmit(e) {
+ 
+    function sendMessage(e) {
         e.preventDefault();
-        if (validator(name) && validator(message)) {
-            if (WriteComent(name, message)) {
-                console.log("REC DDBB!!");
-                alert("REC DDBB!!");
-            }
+
+        if(Fn.validator(commentobj)){
+            WriteComent(commentobj);
+            refName.current.value = ""; 
+            refMsg.current.value = "";
         }
         else {
             alert("Rellene el formulario");
-        }
-    }
-
-    function validator(value) {
-        if (typeof value !== 'undefined' && value.trim() !== '') {
-            return true;
-        }
-        return false;
+        } 
     }
 
 
     return (
-        <div >
+        <>
             <div className="bodyContainer">
                 <Head
-                    lines="1"
+                    lines="2"
                     line1="Visitas"
+                    line2="Deja tu mensaje :)"
                 />
 
                 <div id="boxComents" className="BrownBox Visit Center">
@@ -68,19 +50,19 @@ function Visit() {
                 </div>
 
                 <div className="container noPadding">
-                    <form className="BrownBox Visit" onSubmit={getSubmit} >
+                    <form className="BrownBox Visit" onSubmit={sendMessage} >
                         <h3>Deja tu mensaje:</h3>
                         <label htmlFor="nombre"><p>Nombre:</p></label>
-                        <input id="nombre" type="text" name="nombre" onChange={getName} />
+                        <input id="nombre" type="text" name="nombre" ref={refName} onChange={(e)=>Fn.getName(e, commentobj)} />
                         <label htmlFor="mensaje"><p>Mensaje:</p></label>
-                        <textarea id="mensaje" name="mensaje" rows="5" onChange={getMessage}></textarea>
+                        <textarea id="mensaje" name="mensaje" rows="5" ref={refMsg} onChange={(e)=>Fn.getMessage(e, commentobj)}></textarea>
                         <input id="submit" type="submit" name="submit" value="Enviar" className="Button" />
                     </form>
                 </div>
 
             </div>
             <Footer />
-        </div >
+        </>
     );
 }
 

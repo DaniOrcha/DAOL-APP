@@ -25,7 +25,7 @@ class MainPage extends React.Component {
 
     render() {
         return (
-            <div>
+            <>
                 <div className="bodyContainer">
                     <Head
                         lines="2"
@@ -38,7 +38,7 @@ class MainPage extends React.Component {
                 </div>
 
                 <Footer />
-            </div>
+            </>
         );
     }
 }

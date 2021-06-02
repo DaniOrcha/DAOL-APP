@@ -1,8 +1,8 @@
 
 import Head from '../Components/Header';
-import Footer from '../Components/Footer'; 
+import Footer from '../Components/Footer';
 import { useEffect } from 'react';
- 
+
 function Unity() {
 
     useEffect(() => {
@@ -10,7 +10,7 @@ function Unity() {
     });
 
     return (
-        <div > 
+        < >
             <div className="bodyContainer">
                 <Head
                     lines="1"
@@ -49,7 +49,7 @@ function Unity() {
                 </div>
             </div>
             <Footer />
-        </div >
+        </ >
     );
 }
 

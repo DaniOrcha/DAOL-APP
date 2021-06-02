@@ -1,85 +1,60 @@
-
-
-const axios = require('axios').default; 
+ 
+const axios = require('axios').default;
+ 
 
 export function read() {
 
-    let payload = { action: 'readDDBB' };
-
-       //console.log("send"); 
+    let payload = { action: 'readDDBB' }; 
     axios.post('http://localhost:80/dbmanager.php', payload)
 
         .then(function (response) {
-            let resArray = response.data;
-            //console.log(response.data); 
-            proccesData(resArray);
+            let data = response.data; 
+            proccesData(data); 
         })
-        .catch(function (error) {
-            //console.log(error);
-        });
+        .catch(function () { 
+        }); 
+
 }
 
 
-export function WriteComent(name, message) {
-
+export function WriteComent(_comment) { 
+ 
     let payload = {
         action: 'writeDDBB',
-        nombre: name,
-        mensaje: message
+        nombre: _comment[0].name,
+        mensaje: _comment[0].message
     };
 
     axios.post('http://localhost:80/dbmanager.php', payload)
 
-        .then(function (response) {
-            //let resArray = response.data; 
-            //console.log(resArray);
-            //proccesData(resArray);
-             // read();toLocaleDateString("es-ES") 
-            //window.location.reload(false); 
-            var LocaleDate = new Date();    
-            var ComentsContainer, DivName, DivText;
-            ComentsContainer = document.getElementById("boxComents");  
-            DivName = document.createElement("DIV");
-            DivName.setAttribute("class", "Postit");
-            ComentsContainer.appendChild(DivName);
-            DivName.innerHTML = "<h3>" + name + "</h3>" + LocaleDate.toISOString().substring(0, 10);; 
-
-            DivText = document.createElement("DIV");
-            DivName.appendChild(DivText);
-            DivText.innerHTML = message;
-
+        .then(function () { 
+            
+            var newData = [{ NameUser: _comment[0].name, DateStamp: new Date().toISOString().substring(0, 10), TextUser: _comment[0].message }]
+            proccesData(newData);
 
         })
-        .catch(function (error) {
-            console.log(error);
+        .catch(function () { 
         });
 }
 
 
- 
+
 function proccesData(data) {
 
     var countKey = Object.keys(data).length;
 
     var ComentsContainer, DivName, DivText;
     ComentsContainer = document.getElementById("boxComents");
-    //var dateformat = new Date();
 
     for (var i = 0; i < countKey; i++) {
-
-        //data[i].DateStamp  = data[i].DateStamp.replaceAll("-", "/");
-
-        //dateformat = data[i].DateStamp ;
 
         DivName = document.createElement("DIV");
         DivName.setAttribute("class", "Postit");
         ComentsContainer.appendChild(DivName);
-        //DivName.innerHTML = "<h3>" + data[i].NameUser + "</h3>" + data[i].DateStamp;
-        DivName.innerHTML = "<h3>" + data[i].NameUser + "</h3>" + data[i].DateStamp ;
+        DivName.innerHTML = "<h3>" + data[i].NameUser + "</h3>" + data[i].DateStamp;
 
         DivText = document.createElement("DIV");
         DivName.appendChild(DivText);
         DivText.innerHTML = data[i].TextUser;
     }
-
 }

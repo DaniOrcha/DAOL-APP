@@ -12,7 +12,7 @@ function Ethereum() {
 
     return (
 
-        <div >
+        < >
             <div className="bodyContainer">
                 <Head
                     lines="1"
@@ -102,7 +102,7 @@ function Ethereum() {
 
             </div>
             <Footer />
-        </div >
+        </ >
     );
 }
 

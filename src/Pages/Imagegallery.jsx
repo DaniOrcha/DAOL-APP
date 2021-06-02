@@ -14,7 +14,7 @@ function ImageGallery() {
     });
 
     return (
-        <div >
+        < >
             <script type="text/javascript" src="../Functions/lens.js"></script>
             <div className="bodyContainer">
                 <Head
@@ -144,7 +144,7 @@ function ImageGallery() {
                 </div>
             </div>
             <Footer />
-        </div >
+        </ >
     );
 }
 

@@ -1,32 +1,38 @@
-
-
-import { updateData } from '../Pages/Contact';
  
 
 const axios = require('axios').default;
 
-export function GetMyData() {
+export function GetMyData(_setEmail, _setPhone) {
 
-    let data = { action: 'getMyData' };
-
-    //axios.post('http://localhost:80/dbmanager.php', data)
+    let data = { action: 'getMyData' }; 
+ 
     axios.post('http://localhost:80/dbmanager.php', data)
 
         .then(function (response) {
-            let payload = response.data[0]; 
-            printData(payload);
+            let payload = response.data[0];
+            _setEmail(payload.myEmail);
+            _setPhone(payload.myPhone); 
         })
-        .catch(function (error) {
-            //console.log(error);
+        .catch(function () { 
         }); 
-} 
+}
 
  
+export function SendMail(_data) {  
 
-function printData(payload) {
-      
-    document.getElementById("mail").innerHTML = "<h3>" + payload.myEmail + "</h3>";
-    document.getElementById("phone").innerHTML = "<h3>" + payload.myPhone + "</h3>";
-    updateData();
+    let payload = {
+        action: 'mailer',
+        name: _data[0].name,
+        message: _data[0].message
+    };
 
-}
+    axios.post('http://localhost:80/mailer.php', payload)
+
+        .then(function (response) { 
+            console.log("response: " + response.data);
+            alert("Mensaje enviado"); 
+
+        })
+        .catch(function () { 
+        });
+}   

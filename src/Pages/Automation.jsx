@@ -10,7 +10,7 @@ function Automation() {
     });
 
     return (
-        <div>
+        <>
             <div className="bodyContainer">
 
                 <Head
@@ -65,7 +65,7 @@ function Automation() {
 
             <Footer />
 
-        </div> 
+        </> 
 
     );
 }

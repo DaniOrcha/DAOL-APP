@@ -12,7 +12,7 @@ function IoT() {
     }); 
 
     return ( 
-        <div > 
+        < > 
             <div className="bodyContainer">
                 <Head
                     lines="1"
@@ -72,7 +72,7 @@ function IoT() {
 
             <Footer />
 
-        </div >
+        </ >
     );
 }
 

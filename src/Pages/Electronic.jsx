@@ -12,7 +12,7 @@ function Electronic() {
     });
 
     return (
-        <div >
+        < >
             <div className="bodyContainer">
                 <Head
                     lines="1"
@@ -80,7 +80,7 @@ function Electronic() {
                 </div>
             </div>
             <Footer />
-        </div >
+        </ >
     );
 }
 
