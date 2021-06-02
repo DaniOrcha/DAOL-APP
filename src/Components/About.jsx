@@ -14,7 +14,7 @@ function About() {
                            <br /><br />Puedo adaptarme a cualquier tecnología y lenguaje de programación en función de las necesidades.
                         </h3>
                 </div>
-                <h5 className="About"><br />Amante de los retos y la innovación.&nbsp Comprometido con la excelencia.&nbsp Siempre aprendiedo.</h5>
+                <h5 className="About"><br />Amante de los retos y la innovación. Comprometido con la excelencia. Siempre aprendiedo.</h5>
             </div>
         </div>
     );

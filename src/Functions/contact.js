@@ -5,7 +5,8 @@ const axios = require('axios').default;
 export function GetMyData(_setEmail, _setPhone) {
 
     let data = { action: 'getMyData' }; 
- 
+  
+    //axios.post('https://daol.es/dbmanager.php', data)
     axios.post('http://localhost:80/dbmanager.php', data)
 
         .then(function (response) {
@@ -25,11 +26,10 @@ export function SendMail(_data) {
         name: _data[0].name,
         message: _data[0].message
     };
+ 
+    axios.post('https://daol.es/mailer.php', payload)
 
-    axios.post('http://localhost:80/mailer.php', payload)
-
-        .then(function (response) { 
-            console.log("response: " + response.data);
+        .then(function (response) {  
             alert("Mensaje enviado"); 
 
         })

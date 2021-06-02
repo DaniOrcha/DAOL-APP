@@ -4,7 +4,8 @@ const axios = require('axios').default;
 
 export function read() {
 
-    let payload = { action: 'readDDBB' }; 
+    let payload = { action: 'readDDBB' };  
+    //axios.post('https://daol.es/dbmanager.php', payload)
     axios.post('http://localhost:80/dbmanager.php', payload)
 
         .then(function (response) {
@@ -24,7 +25,8 @@ export function WriteComent(_comment) {
         nombre: _comment[0].name,
         mensaje: _comment[0].message
     };
-
+ 
+    //axios.post('https://daol.es/dbmanager.php', payload)
     axios.post('http://localhost:80/dbmanager.php', payload)
 
         .then(function () { 
