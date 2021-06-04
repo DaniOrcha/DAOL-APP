@@ -27,7 +27,8 @@ export function SendMail(_data) {
         message: _data[0].message
     };
  
-    axios.post('https://daol.es/mailer.php', payload)
+   //axios.post('https://daol.es/mailer.php', payload)
+    axios.post('http://localhost:80/mailer.php', payload)
 
         .then(function (response) {  
             alert("Mensaje enviado"); 
