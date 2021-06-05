@@ -1,41 +1,40 @@
- 
+
 const axios = require('axios').default;
- 
+
 
 export function read() {
 
-    let payload = { action: 'readDDBB' };  
-    //axios.post('https://daol.es/dbmanager.php', payload)
-    axios.post('http://localhost:80/dbmanager.php', payload)
+    let payload = { action: 'readDDBB' };
+    axios.post('https://daol.es/dbmanager.php', payload)
 
         .then(function (response) {
-            let data = response.data; 
-            proccesData(data); 
+            let data = response.data;
+            proccesData(data);
         })
-        .catch(function () { 
-        }); 
+        .catch(function (error) {
+            console.error(error);
+        });
 
 }
 
 
-export function WriteComent(_comment) { 
- 
+export function WriteComent(_comment) {
+
     let payload = {
         action: 'writeDDBB',
         nombre: _comment[0].name,
         mensaje: _comment[0].message
     };
- 
-    //axios.post('https://daol.es/dbmanager.php', payload)
-    axios.post('http://localhost:80/dbmanager.php', payload)
 
-        .then(function () { 
-            
+    axios.post('https://daol.es/dbmanager.php', payload)
+
+        .then(function () {
             var newData = [{ NameUser: _comment[0].name, DateStamp: new Date().toISOString().substring(0, 10), TextUser: _comment[0].message }]
             proccesData(newData);
 
         })
-        .catch(function () { 
+        .catch(function (error) {
+            console.error(error);
         });
 }
 

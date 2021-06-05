@@ -66,7 +66,7 @@ export function imageZoom(imgID) {
             lens.style.backgroundPosition = "-" + (x * 4) + "px -" + (y * 4) + "px";
         } catch (error)
         {
-            //console.error(error);
+            console.error(error);
         }
     } 
 
@@ -92,7 +92,7 @@ export function imageZoom(imgID) {
         y = y - window.pageYOffset;
             return { x: x, y: y };
         } catch (error) {
-            //console.error(error);
+            console.error(error);
         }
     }
 

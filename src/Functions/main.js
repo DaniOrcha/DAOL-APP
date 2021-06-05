@@ -6,7 +6,7 @@ import { initAbout } from './about.js';
 var AnimationLineRm;
 var AnimationLinePF;
 var AnimationLineAb;
-
+ 
 export function OnMountInit() { 
     initRoadmap();
     initPortfolio();

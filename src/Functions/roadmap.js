@@ -1,37 +1,41 @@
 
-import { ShowAnimationLine, HideAnimationLine } from '../Functions/main.js'; 
-
-const txt = [
-    "Freelance, NodeJS & React",
-    "Unity + Blender",
-    "Solidity + Web + Mt4 + MySQL",
-    "Electrónica, PIC, IoT",
-    "Automatización",
-    "Diseño Web & Vb",
-    "Sinclair ZX Spectrum"
-];
-
-const desc = [
-    '<li>Programador Unity, Web, Electrónica.</li><li> NodeJS + React.</li>',
-    '<li>Juego 2D & 3D.</li><li>Diseño modelos 3D para Unity.</li><li>Freelance implementación clases de personajes, BBDD Json, sistema de inventario, encriptación, guardado y carga de datos.</li>',
-    '<li>Token Ethereum en Solidity con interface http/json.</li><li>Software de trading automático en MetaTrader4 (C++).</li><li>BBDD y Web para interface del token y software Mt4.</li>',
-    '<li>Diseño de dispositivos electrónicos & IoT servidor y cliente web.</li><li>Librerías C++ drivers comunicación de sensores diseñados con osciloscopio y hoja técnica.</li></li><li>Programación PLC´s, SCADAS, PISystem, DDBB, Excel performance y reportes email auto pdf.</li>',
-    '<li>Título de Postgrado en Atomatización Industrial. Robótica & C++</li>',
-    '<li>Diseño Web con HTML, CSS, JS y PhP. Aplicaciones escritorio Vb, técnicas de hacking, mod crypters.</li><li>Título de Técnico Especialista Electricidad y Electrónica.</li>',
-    '<li>Primeros programas de dibujo con figuras geométricas y colores.</li>'
-];
+import { ShowAnimationLine, HideAnimationLine } from '../Functions/main.js';
 
 
-const year = [
-    "Actual",
-    "2020",
-    "2019",
-    "2014",
-    "2011",
-    "2002",
-    "1990"
-];
+let roadObj =
+    [
+        {
+            year: "Actual",
+            desc: '<li>Programador Unity, Web, Electrónica.</li><li>Disfrutando de React.</li>',
+            txt: "Freelance + React JS"
+        }, {
+            year: "2020",
+            desc: '<li>Juego 2D & 3D.</li><li>Diseño modelos 3D para Unity.</li><li>Freelance implementación clases de personajes, BBDD Json, sistema de inventario, encriptación, guardado y carga de datos.</li>',
+            txt: "Unity + Blender"
+        }, {
+            year: "2019",
+            desc:  '<li>Token Ethereum en Solidity con interface http/json.</li><li>Software de trading automático en MetaTrader4 (C++).</li><li>BBDD y Web para interface del token y software Mt4.</li>',
+            txt: "Solidity + Web + Mt4 + MySQL"
+        }, {
+            year: "2014",
+            desc: '<li>Programación en planta Termosolar: PLC´s, SCADAS, PISystem, DDBB, Excel Vba performance.</li><li>Diseño de dispositivos electrónicos & IoT servidor y cliente web.</li><li>Librerías C++ drivers sensores diseñadas con osciloscopio y hoja técnica.</li>',
+            txt: "Industria, Electrónica, PIC & IoT"
+        }, {
+            year: "2011",
+            desc: '<li><i class="fa fa-graduation-cap" aria-hidden="true"></i> Título de Postgrado en Atomatización Industrial. Robótica & C++</li>',
+            txt: "Automatización"
+        }, {
+            year: "2002",
+            desc: '<li>Diseño Web con HTML, CSS, JS y PhP.</li><li>Aplicaciones escritorio Vb, técnicas de hacking, mod crypters.</li><li><i class="fa fa-graduation-cap" aria-hidden="true"></i> Título de Técnico Especialista Electricidad y Electrónica.</li>',
+            txt: "Diseño Web & Vb"
+        }, {
+            year: "1990",
+            desc:  '<li>Primeros programas de dibujo con figuras geométricas y colores.</li>',
+            txt: "Sinclair ZX Spectrum"
+        } 
+    ];
 
+ 
 var icon = [];
 
 var IcoFrame;
@@ -49,7 +53,7 @@ function ShowTree() {
     RoadMapTree.style.visibility = "visible";
     RoadMap.classList.add("expand");
     RoadMap.classList.remove("animations");
-    updateIcons(); 
+    updateIcons();
     HideAnimationLine();
 }
 function HideTree() {
@@ -62,7 +66,7 @@ function HideTree() {
 
 
 
-export function initRoadmap() { 
+export function initRoadmap() {
 
     RoadMapTree = document.getElementById("RoadMapTree");
     RoadMapTree.style.visibility = "hidden";
@@ -143,7 +147,7 @@ function dragTouch(event) {
         pos2 = event.touches[0].clientY;
         drag(event);
     }
-    function drag(event) { 
+    function drag(event) {
         pos1 = pos2 - event.touches[0].clientY;
         pos2 = event.touches[0].clientY;
         if (box.offsetTop >= icon[0] && box.offsetTop <= icon[icon.length - 1]) {
@@ -155,7 +159,7 @@ function dragTouch(event) {
         }
         else if (box.offsetTop >= icon[icon.length - 1]) {
             box.style.top = icon[icon.length - 1] + "px";
-        } 
+        }
     }
     function end() {
         document.body.style.overflow = 'visible';
@@ -165,7 +169,7 @@ function dragTouch(event) {
 
 function TextIndex() {
 
-    var boxDataY = document.getElementById("boxData").offsetTop + 25; 
+    var boxDataY = document.getElementById("boxData").offsetTop + 25;
 
     for (var i = 0; i < icon.length; i++) {
 
@@ -263,16 +267,15 @@ function effectsDescription(_id) {
     if (_id !== 100) {
 
         IcoFrame = document.getElementById("ico" + _id)
-        IcoFrame.classList.add('hiled');
-
-        container.innerHTML = decodeURIComponent(txt[_id]);
-        DateBox.innerHTML = year[_id];
-        TextBox.innerHTML = decodeURIComponent(desc[_id]);
+        IcoFrame.classList.add('hiled'); 
+        container.innerHTML = decodeURIComponent(roadObj[_id].txt);
+        DateBox.innerHTML = roadObj[_id].year; 
+        TextBox.innerHTML = decodeURIComponent(roadObj[_id].desc);
     }
     else {
-        DateBox.innerHTML = "Vector de desarrollo";
+        DateBox.innerHTML = "Ruta de aprendizaje";
         container.innerHTML = "";
-        TextBox.innerHTML = ""; 
+        TextBox.innerHTML = "";
     }
 
     setTimeout(function () {
@@ -292,4 +295,4 @@ function updateIcons() {
         document.getElementById("ico5").offsetTop,
         document.getElementById("ico6").offsetTop
     ];
-} 
+}

@@ -15,7 +15,7 @@ class RoadMap extends React.Component {
                         <div className="dragIco">
                             <img src="resources/slots/drag_ico.png" alt="err" />
                         </div>
-                        <div id="boxDate">Vector de desarrollo
+                        <div id="boxDate">Ruta de aprendizaje
                             </div>
                         <div id="boxTitle">
                         </div>
