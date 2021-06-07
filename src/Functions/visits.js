@@ -5,10 +5,11 @@ const axios = require('axios').default;
 export function read() {
 
     let payload = { action: 'readDDBB' };
-    axios.post('https://daol.es/dbmanager.php', payload)
+    axios.post('http://localhost/dbmanager.php', payload)
+    // axios.post('https://daol.es/dbmanager.php', payload)
 
         .then(function (response) {
-            let data = response.data;
+            let data = response.data; 
             proccesData(data);
         })
         .catch(function (error) {
@@ -26,10 +27,11 @@ export function WriteComent(_comment) {
         mensaje: _comment[0].message
     };
 
-    axios.post('https://daol.es/dbmanager.php', payload)
+    axios.post('https://localhost/dbmanager.php', payload)
+    // axios.post('https://daol.es/dbmanager.php', payload)
 
         .then(function () {
-            var newData = [{ NameUser: _comment[0].name, DateStamp: new Date().toISOString().substring(0, 10), TextUser: _comment[0].message }]
+            let newData = [{ NameUser: _comment[0].name, DateStamp: new Date().toISOString().substring(0, 10), TextUser: _comment[0].message }]
             proccesData(newData);
 
         })
@@ -42,12 +44,12 @@ export function WriteComent(_comment) {
 
 function proccesData(data) {
 
-    var countKey = Object.keys(data).length;
+    let countKey = Object.keys(data).length;
 
-    var ComentsContainer, DivName, DivText;
+    let ComentsContainer, DivName, DivText;
     ComentsContainer = document.getElementById("boxComents");
 
-    for (var i = 0; i < countKey; i++) {
+    for (let i = 0; i < countKey; i++) {
 
         DivName = document.createElement("DIV");
         DivName.setAttribute("class", "Postit");

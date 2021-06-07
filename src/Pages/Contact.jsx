@@ -12,9 +12,10 @@ function Contact() {
 
     useEffect(() => {
         document.title = "Contacto";
-    }); 
- 
-    var mailObj = [{ name: "", message: "" }];
+    });  
+
+    // let mailObj =  new Fn.objComment();
+    let mailObj ;
     let refEMail = useRef();
     let refPhone = useRef();
     let refBtn = useRef();

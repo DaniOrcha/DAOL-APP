@@ -1,6 +1,3 @@
-
-
-
 .frames {
     width: 215px;
     height: 260px;
@@ -12,18 +9,19 @@
     text-align: center;
     color: white;
     /* box-shadow: 0px 0px 4px 1px #00ffff; */
-    text-decoration:none;
+    text-decoration: none;
 }
 
-    .frames:hover {
-        border: 1px solid #00ffff;
-        box-shadow: 0px 0px 6px 5px #00ffff;
-        cursor: pointer;
-    }
+.frames:hover {
+    border: 1px solid #00ffff;
+    box-shadow: 0px 0px 6px 5px #00ffff;
+    cursor: pointer;
+}
 
-    .frames h2, h3 {
-        margin: 0.2em;
-    }
+.frames h2,
+h3 {
+    margin: 0.2em;
+}
 
 .image {
     width: 215px;
@@ -35,10 +33,10 @@
     border-radius: 5px;
 }
 
-    .imageFrame.imageEth {
-        width: 62vw;
-        height: 35vw;
-    }
+.imageFrame.imageEth {
+    width: 62vw;
+    height: 35vw;
+}
 
 
 .imageIot {
@@ -50,20 +48,20 @@
     background-color: #4c5567;
 }
 
-    .imageIot.movil {
-        float: left;
-        height: 300px;
-    }
+.imageIot.movil {
+    float: left;
+    height: 300px;
+}
 
-    .imageIot.gallery {
-        width: 17vmin;
-        height: 13vmin;
-    }
+.imageIot.gallery {
+    width: 17vmin;
+    height: 13vmin;
+}
 
-    .imageIot.screen {
-        width: 300px;
-        height: 200px;
-    }
+.imageIot.screen {
+    width: 300px;
+    height: 200px;
+}
 
 
 .ImgeWhitDescription {
@@ -99,20 +97,21 @@
 
 
 
- .TextBlock {
+.TextBlock {
     display: block;
     margin: auto;
     margin-top: 10px;
-} 
-    .TextBlock.Resize1 {
-        width: 45vmax;
-    }
+}
 
-    .TextBlock.Resize2 {
-        width: 36vmax;
-    }
+.TextBlock.Resize1 {
+    width: 45vmax;
+}
 
- 
+.TextBlock.Resize2 {
+    width: 36vmax;
+}
+
+
 .TxtColor h3 {
     color: #12B3B3;
 }
@@ -122,9 +121,9 @@
     position: relative;
 }
 
-    .lensContainer.left {
-        float: left;
-    }
+.lensContainer.left {
+    float: left;
+}
 
 
 .lens {
@@ -134,10 +133,35 @@
     opacity: 0;
 }
 
-    .lens:hover {
-        border: 1px solid #d4d4d4;
-        border-radius: 5px;
+.lens:hover {
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    opacity: 1;
+    z-index: 1;
+    cursor: zoom-in;
+}
+
+
+.lensIco {
+    /* background-color: red; */
+    position: absolute;
+    z-index: 1;
+    top: 33%;
+    left: 43%;
+    width: 25px;
+    animation: lensAnim 5s linear infinite;
+}
+
+
+@keyframes lensAnim {
+    0% {
         opacity: 1;
-        z-index: 1;
-        cursor: zoom-in;
     }
+    10% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
