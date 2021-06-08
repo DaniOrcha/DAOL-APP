@@ -29,7 +29,7 @@ function IoT() {
 
                         <div className="lensContainer" onMouseEnter={() => { imageZoom("iotWeb"); }}>
 
-                            <img id="iotWeb" src="../resources/iot/iotWeb.png" className="imageIot movil" alt="err" />
+                            <img id="iotWeb" src="../resources/iot/iotWeb.png" className="image phone" alt="err" />
 
                             <img src="../resources/lensico.png" className="lensIco" alt="err" />
 
@@ -45,12 +45,12 @@ function IoT() {
                         </div>
                         <div>
                             <div className="lensContainer" onMouseEnter={() => { imageZoom("iot1"); }}>
-                                <img id="iot1" src="../resources/iot/iot1.jpg" className="imageIot" alt="err" />
+                                <img id="iot1" src="../resources/iot/iot1.jpg" className="image Iot" alt="err" />
 
                                 <img src="../resources/lensico.png" className="lensIco" alt="err" />
                             </div>
                             <div className="lensContainer" onMouseEnter={() => { imageZoom("iot2"); }}>
-                                <img id="iot2" src="../resources/iot/iot2.jpg" className="imageIot" alt="err" />
+                                <img id="iot2" src="../resources/iot/iot2.jpg" className="image Iot" alt="err" />
                                 <img src="../resources/lensico.png" className="lensIco" alt="err" />
                             </div>
                         </div>
@@ -61,7 +61,7 @@ function IoT() {
                     <div className="TxtColor"><h3>IoT Ciente Web de Temperatura, Humedad y Calidad del aire:</h3></div>
                     <div className="flex">
                         <div className="lensContainer left" onMouseEnter={() => { imageZoom("iotpanel"); }}>
-                            <img id="iotpanel" src="../resources/iot/iotpanel.png" className="imageIot screen" alt="err" />
+                            <img id="iotpanel" src="../resources/iot/iotpanel.png" className="image screen" alt="err" />
                             <img src="../resources/lensico.png" className="lensIco" alt="err" />
                         </div>
                         <div className="TextBlock Resize2">
@@ -72,7 +72,7 @@ function IoT() {
                             </h4>
                         </div>
                         <div className="lensContainer" onMouseEnter={() => { imageZoom("clkb2"); }}>
-                            <img id="clkb2" src="../resources/iot/clkb2.png" className="imageIot" alt="err" />
+                            <img id="clkb2" src="../resources/iot/clkb2.png" className="image Iot" alt="err" />
                             <img src="../resources/lensico.png" className="lensIco" alt="err" />
                         </div>
                     </div>

@@ -7,11 +7,7 @@ body {
     background-color: #B39709;
     font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
     margin: 0px;
-}
- 
-div {
-    display: flow-root;
-}
+} 
 
 h1, h2 {
     text-align: center;
@@ -20,6 +16,7 @@ h1, h2 {
 a { 
     color: lime;
 }
+
 .Shadow {
     filter: drop-shadow(0px 5px 2px #B39709);
 }
@@ -41,9 +38,8 @@ a {
     border-radius: 10px;
     color: white;
     box-shadow: 0px 13px 2px -6px #4149586e;
-    padding: 10px;
-}
-
+    padding: 10px 30px 10px 30px;
+} 
     .container.expand {
         padding-bottom: 30vmin;
     }
@@ -59,27 +55,31 @@ a {
 
     .container.noPadding {
         padding: unset;
+        display: flow-root;
     }
 
 
 .flex {
     display: flex;
-    justify-content: flex-start;
     flex-wrap: wrap;
-}
-
+    justify-content: flex-start;
+} 
     .flex.center {
         justify-content: center;
     }
-
+    .flex.around {
+        justify-content: space-around;
+    } 
     .flex.hide {
         display: none;
     }
      
+
 .boxHorizontal {
     width: 85vmin;
-    margin: 10px;
+    margin: 10px 0px 10px 0px;
 }
+
 
 .BrownBox {
     background-color: #B39709;
@@ -184,6 +184,7 @@ hr {
     .container {
         margin-left: 2px;
         margin-right: 2px;
+        padding: 10px 10px 10px 10px;
     }
 
     .flex {

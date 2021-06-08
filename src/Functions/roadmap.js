@@ -1,51 +1,22 @@
+import {
+    ShowAnimationLine,
+    HideAnimationLine
+} from '../Functions/main.js';
 
-import { ShowAnimationLine, HideAnimationLine } from '../Functions/main.js';
+import roadData from '../storage/roadMap.json';
 
+const roadObj = roadData;
 
-let roadObj =
-    [
-        {
-            year: "Actual",
-            desc: '<li>Programador Unity, Web, Electrónica.</li><li>Disfrutando de React.</li>',
-            txt: "Freelance + React JS"
-        }, {
-            year: "2020",
-            desc: '<li>Juego 2D & 3D.</li><li>Diseño modelos 3D para Unity.</li><li>Freelance implementación clases de personajes, BBDD Json, sistema de inventario, encriptación, guardado y carga de datos.</li>',
-            txt: "Unity + Blender"
-        }, {
-            year: "2019",
-            desc:  '<li>Token Ethereum en Solidity con interface http/json.</li><li>Software de trading automático en MetaTrader4 (C++).</li><li>BBDD y Web para interface del token y software Mt4.</li>',
-            txt: "Solidity + Web + Mt4 + MySQL"
-        }, {
-            year: "2014",
-            desc: '<li>Programación en planta Termosolar: PLC´s, SCADAS, PISystem, DDBB, Excel Vba performance.</li><li>Diseño de dispositivos electrónicos & IoT servidor y cliente web.</li><li>Librerías C++ drivers sensores diseñadas con osciloscopio y hoja técnica.</li>',
-            txt: "Industria, Electrónica, PIC & IoT"
-        }, {
-            year: "2011",
-            desc: '<li><i class="fa fa-graduation-cap" aria-hidden="true"></i> Título de Postgrado en Atomatización Industrial. Robótica & C++</li>',
-            txt: "Automatización"
-        }, {
-            year: "2002",
-            desc: '<li>Diseño Web con HTML, CSS, JS y PhP.</li><li>Aplicaciones escritorio Vb, técnicas de hacking, mod crypters.</li><li><i class="fa fa-graduation-cap" aria-hidden="true"></i> Título de Técnico Especialista Electricidad y Electrónica.</li>',
-            txt: "Diseño Web & Vb"
-        }, {
-            year: "1990",
-            desc:  '<li>Primeros programas de dibujo con figuras geométricas y colores.</li>',
-            txt: "Sinclair ZX Spectrum"
-        } 
-    ];
+let icon = [];
 
- 
-var icon = [];
+let IcoFrame;
+let IcoId = 0;
 
-var IcoFrame;
-var IcoId = 0;
+let RoadMapTree;
+let RoadMap;
+let BoxData;
 
-var RoadMapTree;
-var RoadMap;
-var BoxData;
-
-var isSlotShow = false;
+let isSlotShow = false;
 
 
 
@@ -56,6 +27,7 @@ function ShowTree() {
     updateIcons();
     HideAnimationLine();
 }
+
 function HideTree() {
     SlotsHide();
     RoadMapTree.style.visibility = "hidden";
@@ -68,28 +40,25 @@ function HideTree() {
 
 export function initRoadmap() {
 
+
     RoadMapTree = document.getElementById("RoadMapTree");
     RoadMapTree.style.visibility = "hidden";
     RoadMap = document.getElementById("RoadMapId");
-
-    RoadMap.onmouseenter = function () { ShowTree() };
-    RoadMap.onmouseleave = function () { HideTree() };
-
-    var hasTouchscreen = 'ontouchstart' in window;
+    RoadMap.onmouseenter = () => { ShowTree() };
+    RoadMap.onmouseleave = () => { HideTree() };
 
     BoxData = document.getElementById("boxData");
-    BoxData.onmouseenter = function () { SlotsShow(); borderHiled(); };
-    BoxData.onmouseleave = function () { borderDark(); };
+    BoxData.addEventListener("mouseenter", () => { SlotsShow(); borderHiled(); });
+    BoxData.addEventListener("mouseleave", () => { borderDark(); });
+    BoxData.addEventListener("mousedown", () => { cursorGrabbing(); });
+    BoxData.addEventListener("mouseup", () => { cursorNOGrabbing(); });
 
-    BoxData.addEventListener("mousedown", function () { cursorGrabbing(); });
-    BoxData.addEventListener("mouseup", function () { cursorNOGrabbing(); });
     updateIcons();
 
-
+    let hasTouchscreen = 'ontouchstart' in window;
     if (hasTouchscreen) {
         dragTouch(BoxData);
-    }
-    else {
+    } else {
         dragElement(BoxData);
     }
 
@@ -98,7 +67,7 @@ export function initRoadmap() {
 
 function dragElement(elmnt) {
 
-    var pos1 = 0, pos2 = 0;
+    let pos1 = 0, pos2 = 0;
 
     elmnt.onmousedown = dragMouseDown;
 
@@ -109,6 +78,8 @@ function dragElement(elmnt) {
         document.onmouseup = closeDragElement;
         document.onmousemove = elementDrag;
     }
+
+
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
@@ -117,14 +88,13 @@ function dragElement(elmnt) {
         if (elmnt.offsetTop >= icon[0] && elmnt.offsetTop <= icon[icon.length - 1]) {
             elmnt.style.top = (elmnt.offsetTop - pos1) + "px";
             TextIndex();
-        }
-        else if (elmnt.offsetTop <= icon[0]) {
+        } else if (elmnt.offsetTop <= icon[0]) {
             elmnt.style.top = icon[0] + "px";
-        }
-        else if (elmnt.offsetTop >= icon[icon.length - 1]) {
+        } else if (elmnt.offsetTop >= icon[icon.length - 1]) {
             elmnt.style.top = icon[icon.length - 1] + "px";
         }
     }
+
     function closeDragElement() {
         document.onmouseup = null;
         document.onmousemove = null;
@@ -133,8 +103,8 @@ function dragElement(elmnt) {
 
 
 function dragTouch(event) {
-    var box = document.getElementById("boxData");
-    var pos1 = 0, pos2 = 0;
+    let box = document.getElementById("boxData");
+    let pos1 = 0,  pos2 = 0;
 
     event.ontouchstart = start;
     event.ontouchmove = drag;
@@ -147,9 +117,11 @@ function dragTouch(event) {
         pos2 = event.touches[0].clientY;
         drag(event);
     }
+
     function drag(event) {
         pos1 = pos2 - event.touches[0].clientY;
         pos2 = event.touches[0].clientY;
+
         if (box.offsetTop >= icon[0] && box.offsetTop <= icon[icon.length - 1]) {
             box.style.top = (box.offsetTop - pos1) + "px";
             TextIndex();
@@ -161,6 +133,7 @@ function dragTouch(event) {
             box.style.top = icon[icon.length - 1] + "px";
         }
     }
+
     function end() {
         document.body.style.overflow = 'visible';
     }
@@ -169,9 +142,9 @@ function dragTouch(event) {
 
 function TextIndex() {
 
-    var boxDataY = document.getElementById("boxData").offsetTop + 25;
+    let boxDataY = document.getElementById("boxData").offsetTop + 25;
 
-    for (var i = 0; i < icon.length; i++) {
+    for (let i = 0; i < icon.length; i++) {
 
         if (i === icon.length - 1) {
             if (IcoId !== i) {
@@ -200,12 +173,15 @@ function borderHiled() {
     BoxData.classList.add('hiled');
     BoxData.classList.add('grab');
 }
+
 function borderDark() {
     BoxData.classList.remove('grab');
 }
+
 function cursorGrabbing() {
     BoxData.classList.add('grabbing');
 }
+
 function cursorNOGrabbing() {
     BoxData.classList.remove('grabbing');
 }
@@ -267,12 +243,11 @@ function effectsDescription(_id) {
     if (_id !== 100) {
 
         IcoFrame = document.getElementById("ico" + _id)
-        IcoFrame.classList.add('hiled'); 
+        IcoFrame.classList.add('hiled');
         container.innerHTML = decodeURIComponent(roadObj[_id].txt);
-        DateBox.innerHTML = roadObj[_id].year; 
+        DateBox.innerHTML = roadObj[_id].year;
         TextBox.innerHTML = decodeURIComponent(roadObj[_id].desc);
-    }
-    else {
+    } else {
         DateBox.innerHTML = "Ruta de aprendizaje";
         container.innerHTML = "";
         TextBox.innerHTML = "";

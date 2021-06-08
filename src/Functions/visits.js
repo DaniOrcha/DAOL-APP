@@ -1,15 +1,15 @@
-
 const axios = require('axios').default;
 
 
 export function read() {
 
-    let payload = { action: 'readDDBB' };
-    axios.post('http://localhost/dbmanager.php', payload)
-    // axios.post('https://daol.es/dbmanager.php', payload)
+    let payload = {
+        action: 'readDDBB'
+    };
+    axios.post('https://daol.es/dbmanager.php', payload)
 
         .then(function (response) {
-            let data = response.data; 
+            let data = response.data;
             proccesData(data);
         })
         .catch(function (error) {
@@ -23,15 +23,19 @@ export function WriteComent(_comment) {
 
     let payload = {
         action: 'writeDDBB',
-        nombre: _comment[0].name,
-        mensaje: _comment[0].message
+        nombre: _comment.name,
+        mensaje: _comment.message
     };
 
-    axios.post('https://localhost/dbmanager.php', payload)
-    // axios.post('https://daol.es/dbmanager.php', payload)
+
+    axios.post('https://daol.es/dbmanager.php', payload)
 
         .then(function () {
-            let newData = [{ NameUser: _comment[0].name, DateStamp: new Date().toISOString().substring(0, 10), TextUser: _comment[0].message }]
+            let newData = [{
+                NameUser: _comment.name,
+                DateStamp: new Date().toISOString().substring(0, 10),
+                TextUser: _comment.message
+            }]
             proccesData(newData);
 
         })

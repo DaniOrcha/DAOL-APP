@@ -3,11 +3,15 @@ import Head from '../Components/Header';
 import Footer from '../Components/Footer';
 import { useEffect } from 'react';
 
+import { CardRef } from '../Components/cards';
+
+import unityData from '../storage/unity.json';
+
+
+
 function Unity() {
 
-    useEffect(() => {
-        document.title = "Unity";
-    });
+    useEffect(() => { document.title = "Unity"; });   
 
     return (
         < >
@@ -19,27 +23,32 @@ function Unity() {
                 <div className="container">
                     <h1> Juegos en <a href="https://play.google.com/store/apps/developer?id=DAOL" rel="noreferrer noopener" target="_blank">Google Play</a></h1>
 
-                    <div className="flex center">
-                        <a className="frames" href="https://play.google.com/store/apps/details?id=com.DAOL.RobotsBattles" rel="noreferrer noopener" target="_blank">
-                            <h2>Robbots Battles</h2>
-                            <img src="../resources/portfolio/Ico.png" className="image" alt="err" />
-                            <h2>3D</h2>
-                        </a>
-                        <a className="frames" href="https://play.google.com/store/apps/details?id=com.DAOL.TheCore" rel="noreferrer noopener" target="_blank">
-                            <h2>The Core</h2>
-                            <img src="../resources/games/theCore.webp" className="image" alt="err" />
-                            <h2>3D</h2>
-                        </a>
-                        <a className="frames" href="https://play.google.com/store/apps/details?id=com.DAOL.BirdWay" rel="noreferrer noopener" target="_blank">
-                            <h2>Bird Way</h2>
-                            <img src="../resources/games/birdWay.webp" className="image" alt="err" />
-                            <h2>3D</h2>
-                        </a>
-                        <a className="frames" href="https://play.google.com/store/apps/details?id=com.DAOL.BioWars" rel="noreferrer noopener" target="_blank">
-                            <h2>Bio Wars</h2>
-                            <img src="../resources/games/bioWars.webp" className="image" alt="err" />
-                            <h2>2D</h2>
-                        </a>
+                    <div className="flex center"> 
+
+                        <CardRef
+                            link = {unityData.Robbots.link}
+                            src={unityData.Robbots.src}
+                            tittle={unityData.Robbots.tittle}
+                            description={unityData.Robbots.description}
+                        />
+                        <CardRef
+                            link = {unityData.Core.link}
+                            src={unityData.Core.src}
+                            tittle={unityData.Core.tittle}
+                            description={unityData.Core.description}
+                        />
+                        <CardRef
+                            link = {unityData.Bird.link}
+                            src={unityData.Bird.src}
+                            tittle={unityData.Bird.tittle}
+                            description={unityData.Bird.description}
+                        />
+                        <CardRef
+                            link = {unityData.BioWars.link}
+                            src={unityData.BioWars.src}
+                            tittle={unityData.BioWars.tittle}
+                            description={unityData.BioWars.description}
+                        />
                     </div>
 
                     <hr />

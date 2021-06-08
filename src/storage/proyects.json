@@ -1,0 +1,76 @@
+{
+    "Automation": {
+        "Robot": {
+            "title": "Estación de paletizado con Robot Kuka 2400/10:",
+            "desc": [
+                "<li>Proyecto para una instalación robotizada de selección y paletizado de cajas.</li>" 
+            ],
+            "img": {
+                "src": "../resources/portfolio/robotkuka.PNG",
+                "description": "Croquis estación robotizada"
+            }
+        },
+        "pneumaticStation": {
+            "title": "Estación neumática de clasificación y descarga:",
+            "desc": [
+                " <li>Proyecto de una estación neumática automatizada para la selección y descarga de piezas.</li>"
+            ],
+            "img": {
+                "src": "../resources/automation/pneumaticstation.png",
+                "description": "Croquis posición estación neumática"
+            }
+        },
+        "hydraulicStation": {
+            "title": "Prensa hidráulica para planchas de metal:",
+            "desc": [
+                " <li>Proyecto para el mecanizado de planchas de metal mediante una prensa hidráulica semiautomatizada.</li>"
+            ],
+            "img": {
+                "src": "../resources/automation/hydraulicstation.png",
+                "description": "Croquis posición prensa hidráulica"
+            }
+        }
+    },
+    "Electronic": {
+        "TestProducts": {
+            "title": "Productos de pruebas: Dispositivos electrónicos con carcasas en impresión 3D",
+            "desc": [
+                "Software utilizado:<br />",
+                "<br /><li>Diseño PCB: Eagle</li>",
+                "<br /><li>Código: Pic C Compiler CCS</li>",
+                "<br /><li>Diseño 3D: SketchUp</li>",
+                "<br /><br /><a href='/Imagegallery'>Galería de imágenes</a><br />"
+            ],
+            "img": {
+                "src": "../resources/electronic/clks1.jpg",
+                "description": "Dispositivo en impresión 3D"
+            }
+        },
+        "Dispenser": {
+            "title": "Producto requerido por el cliente: Software y electrónica para un sistema dispensador de gel hidroalcohólico",
+            "desc": [
+                "Compuesto por:<br />",
+                "<br /><li>Bomba peristáltica para dispensar gel hidroalcohólico.</li>",
+                "<br /><li>Motor de giro para dispensador de papel al terminar con el gel.</li>",
+                "<br /><li>Motor de giro para abrir una trampilla de una papelera.</li>" 
+            ],
+            "img": {
+                "src": "../resources/electronic/dispenser.PNG",
+                "description": "Esquema dispensador"
+            }
+        },
+        "CO2Meter": {
+            "title": "Producto requerido por el cliente: Software y documentación de desarrollo para calibrar y medir Co2 en la atmósfera con un controlador Arduino",
+            "desc": [
+                "Compuesto por:<br />",
+                "<br /><li>Controlador Arduino.</li>",
+                "<br /><li>Sensor CO2.</li>",
+                "<br /><li>Regulador de tensión.</li>" 
+            ],
+            "img": {
+                "src": "../resources/electronic/MG811.jpg",
+                "description": "Esquema medidor Co2"
+            }
+        }
+    }
+}

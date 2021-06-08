@@ -1,14 +1,13 @@
 .frames {
-    width: 215px;
-    height: 260px;
+    width: 215px;  
+    padding-bottom: 5px;
     margin: 2vmin;
     display: inline-table;
-    border: 2px solid #FFDA19;
+    border: 1px solid #ffda19;
     border-radius: 5px;
     background-color: #414958;
     text-align: center;
-    color: white;
-    /* box-shadow: 0px 0px 4px 1px #00ffff; */
+    color: white; 
     text-decoration: none;
 }
 
@@ -18,51 +17,52 @@
     cursor: pointer;
 }
 
-.frames h2,
-h3 {
+.frames h2, h4 {
     margin: 0.2em;
 }
-
-.image {
-    width: 215px;
-    height: 155px;
+.frames h2  {
+    margin: 0.2em;
+    color: #00ffff; 
 }
 
-.imageFrame {
-    border: 1px solid #4c5567;
+.image { 
     border-radius: 5px;
+    border: 1px solid #4c5567;
+    background-color: #4c5567; 
 }
+ 
+.image.card{
+    width: 215px;
+    height: 155px; 
+} 
 
-.imageFrame.imageEth {
+.image.imageEth {
     width: 62vw;
     height: 35vw;
 }
 
-
-.imageIot {
+.image.Iot {
     width: 150px;
     height: 125px;
-    border: 1px solid #4c5567;
-    border-radius: 5px;
     margin: 1vw;
-    background-color: #4c5567;
 }
-
-.imageIot.movil {
+ 
+.image.phone {
     float: left;
     height: 300px;
 }
+ 
 
-.imageIot.gallery {
-    width: 17vmin;
-    height: 13vmin;
-}
-
-.imageIot.screen {
+.image.screen {
     width: 300px;
     height: 200px;
 }
 
+.image.description{ 
+    width: 275px;
+    height: 200px;
+}
+ 
 
 .ImgeWhitDescription {
     color: #d4d4d4;

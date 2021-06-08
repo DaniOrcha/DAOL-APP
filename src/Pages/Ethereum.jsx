@@ -48,7 +48,7 @@ function Ethereum() {
 
 
                     <div className="flex center">
-                        <img src="../resources/scc/SCCnet.png" className="imageFrame imageEth" alt="err" />
+                        <img src="../resources/scc/SCCnet.png" className="image imageEth" alt="err" />
                     </div>
 
 
@@ -66,7 +66,7 @@ function Ethereum() {
                     </ul>
 
                     <div className="flex center">
-                        <img src="../resources/scc/SCCflow.png" className="imageFrame imageEth" alt="err" />
+                        <img src="../resources/scc/SCCflow.png" className="image imageEth" alt="err" />
                     </div>
 
 
@@ -84,7 +84,7 @@ function Ethereum() {
                     </ul>
 
                     <div className="flex center">
-                        <img src="../resources/scc/SCCsim.png" className="imageFrame imageEth" alt="err" />
+                        <img src="../resources/scc/SCCsim.png" className="image imageEth" alt="err" />
                     </div>
 
 
@@ -94,7 +94,7 @@ function Ethereum() {
                     <h3>Dashboard:</h3>
 
                     <div className="flex center">
-                        <img src="../resources/scc/SCCDashBoard.png" className="imageFrame imageEth" alt="err" />
+                        <img src="../resources/scc/SCCDashBoard.png" className="image imageEth" alt="err" />
                     </div>
 
 

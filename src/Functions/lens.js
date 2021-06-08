@@ -48,8 +48,7 @@ export function imageZoom(imgID) {
     }
 
 
-    function start() {
-        console.log("addddddd");
+    function start() { 
         lens.style.backgroundImage = "url('" + img.src + "')";
     }
 

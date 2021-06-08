@@ -2,13 +2,15 @@
 import Head from '../Components/Header';
 import Footer from '../Components/Footer';
 import { useEffect } from 'react';
+import { BlockProyect } from '../Components/cards';
+import proyectData from '../storage/proyects.json';
 
-function Automation() {
+function Automation() { 
 
     useEffect(() => {
         document.title = "Automatización";
     });
-
+ 
     return (
         <>
             <div className="bodyContainer">
@@ -21,51 +23,31 @@ function Automation() {
                 <div className="container">
                     <h2>Diseño de sistemas automatizados</h2>
 
-                    <hr />
+                    <hr /> 
 
-                    <div className="flex center">
-                        <div className="boxHorizontal">
-                            <div className="TxtColor"><h3>Estación de paletizado con Robot Kuka 2400/10:</h3></div>
-                            <div className="ImgeWhitDescription">
-                                <img src="../resources/portfolio/robotkuka.PNG" className="image" alt="err" />
-                                Croquis estación robotizada
-                            </div>
-                            <h4>Proyecto para una instalación robotizada de selección y paletizado de cajas.</h4>
-                        </div>
-                    </div> 
+                        <BlockProyect
+                            {...proyectData.Automation.Robot}
+                        />
+ 
+                    <hr /> 
 
-                    <hr />
+                        <BlockProyect
+                            {...proyectData.Automation.pneumaticStation}
+                        /> 
+ 
+                    <hr /> 
 
-                    <div className="flex center">
-                        <div className="boxHorizontal">
-                            <div className="TxtColor"><h3>Estación neumática de clasificación y descarga: </h3></div>
-                            <div className="ImgeWhitDescription">
-                                <img src="../resources/automation/pneumaticstation.png" className="image" alt="err" />
-                                Croquis posición estación neumática
-                        </div>
-                            <h4>Proyecto de una estación neumática automatizada para la selección y descarga de piezas.</h4>
-                        </div>
-                    </div> 
-
-                    <hr />
-
-                    <div className="flex center">
-                        <div className="boxHorizontal">
-                            <div className="TxtColor"><h3>Prensa hidráulica para planchas de metal:</h3></div>
-                            <div className="ImgeWhitDescription">
-                                <img src="../resources/automation/hydraulicstation.png" className="image" alt="err" />
-                                Croquis posición prensa hidráulica
-                            </div>
-                            <h4>Proyecto para el mecanizado de planchas de metal mediante una prensa hidráulica.</h4>
-                        </div>
-                    </div>  
+                        <BlockProyect
+                            {...proyectData.Automation.hydraulicStation}
+                        />  
+ 
 
                 </div>
             </div>
 
             <Footer />
 
-        </> 
+        </>
 
     );
 }

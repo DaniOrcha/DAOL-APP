@@ -1,32 +1,27 @@
 
 
-import { ShowAnimationLine, HideAnimationLine } from '../Functions/main.js'; 
+import { ShowAnimationLine, HideAnimationLine } from '../Functions/main.js';
 
-var AboutContainer;
-var AboutId;
+let AboutContainer;
+let AboutId; 
 
-
-export function initAbout() {
-
+export function initAbout() { 
     AboutContainer = document.getElementById("AboutContainer");
-    AboutId = document.getElementById("AboutId"); 
+    AboutId = document.getElementById("AboutId");  
+    AboutId.addEventListener("mouseenter", () => { ShowFrames(); });
+    AboutId.addEventListener("mouseleave", () => { HideFrames(); }); 
+} 
 
-    AboutId.onmouseenter = function () { ShowFrames() };
-    AboutId.onmouseleave = function () { HideFrames() };
-}
-
-
-function ShowFrames() { 
-    AboutContainer.classList.remove("hide"); 
+function ShowFrames() {
+    AboutContainer.classList.remove("hide");
     AboutId.classList.remove("animations");
     HideAnimationLine();
 }
 
-function HideFrames() { 
-    AboutContainer.classList.add("hide"); 
+function HideFrames() {
+    AboutContainer.classList.add("hide");
     AboutId.classList.add("animations");
     ShowAnimationLine();
 }
 
 
- 

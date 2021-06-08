@@ -1,6 +1,6 @@
 
-
-import { Link } from "react-router-dom";
+import { Card } from '../Components/cards';
+import PortofioData from '../storage/portfolio.json';
 
 function Portfolio() {
     return (
@@ -11,45 +11,36 @@ function Portfolio() {
                 </div>
             <div id="framesContainer" className="flex center hide">
 
-                <Link to='/Unity'>
-                    <div className="frames">
-                        <h2>Unity</h2>
-                        <img src='/resources/portfolio/Ico.png' alt="err" className="image" />
-                        <h3>Juegos 2D y 3D</h3>
-                    </div>
-                </Link>
-
-                <Link to='/Ethereum'>
-                    <div className="frames">
-                        <h2>Ethereum</h2>
-                        <img src="/resources/portfolio/scc1.png" alt="err" className="image" />
-                        <h3>SmartContrat + Web App</h3>
-                    </div>
-                </Link>
-
-                <Link to='/IoT'>
-                    <div className="frames">
-                        <h2>IoT</h2>
-                        <img src="/resources/iot/iotpanel.png" alt="err" className="image" />
-                        <h3>Servidor | Cliente IoT + Web interface</h3>
-                    </div>
-                </Link>
-
-                <Link to='/Automation'>
-                    <div className="frames">
-                        <h2>Automatización</h2>
-                        <img src="/resources/automation/grafo.png" alt="err" className="image" />
-                        <h3>Diseño de instalaciones automatizadas</h3>
-                    </div>
-                </Link>
-
-                <Link to='/Electronic'>
-                    <div className="frames">
-                        <h2>Electrónica</h2>
-                        <img src="/resources/portfolio/iotimg.jpg" alt="err" className="image" />
-                        <h3>Soluciones para dispositivos dedicados</h3>
-                    </div>
-                </Link>
+                <Card
+                    link={PortofioData.Unity.link}
+                    src={PortofioData.Unity.src}
+                    tittle={PortofioData.Unity.tittle}
+                    description={PortofioData.Unity.description}
+                />
+                <Card
+                    link={PortofioData.Eth.link}
+                    src={PortofioData.Eth.src}
+                    tittle={PortofioData.Eth.tittle}
+                    description={PortofioData.Eth.description}
+                />
+                <Card
+                    link={PortofioData.IoT.link}
+                    src={PortofioData.IoT.src}
+                    tittle={PortofioData.IoT.tittle}
+                    description={PortofioData.IoT.description}
+                />
+                <Card
+                    link={PortofioData.Autom.link}
+                    src={PortofioData.Autom.src}
+                    tittle={PortofioData.Autom.tittle}
+                    description={PortofioData.Autom.description}
+                />
+                <Card
+                    link={PortofioData.Elec.link}
+                    src={PortofioData.Elec.src}
+                    tittle={PortofioData.Elec.tittle}
+                    description={PortofioData.Elec.description}
+                />
 
             </div>
         </div>
