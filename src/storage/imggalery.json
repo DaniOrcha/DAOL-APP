@@ -1,0 +1,120 @@
+{
+    "meta":{
+        "class":"image square",
+        "icoLensSrc": "../resources/lensico.png"
+    },
+    "gallery": [
+        {
+            "src": "../resources/electronic/galery/1.jpg",
+            "id": "image1"
+        },
+        {
+            "src": "../resources/electronic/galery/2.jpg",
+            "id": "image2"
+        },
+        {
+            "src": "../resources/electronic/galery/5.jpg",
+            "id": "image5"
+        },
+        {
+            "src": "../resources/electronic/galery/5a.jpg",
+            "id": "image5a"
+        },
+        {
+            "src": "../resources/electronic/galery/8.jpg",
+            "id": "image8"
+        },
+        {
+            "src": "../resources/electronic/galery/3.jpg",
+            "id": "image3"
+        },
+        {
+            "src": "../resources/electronic/galery/9.jpg",
+            "id": "image9"
+        },
+        {
+            "src": "../resources/electronic/galery/10.jpg",
+            "id": "image10"
+        },
+        {
+            "src": "../resources/electronic/galery/12.jpg",
+            "id": "image12"
+        },
+        {
+            "src": "../resources/electronic/galery/13.jpg",
+            "id": "image13"
+        },
+        {
+            "src": "../resources/electronic/galery/15.jpg",
+            "id": "image15"
+        },
+        {
+            "src": "../resources/electronic/galery/14.jpg",
+            "id": "image14"
+        },
+        {
+            "src": "../resources/electronic/galery/11a.jpg",
+            "id": "image37"
+        },
+        {
+            "src": "../resources/electronic/galery/16.jpg",
+            "id": "image16"
+        },
+        {
+            "src": "../resources/electronic/galery/18.jpg",
+            "id": "image18"
+        },
+        {
+            "src": "../resources/electronic/galery/19.jpg",
+            "id": "image19"
+        },
+        {
+            "src": "../resources/electronic/galery/20.jpg",
+            "id": "image20"
+        },
+        {
+            "src": "../resources/iot/iot1.jpg",
+            "id": "iot1"
+        },
+        {
+            "src": "../resources/iot/iot2.jpg",
+            "id": "iot2"
+        },
+        {
+            "src": "../resources/electronic/galery/21.jpg",
+            "id": "image21"
+        },
+        {
+            "src": "../resources/electronic/galery/24.jpg",
+            "id": "image24"
+        },
+        {
+            "src": "../resources/electronic/galery/25.jpg",
+            "id": "image25"
+        },
+        {
+            "src": "../resources/electronic/galery/27.jpg",
+            "id": "image27"
+        },
+        {
+            "src": "../resources/electronic/galery/28.jpg",
+            "id": "image28"
+        },
+        {
+            "src": "../resources/electronic/galery/31.jpg",
+            "id": "image31"
+        },
+        {
+            "src": "../resources/electronic/galery/32.jpg",
+            "id": "image32"
+        },
+        {
+            "src": "../resources/electronic/galery/34.jpg",
+            "id": "image34"
+        },
+        {
+            "src": "../resources/electronic/galery/35.jpg",
+            "id": "image35"
+        }
+    ]
+}

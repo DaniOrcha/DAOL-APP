@@ -3,7 +3,7 @@
         "Robot": {
             "title": "Estación de paletizado con Robot Kuka 2400/10:",
             "desc": [
-                "<li>Proyecto para una instalación robotizada de selección y paletizado de cajas.</li>" 
+                "Proyecto para una instalación robotizada de selección y paletizado de cajas." 
             ],
             "img": {
                 "src": "../resources/portfolio/robotkuka.PNG",
@@ -13,7 +13,7 @@
         "pneumaticStation": {
             "title": "Estación neumática de clasificación y descarga:",
             "desc": [
-                " <li>Proyecto de una estación neumática automatizada para la selección y descarga de piezas.</li>"
+                "Proyecto de una estación neumática automatizada para la selección y descarga de piezas."
             ],
             "img": {
                 "src": "../resources/automation/pneumaticstation.png",
@@ -23,7 +23,7 @@
         "hydraulicStation": {
             "title": "Prensa hidráulica para planchas de metal:",
             "desc": [
-                " <li>Proyecto para el mecanizado de planchas de metal mediante una prensa hidráulica semiautomatizada.</li>"
+                "Proyecto para el mecanizado de planchas de metal mediante una prensa hidráulica semiautomatizada."
             ],
             "img": {
                 "src": "../resources/automation/hydraulicstation.png",
@@ -35,11 +35,11 @@
         "TestProducts": {
             "title": "Productos de pruebas: Dispositivos electrónicos con carcasas en impresión 3D",
             "desc": [
-                "Software utilizado:<br />",
-                "<br /><li>Diseño PCB: Eagle</li>",
-                "<br /><li>Código: Pic C Compiler CCS</li>",
-                "<br /><li>Diseño 3D: SketchUp</li>",
-                "<br /><br /><a href='/Imagegallery'>Galería de imágenes</a><br />"
+                "Software utilizado:",
+                "Diseño PCB: Eagle",
+                "Código: Pic C Compiler CCS",
+                "<Diseño 3D: SketchUp",
+                "<a href='/Imagegallery'>Galería de imágenes</a>"
             ],
             "img": {
                 "src": "../resources/electronic/clks1.jpg",
@@ -50,9 +50,9 @@
             "title": "Producto requerido por el cliente: Software y electrónica para un sistema dispensador de gel hidroalcohólico",
             "desc": [
                 "Compuesto por:<br />",
-                "<br /><li>Bomba peristáltica para dispensar gel hidroalcohólico.</li>",
-                "<br /><li>Motor de giro para dispensador de papel al terminar con el gel.</li>",
-                "<br /><li>Motor de giro para abrir una trampilla de una papelera.</li>" 
+                "Bomba peristáltica para dispensar gel hidroalcohólico.",
+                "Motor de giro para dispensador de papel al terminar con el gel.",
+                "Motor de giro para abrir una trampilla de una papelera." 
             ],
             "img": {
                 "src": "../resources/electronic/dispenser.PNG",
@@ -62,10 +62,10 @@
         "CO2Meter": {
             "title": "Producto requerido por el cliente: Software y documentación de desarrollo para calibrar y medir Co2 en la atmósfera con un controlador Arduino",
             "desc": [
-                "Compuesto por:<br />",
-                "<br /><li>Controlador Arduino.</li>",
-                "<br /><li>Sensor CO2.</li>",
-                "<br /><li>Regulador de tensión.</li>" 
+                "Compuesto por:",
+                "Controlador Arduino.",
+                "Sensor CO2.",
+                "Regulador de tensión." 
             ],
             "img": {
                 "src": "../resources/electronic/MG811.jpg",

@@ -96,9 +96,12 @@
 
 
 
-.TextBlock { 
+.ListTxtBlock { 
     margin: 10px auto auto auto; 
     width: 40vw; 
+}
+.ListTxtBlock li{
+    margin: 2px 0px 10px 0px ;
 }
  
 

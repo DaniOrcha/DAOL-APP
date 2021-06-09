@@ -4,10 +4,10 @@
         "Server": {
             "title": "Servidor Web de Temperatura y Humedad:",
             "desc": [
-                "<li>Dispositivo IoT servidor web.</li>",
-                "<br /><li>Conectado a internet mediante wifi.</li>",
-                "<br /><li>Cuando un cliente Web accede a la IP del dispositivo, éste envía como respuesta un documento HTML incluyendo los datos de temperatura y Humedad obtenidos mediante sensores.</li>",
-                "<br /><li>Diseño íntegro. PCB, soldaduras, programación y carcasa en impresión 3D.</li>"
+                "Dispositivo IoT servidor web.",
+                "Conectado a internet mediante wifi.",
+                "Cuando un cliente Web accede a la IP del dispositivo, éste envía como respuesta un documento HTML incluyendo los datos de temperatura y Humedad obtenidos mediante sensores.",
+                "Diseño íntegro. PCB, soldaduras, programación y carcasa en impresión 3D."
             ],
             "imgLef": [
                 {
@@ -32,9 +32,9 @@
         "Client": {
             "title": "IoT Ciente Web de temperatura, humedad y calidad del aire:",
             "desc": [
-                "<li>Dispositivo con función de cliente.</li>",
-                "<br /><li>Envía a un servidor los datos de temperatura, Humedad y Calidad del aire obtenidos mediante sensores.</li>",
-                "<br /><li>Los datos se almacenan en una BBDD y se visualizan mediante un navegador Web accediendo a la URL de la aplicación.</li>"
+                "Dispositivo con función de cliente.",
+                "Envía a un servidor los datos de temperatura, Humedad y Calidad del aire obtenidos mediante sensores.",
+                "Los datos se almacenan en una BBDD y se visualizan mediante un navegador Web accediendo a la URL de la aplicación."
             ],
             "imgLef": [
                 {
