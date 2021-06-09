@@ -41,18 +41,17 @@
     height: 35vw;
 }
 
-.image.Iot {
+.image.square {
     width: 150px;
     height: 125px;
     margin: 1vw;
 }
  
-.image.phone {
-    float: left;
+.image.rectangle-vertical {  
+    width: 150px;
     height: 300px;
 }
- 
-
+  
 .image.screen {
     width: 300px;
     height: 200px;
@@ -97,20 +96,11 @@
 
 
 
-.TextBlock {
-    display: block;
-    margin: auto;
-    margin-top: 10px;
+.TextBlock { 
+    margin: 10px auto auto auto; 
+    width: 40vw; 
 }
-
-.TextBlock.Resize1 {
-    width: 45vmax;
-}
-
-.TextBlock.Resize2 {
-    width: 36vmax;
-}
-
+ 
 
 .TxtColor h3 {
     color: #12B3B3;
@@ -128,18 +118,22 @@
 
 .lens {
     position: absolute;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
     width: 30vh;
     height: 30vh;
     opacity: 0;
+    z-index: 1;
 }
 
-.lens:hover {
-    border: 1px solid #d4d4d4;
-    border-radius: 5px;
+.lens.show {
     opacity: 1;
-    z-index: 1;
     cursor: zoom-in;
 }
+.lens:hover {
+    opacity: 1;
+    cursor: zoom-in;
+} 
 
 
 .lensIco {

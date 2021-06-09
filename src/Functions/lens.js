@@ -1,9 +1,17 @@
-var eControl = [];
-var hasTouchscreen = 'ontouchstart' in window;
-var img, lens, lensIco, removeIco = false;
 
+    let eControl = [];
+    let hasTouchscreen = 'ontouchstart' in window;
+    let imgID, img, lens, lensIco, removeIco = false;
 
-export function imageZoom(imgID) {
+export function imageZoom(_imgID) {
+
+    if (typeof _imgID === 'object') {
+        imgID = _imgID.id;
+    }
+    else{
+
+        imgID = _imgID;
+    }
 
     img = document.getElementById(imgID);
 
@@ -26,6 +34,9 @@ export function imageZoom(imgID) {
         lens = document.createElement("DIV");
         lens.setAttribute("class", "lens");
         img.parentElement.insertBefore(lens, img);
+ 
+        lens.style.backgroundImage = "url('" + img.src + "')";
+        lens.style.backgroundSize = (img.width * 4) + "px " + (img.height * 4) + "px";
 
         if (!removeIco) {
             removeIco = true
@@ -48,13 +59,13 @@ export function imageZoom(imgID) {
     }
 
 
-    function start() { 
+    function start() {
         lens.style.backgroundImage = "url('" + img.src + "')";
     }
 
 
     function moveLens(e) {
-
+ 
         var pos, x, y;
         e.preventDefault();
 
@@ -71,20 +82,19 @@ export function imageZoom(imgID) {
             }
             if (y > img.height - lens.offsetHeight / 4) {
                 y = img.height - lens.offsetHeight / 4;
-            }
+            }  
             if (x < 0) {
-                x = 0;
+                x = 0; 
             }
             if (y < 0) {
                 y = 0;
+                lens.classList.remove('show');
             }
 
-            lens.style.left = x + "px";
-            lens.style.top = y + "px";
-
-            lens.style.backgroundImage = "url('" + img.src + "')";
-            lens.style.backgroundSize = (img.width * 4) + "px " + (img.height * 4) + "px";
+            lens.style.left = (x - 20) + "px";
+            lens.style.top = (y - 20) + "px";
             lens.style.backgroundPosition = "-" + (x * 4) + "px -" + (y * 4) + "px";
+
         } catch (error) {
             console.error(error);
         }
