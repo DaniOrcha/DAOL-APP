@@ -4,12 +4,12 @@ import {
 } from '../Functions/main.js';
 
 import roadData from '../storage/roadMap.json';
+// import { resetPipes } from '../Components/cardsRM';
 
 const roadObj = roadData;
 
 let icon = [];
 
-let IcoFrame;
 let IcoId = 0;
 
 let RoadMapTree;
@@ -18,42 +18,87 @@ let BoxData;
 
 let isSlotShow = false;
 
+let pipe = [];
+let pipeIco = [];
+let pipeData = [];
+let pipeRM = [];
+let pipeTree = [];
 
 
-function ShowTree() {
-    RoadMapTree.style.visibility = "visible";
-    RoadMap.classList.add("expand");
-    RoadMap.classList.remove("animations");
-    updateIcons();
-    HideAnimationLine();
+
+//refact pipes
+
+export function PipeSeters(_setter, _refNode , _index) {
+    //pipe = [];
+    // pipe[_index] = [ seter: _setter, node: _refNode ]; 
+
+     //pipe.push({seter: _setter, node: _refNode});
+    pipe[_index] = {seter: _setter, node: _refNode}; 
+ 
+    //  console.log("PIPE ! " + pipe.length);
+    //   console.log("PIPE  ! " + pipe);
+    //   console.log("PIPE ! " + pipe[0].node);
+}
+export function PipeIco(refNode , index) {
+    pipeIco[index] = refNode; 
+    // pipeIco.push(refNode);
+}
+export function PipeData(refNode) {
+    pipeData = [];
+    pipeData.push(refNode);
+    // console.log("pipeData ! " + pipeData.length);
+}
+export function PipeRoadMap(refNode) {
+    pipeRM = [];
+    pipeRM.push(refNode);
+    // initRoadmap();
+}
+export function PipeTree(refNode) {
+    pipeTree = [];
+    pipeTree.push(refNode);
+    // console.log("pipeTree ! " + pipeTree.length);
 }
 
-function HideTree() {
-    SlotsHide();
-    RoadMapTree.style.visibility = "hidden";
-    RoadMap.classList.remove("expand");
-    RoadMap.classList.add("animations");
-    ShowAnimationLine();
-}
+ 
 
 
 
 export function initRoadmap() {
+/*       pipe = [];
+      pipeIco = [];
+      pipeData = [];
+      pipeRM = [];
+      pipeTree = []; */
+    // console.log("init 2 ");
+    RoadMap = pipeRM[0].current;
 
+    // console.log("pipeRM[0] ! " + pipeRM.length);
 
-    RoadMapTree = document.getElementById("RoadMapTree");
-    RoadMapTree.style.visibility = "hidden";
-    RoadMap = document.getElementById("RoadMapId");
-    RoadMap.onmouseenter = () => { ShowTree() };
-    RoadMap.onmouseleave = () => { HideTree() };
+//    console.log("RoadMap ! " + RoadMap);
 
-    BoxData = document.getElementById("boxData");
-    BoxData.addEventListener("mouseenter", () => { SlotsShow(); borderHiled(); });
-    BoxData.addEventListener("mouseleave", () => { borderDark(); });
+    // if (RoadMap === null) {
+    //      pipe = [];
+    //      pipeIco = [];
+    //      pipeData = [];
+    //      pipeRM = [];
+    //      pipeTree = [];
+    //     resetPipes();
+    //     //  return; 
+    // }
+
+    RoadMap.addEventListener("mouseenter", () => { ShowTree(); });
+    RoadMap.addEventListener("mouseleave", () => { HideTree(); });
+
+    RoadMapTree = pipeTree[0].current;
+
+    // console.log("BoxData ! " + pipeData.length);
+    // console.log("BoxData ! " + pipeData[pipeData.length-1].current);
+
+    BoxData = pipeData[0].current;
+    BoxData.addEventListener("mouseenter", () => { SlotsShow(); lightedGrab(); });
+    BoxData.addEventListener("mouseleave", () => { removeGrab(); });
     BoxData.addEventListener("mousedown", () => { cursorGrabbing(); });
-    BoxData.addEventListener("mouseup", () => { cursorNOGrabbing(); });
-
-    updateIcons();
+    BoxData.addEventListener("mouseup", () => { removeGrabing(); });
 
     let hasTouchscreen = 'ontouchstart' in window;
     if (hasTouchscreen) {
@@ -68,7 +113,6 @@ export function initRoadmap() {
 function dragElement(elmnt) {
 
     let pos1 = 0, pos2 = 0;
-
     elmnt.onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
@@ -78,7 +122,6 @@ function dragElement(elmnt) {
         document.onmouseup = closeDragElement;
         document.onmousemove = elementDrag;
     }
-
 
     function elementDrag(e) {
         e = e || window.event;
@@ -103,8 +146,8 @@ function dragElement(elmnt) {
 
 
 function dragTouch(event) {
-    let box = document.getElementById("boxData");
-    let pos1 = 0,  pos2 = 0;
+
+    let pos1 = 0, pos2 = 0;
 
     event.ontouchstart = start;
     event.ontouchmove = drag;
@@ -112,7 +155,7 @@ function dragTouch(event) {
 
     function start(event) {
         SlotsShow();
-        borderHiled();
+        lightedGrab();
         document.body.style.overflow = 'hidden';
         pos2 = event.touches[0].clientY;
         drag(event);
@@ -122,15 +165,15 @@ function dragTouch(event) {
         pos1 = pos2 - event.touches[0].clientY;
         pos2 = event.touches[0].clientY;
 
-        if (box.offsetTop >= icon[0] && box.offsetTop <= icon[icon.length - 1]) {
-            box.style.top = (box.offsetTop - pos1) + "px";
+        if (BoxData.offsetTop >= icon[0] && BoxData.offsetTop <= icon[icon.length - 1]) {
+            BoxData.style.top = (BoxData.offsetTop - pos1) + "px";
             TextIndex();
         }
-        else if (box.offsetTop <= icon[0]) {
-            box.style.top = icon[0] + "px";
+        else if (BoxData.offsetTop <= icon[0]) {
+            BoxData.style.top = icon[0] + "px";
         }
-        else if (box.offsetTop >= icon[icon.length - 1]) {
-            box.style.top = icon[icon.length - 1] + "px";
+        else if (BoxData.offsetTop >= icon[icon.length - 1]) {
+            BoxData.style.top = icon[icon.length - 1] + "px";
         }
     }
 
@@ -142,39 +185,136 @@ function dragTouch(event) {
 
 function TextIndex() {
 
-    let boxDataY = document.getElementById("boxData").offsetTop + 25;
+    let boxDataY = BoxData.offsetTop + 25;
+    //  console.log("icon.length  " + icon.length );
 
     for (let i = 0; i < icon.length; i++) {
 
         if (i === icon.length - 1) {
             if (IcoId !== i) {
+                let pos = IcoId;
                 IcoId = i;
-                SetSlot(IcoId);
+                // console.log("IcoId++ " + IcoId );
+                setData(IcoId, pos);
                 return;
             }
             return;
         }
 
         if (boxDataY >= icon[i] && boxDataY < icon[i + 1]) {
+
+            // console.log("icon[i + 1] " + icon[i + 1] );
+            // console.log("boxDataY++ " + boxDataY );
+
             if (IcoId !== i) {
+                let pos = IcoId;
                 IcoId = i;
-                SetSlot(IcoId);
+                // console.log("IcoId-- " + IcoId );
+                setData(IcoId, pos);
                 return;
             }
             return;
         }
 
     }
-
 }
 
 
-function borderHiled() {
-    BoxData.classList.add('hiled');
+function ShowTree() {
+    RoadMapTree.style.visibility = "visible";
+    RoadMap.classList.add("expand");
+    RoadMap.classList.remove("animations");
+    HideAnimationLine();
+}
+
+function HideTree() {
+    SlotsHide();
+    RoadMapTree.style.visibility = "hidden";
+    RoadMap.classList.remove("expand");
+    RoadMap.classList.add("animations");
+    ShowAnimationLine();
+}
+
+function SlotsShow() {
+
+    if (!isSlotShow) {
+        isSlotShow = true;
+
+        icon = [];//delete
+        // console.log("Slots.length  " + icon.length );
+        pipeIco.forEach(element => {
+            element.classList.add('Show');
+            icon.push(element.offsetTop); //refact
+        });
+        pipe[0].node.current.classList.add('color');
+        // console.log("Slots.length2  " + icon.length );
+
+// console.log("ICO PUSH ");
+
+        setData(0, 0);
+    }
+}
+
+function SlotsHide() {
+
+    pipeIco.forEach(element => {
+        element.classList.remove('Icolighted');
+        element.classList.remove('Show');
+    });
+
+    BoxData.style.top = icon[0] + "px";
+    BoxData.classList.remove('lighted');
+    pipe[0].node.current.classList.remove('color');
+    resetData();
+    icon = [];
+    isSlotShow = false;
+}
+
+
+function setData(index, pos) {
+
+
+    // console.log("PIPEa ! " + pipe.length);
+    // console.log("PIPEa ! " + pipe[0]);
+
+    // console.log("index ! " + index);
+
+    // console.log("roadObj ! " + roadObj[index].year);
+
+
+    pipeIco[pos].classList.remove('Icolighted');
+    pipeIco[index].classList.add('Icolighted');
+
+    // pipe[0].node.current.classList.add('animation');
+    // pipe[1].node.current.classList.add('animation');
+    // pipe[2].node.current.classList.add('animation');
+
+    pipe[0].seter(roadObj[index].year);
+    pipe[1].seter(roadObj[index].txt);
+    pipe[2].seter({ index: index, data: roadObj[index].desc });
+    // pipe[2].seter({type: "hola"}roadObj[index].desc); 
+
+    // setTimeout(() => {
+    //     pipe[0].node.current.classList.remove('animation');
+    //     pipe[1].node.current.classList.remove('animation');
+    //     pipe[2].node.current.classList.remove('animation');
+    // }, 2000)
+}
+
+
+function resetData() {
+    pipe[0].seter("Ruta de aprendizaje");
+    pipe[1].seter("");
+    pipe[2].seter([]);
+
+}
+
+function lightedGrab() {
+    BoxData.classList.add('lighted');
     BoxData.classList.add('grab');
 }
 
-function borderDark() {
+function removeGrab() {
     BoxData.classList.remove('grab');
 }
 
@@ -182,92 +322,6 @@ function cursorGrabbing() {
     BoxData.classList.add('grabbing');
 }
 
-function cursorNOGrabbing() {
+function removeGrabing() {
     BoxData.classList.remove('grabbing');
-}
-
-
-
-
-function SlotsShow() {
-
-    if (!isSlotShow) {
-        isSlotShow = true;
-
-        for (var i = 0; i < icon.length; i++) {
-            IcoFrame = document.getElementById("ico" + i)
-            IcoFrame.classList.add('Show');
-        }
-
-        updateIcons();
-        SetSlot(0);
-    }
-}
-
-function SlotsHide() {
-    for (var i = 0; i < icon.length; i++) {
-        IcoFrame = document.getElementById("ico" + i)
-        IcoFrame.classList.remove('Show');
-    }
-    BoxData.style.top = icon[0] + "px";
-    updateIcons();
-    SetSlot(100);
-    document.getElementById("ico0").classList.remove('hiled');
-    isSlotShow = false;
-
-    BoxData.classList.remove('hiled');
-}
-
-
-function SetSlot(_id) {
-
-    for (var i = 0; i < icon.length; i++) {
-        IcoFrame = document.getElementById("ico" + i)
-        IcoFrame.classList.remove('hiled');
-    }
-    effectsDescription(_id);
-
-}
-
-
-
-function effectsDescription(_id) {
-
-    var DateBox = document.getElementById("boxDate")
-    var container = document.getElementById("boxTitle")
-    var TextBox = document.getElementById("boxDescription")
-
-    container.classList.add('pre-animation');
-    TextBox.classList.add('pre-animation');
-
-    if (_id !== 100) {
-
-        IcoFrame = document.getElementById("ico" + _id)
-        IcoFrame.classList.add('hiled');
-        container.innerHTML = decodeURIComponent(roadObj[_id].txt);
-        DateBox.innerHTML = roadObj[_id].year;
-        TextBox.innerHTML = decodeURIComponent(roadObj[_id].desc);
-    } else {
-        DateBox.innerHTML = "Ruta de aprendizaje";
-        container.innerHTML = "";
-        TextBox.innerHTML = "";
-    }
-
-    setTimeout(function () {
-        container.classList.remove('pre-animation')
-        TextBox.classList.remove('pre-animation')
-    }, 2000)
-}
-
-
-function updateIcons() {
-    icon = [
-        document.getElementById("ico0").offsetTop,
-        document.getElementById("ico1").offsetTop,
-        document.getElementById("ico2").offsetTop,
-        document.getElementById("ico3").offsetTop,
-        document.getElementById("ico4").offsetTop,
-        document.getElementById("ico5").offsetTop,
-        document.getElementById("ico6").offsetTop
-    ];
 }

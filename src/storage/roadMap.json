@@ -1,37 +1,60 @@
 [
     {
         "year": "Actual",
-        "desc": "<li>Programador Unity, Web, Electrónica.</li><li>Disfrutando de React.</li>",
-        "txt": "Freelance + React JS"
+        "txt": "Freelance + React JS", 
+        "desc": [
+            "Programador freelance.",
+            "Disfrutando de React." 
+         ] 
     },
     {
         "year": "2020",
-        "desc": "<li>Juego 2D & 3D.</li><li>Diseño modelos 3D para Unity.</li><li>Freelance implementación clases de personajes, BBDD Json, sistema de inventario, encriptación, guardado y carga de datos.</li>",
-        "txt": "Unity + Blender"
+        "txt": "Unity + Blender", 
+        "desc": [
+            "Juego 2D & 3D.",
+            "Diseño modelos 3D para Unity.",
+            "Freelance implementación clases de personajes, BBDD Json, sistema de inventario, encriptación, guardado y carga de datos." 
+         ]
     },
     {
         "year": "2019",
-        "desc": "<li>Token Ethereum en Solidity con interface http.</li><li>Software de trading automático en MetaTrader4 (C++).</li><li>Web para el conjunto de la aplicación y DDBB.</li>",
-        "txt": "Solidity + Web + Mt4 + MySQL"
+        "txt": "Solidity + Web + Mt4 + MySQL",  
+        "desc": [
+            "Token Ethereum en Solidity con interface http.",
+            "Software de trading automático en MetaTrader4 (C++).",
+            "Web para el conjunto de la aplicación y DDBB." 
+         ]
     },
     {
         "year": "2014",
-        "desc": "<li>Programación en planta Termosolar de PLC´s, SCADAS, PISystem, DDBB, Excel Vba performance.</li><li>Diseño de dispositivos electrónicos & IoT servidor y cliente web.</li><li>Librerías C++ drivers sensores diseñadas con osciloscopio y hoja técnica.</li>",
-        "txt": "Industria, Electrónica, PIC & IoT"
+        "txt": "Industria, Electrónica, PIC & IoT", 
+        "desc": [
+            "Programación en planta Termosolar de PLC´s, SCADAS, PISystem, DDBB, Excel Vba performance.",
+            "Diseño de dispositivos electrónicos & IoT servidor y cliente web.",
+            "Librerías C++ drivers sensores diseñadas con osciloscopio y hoja técnica." 
+         ]
     },
     {
         "year": "2011",
-        "desc": "<li><i class='fa fa-graduation-cap' aria-hidden='true'></i> Título de Postgrado en Atomatización Industrial. Robótica & C++</li>",
-        "txt": "Automatización"
+        "txt": "Automatización",  
+        "desc": [
+            "  Título de Postgrado en Atomatización Industrial. Robótica & C++" 
+         ]
     },
     {
         "year": "2002",
-        "desc": "<li>Diseño Web con HTML, CSS, JS y PhP.</li><li>Aplicaciones escritorio Vb, técnicas de hacking, mod crypters.</li><li><i class='fa fa-graduation-cap' aria-hidden='true'></i> Título de Técnico Especialista Electricidad y Electrónica.</li>",
-        "txt": "Diseño Web & Vb"
+        "txt": "Diseño Web & Vb",  
+        "desc": [
+            "Diseño Web con HTML, CSS, JS y PhP.",
+            "Aplicaciones escritorio Vb, técnicas de hacking, mod crypters.",
+            "  Título de Técnico Especialista Electricidad y Electrónica." 
+         ]
     },
     {
         "year": "1990",
-        "desc": "<li>Primeros programas de dibujo con figuras geométricas y colores.</li>",
-        "txt": "Sinclair ZX Spectrum"
+        "txt": "Sinclair ZX Spectrum", 
+         "desc": [
+            "Primeros programas de dibujo con figuras geométricas y colores." 
+         ]
     }
 ]

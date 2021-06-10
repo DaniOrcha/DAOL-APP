@@ -14,12 +14,13 @@ import '../Functions/about.js';
 import '../Functions/portfolio.js';
 import '../Functions/roadmap.js'; 
 
-import { OnMountInit } from '../Functions/main.js';
+ import { OnMountInit } from '../Functions/main.js';
 
 class MainPage extends React.Component {
 
     componentDidMount() {
         OnMountInit();
+        
         document.title = "Daniel";
     }
 
@@ -30,7 +31,7 @@ class MainPage extends React.Component {
                     <Head
                         lines="2"
                         line1="Daniel Orcha Lorenzo"
-                        line2="Programador de software & Diseño de sistemas automatizados"
+                        line2="Programador de software + Diseño de sistemas automatizados"
                     />
                     <RoadMap />
                     <Portfolio />

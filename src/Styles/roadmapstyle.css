@@ -11,8 +11,8 @@
 }
 
 
-#RoadMapTree {
-    margin-left: 8vw;
+.RoadMapTree {
+    margin-left: 8vw; 
 }
 
 .boxIcon {
@@ -29,7 +29,7 @@
         position: static;
     }
 
-    .boxIcon.hiled {
+    .boxIcon.Icolighted {
         border: 2px solid #00FFFF;
         background-color: #00FFFF;
         box-shadow: 3px 0px 3px 0px #00FFFF;
@@ -39,79 +39,113 @@
     float: right;
 }
 
-#boxData {
+.boxData {
     border: 2px solid #FFDA19;
     border-radius: 5px;
     padding: 1%;
     position: absolute;
-    margin-left: 8vw;
+    margin-left: 12vmin;
     margin-right: 7vw;
-    background-color: #4c5567;
-    width: 46vw;
+    background-color: #263f48;
+    width: 50vw;
     z-index: 1;
     font-size: 15pt;
 }
 
-    #boxData.hiled {
+.boxData.lighted {
         border: 1px solid #00FFFF;
         box-shadow: -3px 0px 3px 0px #00FFFF;
     }
 
-    #boxData.grab {
+    .boxData.grab {
         cursor: grab;
     }
 
-    #boxData.grabbing {
+    .boxData.grabbing {
         cursor: grabbing;
     }
 
-    #boxData::before {
+    .boxData::before {
         content: "";
         margin-left: -4.7vmin;
         margin-top: -0.5vw;
         position: absolute;
         border-top: 2vmin solid transparent;
-        border-right: 3vmin solid #4c5567;
+        border-right: 3vmin solid #00FFFF;
         border-bottom: 2vmin solid transparent;
     }
 
-#boxDate {
-    background: linear-gradient(to right, #292e38, #4c5567);
+.boxDate {
     border-radius: 10px;
-    padding-left: 7px;
-    padding-right: 10px;
-    width: 50%;
+    padding-left: 7px; 
+    width: 70%;
     color: #12B3B3;
     font-weight: bold;
+    position: absolute;
+    left: 11px;
+}
+.boxDate.color {
+    background: linear-gradient(to right, #000000, #ffffff);
+}
+.boxDate.animation {
+    animation: Opacity 1s;
+    animation: Sizer 1s;
 }
 
-#boxTitle {
-    color: #00FFFF;
+.boxTitle {
+    color: #ffda19;
     font-weight: bold;
+    margin-top: 35px;
+    padding-left: 10px;
 }
 
-    #boxTitle.pre-animation {
-        animation: Anim 2s;
+    .boxTitle.animation {
+        animation: Opacity 1s;
     }
 
 
-#boxDescription {
+.boxDescription {
     padding-left: 5px;
     margin-bottom: 1em;
 }
 
-    #boxDescription.pre-animation {
-        animation: Anim 2s;
+    .boxDescription ul {
+        margin-top: 10px;
+    }
+    .boxDescription li {
+        margin: 5px;
+    }
+
+    .boxDescription.animation {
+        animation: Opacity 1s;
     }
 
 
-@keyframes Anim {
+@keyframes Opacity {
     0% {
         opacity: 0;
+    } 
+    70% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes Sizer {
+    0% {
+        width: 0;
+        left: -4px;
+    }
+
+    30% {
+        width: 10%;
+        left: 11px;
     }
 
     100% {
-        opacity: 1;
+        width: 70%;
+        left: 11px;
     }
 }
 
@@ -128,9 +162,14 @@
 
 @media screen and (max-width: 850px) {
 
-    #boxData {
-        width: auto;
+    .boxData {
+        width: auto; 
         margin-left: 12vw;
+        min-width: 75vw;
+    }
+    .boxDate {
+       width: 70%;  
+        /*  min-width: 65vw; */
     }
 
     .boxIcon {
@@ -138,7 +177,7 @@
         width: 7vw;
     }
 
-    #RoadMapTree {
+    .RoadMapTree {
         margin-left: 1vw;
     }
 }
