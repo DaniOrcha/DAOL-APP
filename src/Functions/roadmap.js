@@ -4,107 +4,96 @@ import {
 } from '../Functions/main.js';
 
 import roadData from '../storage/roadMap.json';
-// import { resetPipes } from '../Components/cardsRM';
 
 const roadObj = roadData;
 
-let icon = [];
-
+let Tree;
+let RoadMap;
+let Card;
 let IcoId = 0;
 
-let RoadMapTree;
-let RoadMap;
-let BoxData;
-
-let isSlotShow = false;
-
-let pipe = [];
-let pipeIco = [];
-let pipeData = [];
-let pipeRM = [];
-let pipeTree = [];
 
 
+let MapNode = {
 
-//refact pipes
+    RoadMap: {
+        node: null,
+        trigger: null
+    },
+    Tree: {
+        node: null,
+        trigger: null
+    },
+    Card: {
+        node: null,
+        trigger: null
+    },
+    DateCard: {
+        node: null,
+        trigger: null
+    },
+    TitleCard: {
+        node: null,
+        trigger: null
+    },
+    TxtCard: {
+        node: 4,
+        trigger: null
+    },
 
-export function PipeSeters(_setter, _refNode , _index) {
-    //pipe = [];
-    // pipe[_index] = [ seter: _setter, node: _refNode ]; 
-
-     //pipe.push({seter: _setter, node: _refNode});
-    pipe[_index] = {seter: _setter, node: _refNode}; 
- 
-    //  console.log("PIPE ! " + pipe.length);
-    //   console.log("PIPE  ! " + pipe);
-    //   console.log("PIPE ! " + pipe[0].node);
-}
-export function PipeIco(refNode , index) {
-    pipeIco[index] = refNode; 
-    // pipeIco.push(refNode);
-}
-export function PipeData(refNode) {
-    pipeData = [];
-    pipeData.push(refNode);
-    // console.log("pipeData ! " + pipeData.length);
-}
-export function PipeRoadMap(refNode) {
-    pipeRM = [];
-    pipeRM.push(refNode);
-    // initRoadmap();
-}
-export function PipeTree(refNode) {
-    pipeTree = [];
-    pipeTree.push(refNode);
-    // console.log("pipeTree ! " + pipeTree.length);
+    Icons: []
 }
 
- 
+
+
+export function PipeRM(name, refNode, trigger) {
+
+    Object.entries(MapNode).forEach(([key]) => {
+        if (key === name) {
+            MapNode[key].node = refNode;
+            MapNode[key].trigger = trigger;
+        }
+    });
+}
+
+
+export function PipeIco(Node, index) {
+    MapNode.Icons[index] = Node;
+}
+
+
+let icoPos = [];
+
+
+function setIcoPos() {
+
+    icoPos = MapNode.Icons.map((x) => {
+        return x.offsetTop;
+    })
+}
 
 
 
 export function initRoadmap() {
-/*       pipe = [];
-      pipeIco = [];
-      pipeData = [];
-      pipeRM = [];
-      pipeTree = []; */
-    // console.log("init 2 ");
-    RoadMap = pipeRM[0].current;
 
-    // console.log("pipeRM[0] ! " + pipeRM.length);
-
-//    console.log("RoadMap ! " + RoadMap);
-
-    // if (RoadMap === null) {
-    //      pipe = [];
-    //      pipeIco = [];
-    //      pipeData = [];
-    //      pipeRM = [];
-    //      pipeTree = [];
-    //     resetPipes();
-    //     //  return; 
-    // }
+    RoadMap = MapNode.RoadMap.node.current;
 
     RoadMap.addEventListener("mouseenter", () => { ShowTree(); });
     RoadMap.addEventListener("mouseleave", () => { HideTree(); });
 
-    RoadMapTree = pipeTree[0].current;
+    Tree = MapNode.Tree.node.current;
 
-    // console.log("BoxData ! " + pipeData.length);
-    // console.log("BoxData ! " + pipeData[pipeData.length-1].current);
-
-    BoxData = pipeData[0].current;
-    BoxData.addEventListener("mouseenter", () => { SlotsShow(); lightedGrab(); });
-    BoxData.addEventListener("mouseleave", () => { removeGrab(); });
-    BoxData.addEventListener("mousedown", () => { cursorGrabbing(); });
-    BoxData.addEventListener("mouseup", () => { removeGrabing(); });
+    Card = MapNode.Card.node.current;
+    Card.addEventListener("mouseenter", () => { SlotsShow(); lightedGrab(); });
+    Card.addEventListener("mouseleave", () => { removeGrab(); });
+    Card.addEventListener("mousedown", () => { cursorGrabbing(); });
+    Card.addEventListener("mouseup", () => { removeGrabing(); });
 
     let hasTouchscreen = 'ontouchstart' in window;
     if (hasTouchscreen) {
-        dragTouch(BoxData);
+        dragTouch(Card);
     } else {
-        dragElement(BoxData);
+        dragElement(Card);
     }
 
 }
@@ -128,13 +117,13 @@ function dragElement(elmnt) {
         e.preventDefault();
         pos1 = pos2 - e.clientY;
         pos2 = e.clientY;
-        if (elmnt.offsetTop >= icon[0] && elmnt.offsetTop <= icon[icon.length - 1]) {
+        if (elmnt.offsetTop >= icoPos[0] && elmnt.offsetTop <= icoPos[icoPos.length - 1]) {
             elmnt.style.top = (elmnt.offsetTop - pos1) + "px";
             TextIndex();
-        } else if (elmnt.offsetTop <= icon[0]) {
-            elmnt.style.top = icon[0] + "px";
-        } else if (elmnt.offsetTop >= icon[icon.length - 1]) {
-            elmnt.style.top = icon[icon.length - 1] + "px";
+        } else if (elmnt.offsetTop <= icoPos[0]) {
+            elmnt.style.top = icoPos[0] + "px";
+        } else if (elmnt.offsetTop >= icoPos[icoPos.length - 1]) {
+            elmnt.style.top = icoPos[icoPos.length - 1] + "px";
         }
     }
 
@@ -165,15 +154,15 @@ function dragTouch(event) {
         pos1 = pos2 - event.touches[0].clientY;
         pos2 = event.touches[0].clientY;
 
-        if (BoxData.offsetTop >= icon[0] && BoxData.offsetTop <= icon[icon.length - 1]) {
-            BoxData.style.top = (BoxData.offsetTop - pos1) + "px";
+        if (Card.offsetTop >= icoPos[0] && Card.offsetTop <= icoPos[icoPos.length - 1]) {
+            Card.style.top = (Card.offsetTop - pos1) + "px";
             TextIndex();
         }
-        else if (BoxData.offsetTop <= icon[0]) {
-            BoxData.style.top = icon[0] + "px";
+        else if (Card.offsetTop <= icoPos[0]) {
+            Card.style.top = icoPos[0] + "px";
         }
-        else if (BoxData.offsetTop >= icon[icon.length - 1]) {
-            BoxData.style.top = icon[icon.length - 1] + "px";
+        else if (Card.offsetTop >= icoPos[icoPos.length - 1]) {
+            Card.style.top = icoPos[icoPos.length - 1] + "px";
         }
     }
 
@@ -185,31 +174,25 @@ function dragTouch(event) {
 
 function TextIndex() {
 
-    let boxDataY = BoxData.offsetTop + 25;
-    //  console.log("icon.length  " + icon.length );
+    let boxDataY = Card.offsetTop + 25;
 
-    for (let i = 0; i < icon.length; i++) {
+    for (let i = 0; i < icoPos.length; i++) {
 
-        if (i === icon.length - 1) {
+        if (i === icoPos.length - 1) {
             if (IcoId !== i) {
                 let pos = IcoId;
                 IcoId = i;
-                // console.log("IcoId++ " + IcoId );
                 setData(IcoId, pos);
                 return;
             }
             return;
         }
 
-        if (boxDataY >= icon[i] && boxDataY < icon[i + 1]) {
-
-            // console.log("icon[i + 1] " + icon[i + 1] );
-            // console.log("boxDataY++ " + boxDataY );
+        if (boxDataY >= icoPos[i] && boxDataY < icoPos[i + 1]) {
 
             if (IcoId !== i) {
                 let pos = IcoId;
                 IcoId = i;
-                // console.log("IcoId-- " + IcoId );
                 setData(IcoId, pos);
                 return;
             }
@@ -221,7 +204,7 @@ function TextIndex() {
 
 
 function ShowTree() {
-    RoadMapTree.style.visibility = "visible";
+    Tree.style.visibility = "visible";
     RoadMap.classList.add("expand");
     RoadMap.classList.remove("animations");
     HideAnimationLine();
@@ -229,7 +212,7 @@ function ShowTree() {
 
 function HideTree() {
     SlotsHide();
-    RoadMapTree.style.visibility = "hidden";
+    Tree.style.visibility = "hidden";
     RoadMap.classList.remove("expand");
     RoadMap.classList.add("animations");
     ShowAnimationLine();
@@ -237,91 +220,72 @@ function HideTree() {
 
 function SlotsShow() {
 
-    if (!isSlotShow) {
-        isSlotShow = true;
+    MapNode.Icons.forEach(element => {
+        element.classList.add('Show');
+    });
 
-        icon = [];//delete
-        // console.log("Slots.length  " + icon.length );
-        pipeIco.forEach(element => {
-            element.classList.add('Show');
-            icon.push(element.offsetTop); //refact
-        });
-        pipe[0].node.current.classList.add('color');
-        // console.log("Slots.length2  " + icon.length );
-
-// console.log("ICO PUSH ");
-
-        setData(0, 0);
-    }
+    MapNode.DateCard.node.current.classList.add('color');
+    setIcoPos();
+    setData(0, 0);
 }
+
 
 function SlotsHide() {
 
-    pipeIco.forEach(element => {
+    MapNode.Icons.forEach(element => {
         element.classList.remove('Icolighted');
         element.classList.remove('Show');
     });
 
-    BoxData.style.top = icon[0] + "px";
-    BoxData.classList.remove('lighted');
-    pipe[0].node.current.classList.remove('color');
+    Card.style.top = icoPos[0] + "px";
+    Card.classList.remove('lighted');
+    MapNode.DateCard.node.current.classList.remove('color');
     resetData();
-    icon = [];
-    isSlotShow = false;
+
 }
 
 
 function setData(index, pos) {
 
+    MapNode.Icons[pos].classList.remove('Icolighted');
+    MapNode.Icons[index].classList.add('Icolighted');
 
-    // console.log("PIPEa ! " + pipe.length);
-    // console.log("PIPEa ! " + pipe[0]);
+    MapNode.DateCard.node.current.classList.add('animation');
+    MapNode.TitleCard.node.current.classList.add('animation');
+    MapNode.TxtCard.node.current.classList.add('animation');
 
-    // console.log("index ! " + index);
+    MapNode.DateCard.trigger(roadObj[index].year);
+    MapNode.TitleCard.trigger(roadObj[index].txt);
+    MapNode.TxtCard.trigger({ index: index, data: roadObj[index].desc });
 
-    // console.log("roadObj ! " + roadObj[index].year);
-
-
-    pipeIco[pos].classList.remove('Icolighted');
-    pipeIco[index].classList.add('Icolighted');
-
-    // pipe[0].node.current.classList.add('animation');
-    // pipe[1].node.current.classList.add('animation');
-    // pipe[2].node.current.classList.add('animation');
-
-    pipe[0].seter(roadObj[index].year);
-    pipe[1].seter(roadObj[index].txt);
-    pipe[2].seter({ index: index, data: roadObj[index].desc });
-    // pipe[2].seter({type: "hola"}roadObj[index].desc); 
-
-    // setTimeout(() => {
-    //     pipe[0].node.current.classList.remove('animation');
-    //     pipe[1].node.current.classList.remove('animation');
-    //     pipe[2].node.current.classList.remove('animation');
-    // }, 2000)
+    setTimeout(() => {
+        MapNode.DateCard.node.current.classList.remove('animation');
+        MapNode.TitleCard.node.current.classList.remove('animation');
+        MapNode.TxtCard.node.current.classList.remove('animation');
+    }, 2000)
 }
 
 
 function resetData() {
-    pipe[0].seter("Ruta de aprendizaje");
-    pipe[1].seter("");
-    pipe[2].seter([]);
+    MapNode.DateCard.trigger("Ruta de aprendizaje");
+    MapNode.TitleCard.trigger("");
+    MapNode.TxtCard.trigger([]);
 
 }
 
 function lightedGrab() {
-    BoxData.classList.add('lighted');
-    BoxData.classList.add('grab');
+    Card.classList.add('lighted');
+    Card.classList.add('grab');
 }
 
 function removeGrab() {
-    BoxData.classList.remove('grab');
+    Card.classList.remove('grab');
 }
 
 function cursorGrabbing() {
-    BoxData.classList.add('grabbing');
+    Card.classList.add('grabbing');
 }
 
 function removeGrabing() {
-    BoxData.classList.remove('grabbing');
+    Card.classList.remove('grabbing');
 }

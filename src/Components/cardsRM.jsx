@@ -1,10 +1,10 @@
 
 import React, { useRef, useState, useCallback, useReducer, useEffect } from 'react';
 
-import { PipeSeters, PipeIco, PipeData, PipeRoadMap, PipeTree } from '../Functions/roadmap';
+import {   PipeIco,    PipeRM } from '../Functions/roadmap';
 
 import { initRoadmap } from '../Functions/roadmap.js';
-// import { initRoadmap } from '../Functions/roadmap.js'; // provisional
+
 
 let icoSrc = [
     "resources/slots/react.png",
@@ -16,48 +16,16 @@ let icoSrc = [
     "resources/slots/spectrum.png"
 ]
 
-let pipe = false;
-
-
-// let refRM ;
-// let refTree ;
-// let refData ;
-// let refDate ;
-// let refTitle;
-// let refDesc ;
-//provisional
-
-
-
-
-//REFACT 
-// export function resetPipes(){
-//   pipe = false;
-//   console.log("RESET ! ");
-//   PipeRoadMap(refRM); 
-//   console.log("refRM ! " + refRM);
-//   PipeTree(refTree);
-//   PipeTree(refData);
-//   PipeTree(refDate);
-//   PipeTree(refTitle);
-//   PipeTree(refDesc); 
-//   initRoadmap();
-// }
-
 
 export function RoadMapObj() {
 
     let refRM = useRef();
 
     useEffect(() => {
-        PipeRoadMap(refRM);
+        // PipeRoadMap(refRM);
+        PipeRM("RoadMap", refRM, null);
         initRoadmap();
     }, [refRM]);
-
-    // console.log("RMP");
-    // initRoadmap();
-
-
 
 
     return (
@@ -67,7 +35,6 @@ export function RoadMapObj() {
             <div className="fontHead">RoadMap</div>
 
             <RoadMapTree
-
             />
 
         </div>
@@ -78,11 +45,11 @@ export function RoadMapObj() {
 export function RoadMapTree() {
 
     let refTree = useRef();
-
-    PipeTree(refTree);
+ 
 
     useEffect(() => {
-        PipeTree(refTree);
+        PipeRM("Tree", refTree, null);
+        // PipeTree(refTree);
     }, [refTree]);
 
 
@@ -112,7 +79,8 @@ export function CardData() {
 
 
     useEffect(() => {
-        PipeData(refData);
+        // PipeData(refData);
+        PipeRM("Card", refData, null);
     }, [refData]);
 
     return (
@@ -145,12 +113,10 @@ function DateBox() {
     let refDate = useRef();
 
     useEffect(() => {
-        PipeSeters(setYear, refDate, 0);
+        PipeRM("DateCard", refDate, setYear);
+        // PipeSeters(setYear, refDate, 0);
     }, [setYear, refDate]);
-    /* 
-        if (!pipe) {
-            PipeSeters(setYear, refDate);
-        } */
+
     return (
         <div ref={refDate} className="boxDate">
             {year}
@@ -167,12 +133,9 @@ function TitleBox() {
     let refTitle = useRef();
 
     useEffect(() => {
-        PipeSeters(setTitle, refTitle, 1);
+        // PipeSeters(setTitle, refTitle, 1);
+        PipeRM("TitleCard", refTitle, setTitle);
     }, [setTitle, refTitle]);
-
-    // if (!pipe) {
-    //     PipeSeters(setTitle, refTitle);
-    // }
 
     return (
         <div ref={refTitle} className="boxTitle">
@@ -228,14 +191,10 @@ function DescriptionBox() {
     let refDesc = useRef();
 
     useEffect(() => {
-        PipeSeters(launcher, refDesc, 2);
+        // PipeSeters(launcher, refDesc, 2);
+        PipeRM("TxtCard", refDesc, launcher);
     }, [launcher, refDesc]);
-    /* 
-        if (!pipe) {
-            PipeSeters(launcher, refDesc);
-            pipe = true;
-        }
-     */
+
     return (
         <div ref={refDesc} className="boxDescription">
             <ul>
@@ -254,12 +213,12 @@ export function Icons(p) {
         contIcosSet = 0;
     }
 
-    console.log("entry " + contIcosSet);
+    // console.log("entry " + contIcosSet);
     const refIco = useCallback(node => {
         if (node !== null) {
 
             PipeIco(node, contIcosSet);
-            console.log("contIcosSet" + contIcosSet);
+            // console.log("contIcosSet" + contIcosSet);
             contIcosSet++;
         }
     }, []);

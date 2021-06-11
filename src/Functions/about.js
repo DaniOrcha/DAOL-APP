@@ -2,25 +2,25 @@
 
 import { ShowAnimationLine, HideAnimationLine } from '../Functions/main.js';
 
-let AboutContainer;
-let AboutId; 
+let About;
+let Card; 
 
-export function initAbout() { 
-    AboutContainer = document.getElementById("AboutContainer");
-    AboutId = document.getElementById("AboutId");  
-    AboutId.addEventListener("mouseenter", () => { ShowFrames(); });
-    AboutId.addEventListener("mouseleave", () => { HideFrames(); }); 
+export function initAbout(about, card) {  
+    About = about;
+    Card = card; 
+    About.current.addEventListener("mouseenter", () => { ShowFrames(); });
+    About.current.addEventListener("mouseleave", () => { HideFrames(); }); 
 } 
 
 function ShowFrames() {
-    AboutContainer.classList.remove("hide");
-    AboutId.classList.remove("animations");
+    Card.current.classList.remove("hide");
+    About.current.classList.remove("animations");
     HideAnimationLine();
 }
 
 function HideFrames() {
-    AboutContainer.classList.add("hide");
-    AboutId.classList.add("animations");
+    Card.current.classList.add("hide");
+    About.current.classList.add("animations");
     ShowAnimationLine();
 }
 

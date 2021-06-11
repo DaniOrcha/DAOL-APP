@@ -1,7 +1,7 @@
  
-import { initRoadmap } from './roadmap.js'; 
-import { initPortfolio } from './portfolio.js';
-import { initAbout } from './about.js';
+// import { initRoadmap } from './roadmap.js'; 
+// import { initPortfolio } from './portfolio.js';
+// import { initAbout } from './about.js';
 // import { resetPipes } from '../Components/cardsRM';
  
 var AnimationLineRm;
@@ -20,13 +20,7 @@ window.onload = function() {
   };
  
 export function OnMountInit() { 
-
-    // console.log("INIT !! ");
-    // resetPipes();
-    // console.log("init 1 ");
-    // initRoadmap();
-    // initPortfolio();
-    // initAbout();
+ 
 
     AnimationLineRm = document.getElementById("lineAnimRM");
     AnimationLinePF = document.getElementById("lineAnimPF");
@@ -34,20 +28,14 @@ export function OnMountInit() {
 }             
 
 export function ShowAnimationLine() {
-    AnimationLineRm.classList.remove("pause");
-    AnimationLineRm.style.visibility = "visible";
-    AnimationLinePF.classList.remove("pause");
-    AnimationLinePF.style.visibility = "visible";
-    AnimationLineAb.classList.remove("pause");
-    AnimationLineAb.style.visibility = "visible";
+    AnimationLineRm.classList.remove("hide"); 
+    AnimationLinePF.classList.remove("hide"); 
+    AnimationLineAb.classList.remove("hide"); 
 }
 export function HideAnimationLine() {
-    AnimationLineRm.classList.add("pause");
-    AnimationLineRm.style.visibility = "hidden";
-    AnimationLinePF.classList.add("pause");
-    AnimationLinePF.style.visibility = "hidden";
-    AnimationLineAb.classList.add("pause");
-    AnimationLineAb.style.visibility = "hidden";
+    AnimationLineRm.classList.add("hide"); 
+    AnimationLinePF.classList.add("hide"); 
+    AnimationLineAb.classList.add("hide"); 
 }
 
  

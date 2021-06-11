@@ -1,46 +1,40 @@
 
 import { Card } from '../Components/cards';
-import PortofioData from '../storage/portfolio.json';
+import cardsJson from '../storage/portfolio.json';
+
+import React, {  useEffect , useRef } from 'react';
+import { initPortfolio } from '../Functions/portfolio';
 
 function Portfolio() {
+
+    let refPortfolio = useRef();
+    let refCards = useRef();
+
+    useEffect(() => { 
+        initPortfolio(refPortfolio, refCards);
+    }, []);
+
+
+
     return (
-        <div id="portfolioId" className="container animations">
+        <div ref={refPortfolio} className="container animations">
             <div id="lineAnimPF" className="lineAnim"></div>
             <div className="fontHead">
                 Portfolio
                 </div>
-            <div id="framesContainer" className="flex center hide">
+            <div ref={refCards} className="flex center hide">
+ 
 
-                <Card
-                    link={PortofioData.Unity.link}
-                    src={PortofioData.Unity.src}
-                    tittle={PortofioData.Unity.tittle}
-                    description={PortofioData.Unity.description}
-                />
-                <Card
-                    link={PortofioData.Eth.link}
-                    src={PortofioData.Eth.src}
-                    tittle={PortofioData.Eth.tittle}
-                    description={PortofioData.Eth.description}
-                />
-                <Card
-                    link={PortofioData.IoT.link}
-                    src={PortofioData.IoT.src}
-                    tittle={PortofioData.IoT.tittle}
-                    description={PortofioData.IoT.description}
-                />
-                <Card
-                    link={PortofioData.Autom.link}
-                    src={PortofioData.Autom.src}
-                    tittle={PortofioData.Autom.tittle}
-                    description={PortofioData.Autom.description}
-                />
-                <Card
-                    link={PortofioData.Elec.link}
-                    src={PortofioData.Elec.src}
-                    tittle={PortofioData.Elec.tittle}
-                    description={PortofioData.Elec.description}
-                />
+            {cardsJson.map((card, index) =>
+                <div key={index + "c"}>
+                    <Card
+                      link={card.link}
+                      src={card.src}
+                      tittle={card.tittle}
+                      description={card.description}
+                    />
+                </div>
+            )} 
 
             </div>
         </div>

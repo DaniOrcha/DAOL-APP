@@ -1,10 +1,26 @@
  
+
+import React, {  useEffect , useRef } from 'react';
+import { initAbout } from '../Functions/about';
+
+
 function About() {
+
+    let refAbout = useRef();
+    let refCard = useRef();
+
+    useEffect(() => { 
+        initAbout(refAbout, refCard);
+    }, []);
+
+
+
+
     return (
-        <div id="AboutId" className="container animations ">
+        <div ref={refAbout} className="container animations ">
             <div id="lineAnimAB" className="lineAnim"></div>
             <div className="fontHead">Sobre mi</div>
-            <div id="AboutContainer" className="flex hide About">
+            <div ref={refCard}  className="flex hide About">
                 <img src="../resources/portfolio/meb.jpg" className="ImageAbout" alt="err" />
                 <div className="BrownBox AboutResize">
                     <h3>Hola, mi nombre es Daniel. Me apasiona la ciencia y la tecnología desde pequeño.

@@ -1,33 +1,32 @@
-{
-    "Unity": {
+[
+    {
         "link": "/Unity",
         "src": "/resources/portfolio/Ico.png",
         "tittle": "Unity",
         "description": "Juegos 2D y 3D"
     },
-    "Eth": {
+    {
         "link": "/Ethereum",
         "src": "/resources/portfolio/scc1.png",
         "tittle": "Ethereum",
         "description": "SmartContrat + Web App"
     },
-    "IoT": {
+    {
         "link": "/IoT",
         "src": "/resources/iot/iotpanel.png",
         "tittle": "IoT",
         "description": "Servidor | Cliente IoT + Web interface"
     },
-    "Autom": {
+    {
         "link": "/Automation",
         "src": "/resources/automation/grafo.png",
         "tittle": "Automatización",
         "description": "Diseño de instalaciones automatizadas"
     },
-    "Elec": {
+    {
         "link": "/Electronic",
         "src": "/resources/portfolio/iotimg.jpg",
         "tittle": "Electrónica",
         "description": "Soluciones para dispositivos dedicados"
     }
-}
-     
+]
