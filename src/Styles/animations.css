@@ -8,8 +8,6 @@
     animation: lineAnimation 12s linear infinite;
 }
     .lineAnim.hide {
-        /* animation-play-state: paused;
-        background: rgb(255, 255, 255, 0); */
         display: none;
     }
 

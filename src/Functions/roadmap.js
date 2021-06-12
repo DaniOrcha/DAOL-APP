@@ -11,6 +11,7 @@ let Tree;
 let RoadMap;
 let Card;
 let IcoId = 0;
+let pos = 0;
 
 
 
@@ -37,7 +38,7 @@ let MapNode = {
         trigger: null
     },
     TxtCard: {
-        node: 4,
+        node: null,
         trigger: null
     },
 
@@ -180,7 +181,7 @@ function TextIndex() {
 
         if (i === icoPos.length - 1) {
             if (IcoId !== i) {
-                let pos = IcoId;
+                pos = IcoId;
                 IcoId = i;
                 setData(IcoId, pos);
                 return;
@@ -226,7 +227,7 @@ function SlotsShow() {
 
     MapNode.DateCard.node.current.classList.add('color');
     setIcoPos();
-    setData(0, 0);
+    setData(IcoId, pos);
 }
 
 
@@ -240,6 +241,8 @@ function SlotsHide() {
     Card.style.top = icoPos[0] + "px";
     Card.classList.remove('lighted');
     MapNode.DateCard.node.current.classList.remove('color');
+    IcoId = 0;
+    pos = 0;
     resetData();
 
 }
@@ -256,7 +259,7 @@ function setData(index, pos) {
 
     MapNode.DateCard.trigger(roadObj[index].year);
     MapNode.TitleCard.trigger(roadObj[index].txt);
-    MapNode.TxtCard.trigger({ index: index, data: roadObj[index].desc });
+    MapNode.TxtCard.trigger({ desc: roadObj[index].desc , degree: roadObj[index].degree});
 
     setTimeout(() => {
         MapNode.DateCard.node.current.classList.remove('animation');

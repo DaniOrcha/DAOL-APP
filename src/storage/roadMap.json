@@ -37,18 +37,18 @@
     {
         "year": "2011",
         "txt": "Automatización",  
-        "desc": [
-            "  Título de Postgrado en Atomatización Industrial. Robótica & C++" 
-         ]
+        "desc": [  "Robótica & C++"
+         ],
+         "degree" : "  Título de Postgrado en Atomatización Industrial. "
     },
     {
         "year": "2002",
         "txt": "Diseño Web & Vb",  
         "desc": [
             "Diseño Web con HTML, CSS, JS y PhP.",
-            "Aplicaciones escritorio Vb, técnicas de hacking, mod crypters.",
-            "  Título de Técnico Especialista Electricidad y Electrónica." 
-         ]
+            "Aplicaciones escritorio Vb, técnicas de hacking, mod crypters."
+         ],
+         "degree" : "  Título de Técnico Especialista Electricidad y Electrónica." 
     },
     {
         "year": "1990",

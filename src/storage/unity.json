@@ -1,26 +1,26 @@
-{
-    "Robbots": {
+[
+    {
+        "tittle": "Robots Battles",
         "link": "https://play.google.com/store/apps/details?id=com.DAOL.RobotsBattles",
         "src": "../resources/portfolio/Ico.png",
-        "tittle": "Robots Battles",
         "description": "3D"
     },
-    "Core": {
+    {
+        "tittle": "The Core",
         "link": "https://play.google.com/store/apps/details?id=com.DAOL.TheCore",
         "src": "../resources/games/theCore.webp",
-        "tittle": "The Core",
         "description": "3D"
     },
-    "Bird": {
+    {
+        "tittle": "Bird Way",
         "link": "https://play.google.com/store/apps/details?id=com.DAOL.BirdWay",
         "src": "../resources/games/birdWay.webp",
-        "tittle": "Bird Way",
         "description": "3D"
     },
-    "BioWars": {
+    {
+        "tittle": "Bio Wars",
         "link": "https://play.google.com/store/apps/details?id=com.DAOL.BioWars",
         "src": "../resources/games/bioWars.webp",
-        "tittle": "Bio Wars",
         "description": "2D"
     }
-}
+]

@@ -1,25 +1,26 @@
- 
+
 import { Link } from "react-router-dom";
 import { imageZoom } from '../Functions/lens.js';
 
 
-export function Card(props) {
+export function Card(obj) {
     return (
-        <Link to={props.link} className="frames">
-            <img src={props.src} alt="err" className="image card" />
-            <h2>{props.tittle}</h2>
-            <h4>{props.description}</h4>
+        <Link to={obj.link} className="frames">
+            <img src={obj.src} alt="err" className="image card" />
+            <h2>{obj.tittle}</h2>
+            <h4>{obj.description}</h4>
         </Link>
     );
 }
 
 
-export function CardRef(props) {
+export function CardRef(obj) {
+    console.log("unity: " + obj);
     return (
-        <a href={props.link} className="frames" rel="noreferrer noopener" target="_blank">
-            <img src={props.src} alt="err" className="image card" />
-            <h2>{props.tittle}</h2>
-            <h4>{props.description}</h4>
+        <a href={obj.link} className="frames" rel="noreferrer noopener" target="_blank">
+            <img src={obj.src} alt="err" className="image card" />
+            <h2>{obj.tittle}</h2>
+            <h4>{obj.description}</h4>
         </a>
     );
 }
@@ -35,35 +36,48 @@ export function ImgWithDescription(props) {
 }
 
 
-export function BlockProyect(dJson) {
+export function BlockProyect(obj) {
+
+    let aLink;
+
+
+    if (typeof obj.alink !== 'undefined') {
+
+        aLink = (
+            <Link to={obj.alink.path}  >
+                <h4>{obj.alink.txt} </h4>
+            </Link>
+        );  
+    }
+
     return (
 
-        <div className="flex center">
-
-            <div className="boxHorizontal">
-
-                <div className="TxtColor">
-                    <h3>{dJson.title}</h3>
-                </div>
-
-                <ImgWithDescription
-                    src={dJson.img.src}
-                    description={dJson.img.description}
-                />
-
-                <h4>
-                    <ul>
-                        {dJson.desc.map((txt, index) => //index key only for fixed lengh data!
-                            <li key={index + "bp"}>
-                                {txt}
-                            </li>
-                        )}
-                    </ul>
-                </h4> 
-
+        <div className="boxHorizontal">
+            <hr />
+            <div className="TxtColor">
+                <h3>{obj.title}</h3>
             </div>
 
+            <ImgWithDescription
+                src={obj.img.src}
+                description={obj.img.description}
+            />
+            <br />
+            <h4>
+                <ul>
+                    {obj.desc.map((txt, index) =>
+                        <li key={index + "bp"}>
+                            {txt}
+                        </li>
+                    )}
+                </ul>
+
+                {aLink}
+
+            </h4>
+
         </div>
+
     );
 }
 
@@ -81,17 +95,19 @@ export function ImgWithZoom(props) {
 }
 
 
-export function BlockProyect2sideAndLens(dJson) {
+
+export function BlockProyect2sideAndLens(obj) {
 
     return (
         <>
+            <hr />
             <div className="TxtColor">
-                <h3>{dJson.title}</h3>
+                <h3>{obj.title}</h3>
             </div>
 
             <div className="flex">
 
-                {dJson.imgLef.map(imgl =>
+                {obj.imgLef.map(imgl =>
                     <div key={imgl.id + "l"}>
                         <ImgWithZoom
                             srcImg={imgl.src}
@@ -104,7 +120,7 @@ export function BlockProyect2sideAndLens(dJson) {
                 <div className="ListTxtBlock">
                     <h4>
                         <ul>
-                            {dJson.desc.map((txt, index) => //index key only for fixed lengh data!
+                            {obj.desc.map((txt, index) =>
                                 <li key={index + "bp2"}>
                                     {txt}
                                 </li>
@@ -115,7 +131,7 @@ export function BlockProyect2sideAndLens(dJson) {
 
                 <div >
 
-                    {dJson.imgRight.map(imgr =>
+                    {obj.imgRight.map(imgr =>
                         <div key={imgr.id + "r"}>
                             <ImgWithZoom
                                 srcImg={imgr.src}

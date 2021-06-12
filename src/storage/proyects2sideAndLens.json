@@ -1,55 +1,52 @@
 {
-    "icoLens": "../resources/lensico.png",
-    "IoT": {
-        "Server": {
-            "title": "Servidor Web de Temperatura y Humedad:",
-            "desc": [
-                "Dispositivo IoT servidor web.",
-                "Conectado a internet mediante wifi.",
-                "Cuando un cliente Web accede a la IP del dispositivo, éste envía como respuesta un documento HTML incluyendo los datos de temperatura y Humedad obtenidos mediante sensores.",
-                "Diseño íntegro. PCB, soldaduras, programación y carcasa en impresión 3D."
-            ],
-            "imgLef": [
-                {
-                    "src": "../resources/iot/iotWeb.png",
-                    "id": "iotWeb",
-                    "class": "image rectangle-vertical"
-                } 
-            ],
-            "imgRight": [ 
-                {
-                    "src": "../resources/iot/iot1.jpg",
-                    "id": "iot1",
-                    "class": "image square"
-                },
-                {
-                    "src": "../resources/iot/iot2.jpg",
-                    "id": "iot2",
-                    "class": "image square"
-                }
-            ]
-        },
-        "Client": {
-            "title": "IoT Ciente Web de temperatura, humedad y calidad del aire:",
-            "desc": [
-                "Dispositivo con función de cliente.",
-                "Envía a un servidor los datos de temperatura, Humedad y Calidad del aire obtenidos mediante sensores.",
-                "Los datos se almacenan en una BBDD y se visualizan mediante un navegador Web accediendo a la URL de la aplicación."
-            ],
-            "imgLef": [
-                {
-                    "src": "../resources/iot/iotpanel.png",
-                    "id": "iotpanel",
-                    "class": "image screen"
-                } 
-            ],
-            "imgRight": [ 
-                {
-                    "src": "../resources/iot/clkb2.png",
-                    "id": "clkb2",
-                    "class": "image square"
-                } 
-            ]
-        }
+    "Server": {
+        "title": "Servidor Web de Temperatura y Humedad:",
+        "desc": [
+            "Dispositivo IoT servidor web.",
+            "Conectado a internet mediante wifi.",
+            "Cuando un cliente Web accede a la IP del dispositivo, éste envía como respuesta un documento HTML incluyendo los datos de temperatura y Humedad obtenidos mediante sensores.",
+            "Diseño íntegro. PCB, soldaduras, programación y carcasa en impresión 3D."
+        ],
+        "imgLef": [
+            {
+                "src": "../resources/iot/iotWeb.png",
+                "id": "iotWeb",
+                "class": "image rectangle-vertical"
+            }
+        ],
+        "imgRight": [
+            {
+                "src": "../resources/iot/iot1.jpg",
+                "id": "iot1",
+                "class": "image square"
+            },
+            {
+                "src": "../resources/iot/iot2.jpg",
+                "id": "iot2",
+                "class": "image square"
+            }
+        ]
+    },
+    "Client": {
+        "title": "IoT Ciente Web de temperatura, humedad y calidad del aire:",
+        "desc": [
+            "Dispositivo con función de cliente.",
+            "Envía a un servidor los datos de temperatura, Humedad y Calidad del aire obtenidos mediante sensores.",
+            "Los datos se almacenan en una BBDD y se visualizan mediante un navegador Web accediendo a la URL de la aplicación."
+        ],
+        "imgLef": [
+            {
+                "src": "../resources/iot/iotpanel.png",
+                "id": "iotpanel",
+                "class": "image screen"
+            }
+        ],
+        "imgRight": [
+            {
+                "src": "../resources/iot/clkb2.png",
+                "id": "clkb2",
+                "class": "image square"
+            }
+        ]
     }
 }

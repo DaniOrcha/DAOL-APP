@@ -38,9 +38,10 @@
                 "Software utilizado:",
                 "Diseño PCB: Eagle",
                 "Código: Pic C Compiler CCS",
-                "<Diseño 3D: SketchUp",
-                "<a href='/Imagegallery'>Galería de imágenes</a>"
+                "Diseño 3D: SketchUp"
             ],
+            "alink": {"path" : "/Imagegallery",
+            "txt": "Galería de imágenes"},
             "img": {
                 "src": "../resources/electronic/clks1.jpg",
                 "description": "Dispositivo en impresión 3D"
