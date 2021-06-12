@@ -14,77 +14,22 @@ let IcoId = 0;
 let pos = 0;
 
 
-
-let MapNode = {
-
-    RoadMap: {
-        node: null,
-        trigger: null
-    },
-    Tree: {
-        node: null,
-        trigger: null
-    },
-    Card: {
-        node: null,
-        trigger: null
-    },
-    DateCard: {
-        node: null,
-        trigger: null
-    },
-    TitleCard: {
-        node: null,
-        trigger: null
-    },
-    TxtCard: {
-        node: null,
-        trigger: null
-    },
-
-    Icons: []
-}
-
-
-
-export function PipeRM(name, refNode, trigger) {
-
-    Object.entries(MapNode).forEach(([key]) => {
-        if (key === name) {
-            MapNode[key].node = refNode;
-            MapNode[key].trigger = trigger;
-        }
-    });
-}
-
-
-export function PipeIco(Node, index) {
-    MapNode.Icons[index] = Node;
-}
-
-
+let nodeRM;
 let icoPos = [];
 
 
-function setIcoPos() {
+export function initRoadmap(nodeData) {
 
-    icoPos = MapNode.Icons.map((x) => {
-        return x.offsetTop;
-    })
-}
+    nodeRM = nodeData;
 
-
-
-export function initRoadmap() {
-
-    RoadMap = MapNode.RoadMap.node.current;
+    RoadMap = nodeData.RoadMap.node.current;
 
     RoadMap.addEventListener("mouseenter", () => { ShowTree(); });
     RoadMap.addEventListener("mouseleave", () => { HideTree(); });
 
-    Tree = MapNode.Tree.node.current;
+    Tree = nodeData.Tree.node.current;
 
-    Card = MapNode.Card.node.current;
+    Card = nodeData.Card.node.current;
     Card.addEventListener("mouseenter", () => { SlotsShow(); lightedGrab(); });
     Card.addEventListener("mouseleave", () => { removeGrab(); });
     Card.addEventListener("mousedown", () => { cursorGrabbing(); });
@@ -209,6 +154,7 @@ function ShowTree() {
     RoadMap.classList.add("expand");
     RoadMap.classList.remove("animations");
     HideAnimationLine();
+    resetData();
 }
 
 function HideTree() {
@@ -221,58 +167,61 @@ function HideTree() {
 
 function SlotsShow() {
 
-    MapNode.Icons.forEach(element => {
+    nodeRM.Icons.forEach(element => {
         element.classList.add('Show');
     });
 
-    MapNode.DateCard.node.current.classList.add('color');
-    setIcoPos();
+    icoPos = nodeRM.Icons.map((x) => {
+        return x.offsetTop;
+    })
+
+
     setData(IcoId, pos);
 }
 
 
 function SlotsHide() {
 
-    MapNode.Icons.forEach(element => {
+    nodeRM.Icons.forEach(element => {
         element.classList.remove('Icolighted');
         element.classList.remove('Show');
     });
 
     Card.style.top = icoPos[0] + "px";
-    Card.classList.remove('lighted');
-    MapNode.DateCard.node.current.classList.remove('color');
+    Card.classList.remove('lighted'); 
     IcoId = 0;
     pos = 0;
-    resetData();
 
 }
 
 
 function setData(index, pos) {
 
-    MapNode.Icons[pos].classList.remove('Icolighted');
-    MapNode.Icons[index].classList.add('Icolighted');
+    nodeRM.Icons[pos].classList.remove('Icolighted');
+    nodeRM.Icons[index].classList.add('Icolighted');
 
-    MapNode.DateCard.node.current.classList.add('animation');
-    MapNode.TitleCard.node.current.classList.add('animation');
-    MapNode.TxtCard.node.current.classList.add('animation');
+    /*  
 
-    MapNode.DateCard.trigger(roadObj[index].year);
-    MapNode.TitleCard.trigger(roadObj[index].txt);
-    MapNode.TxtCard.trigger({ desc: roadObj[index].desc , degree: roadObj[index].degree});
+    MapNode.Card.node.current.classList.add('animation');*/
 
-    setTimeout(() => {
-        MapNode.DateCard.node.current.classList.remove('animation');
-        MapNode.TitleCard.node.current.classList.remove('animation');
-        MapNode.TxtCard.node.current.classList.remove('animation');
-    }, 2000)
+    nodeRM.Card.trigger(roadObj[index]);
+
+
+    /*setTimeout(() => {
+    MapNode.Card.node.current.classList.remove('animation'); 
+    }, 2000)*/
 }
 
 
 function resetData() {
-    MapNode.DateCard.trigger("Ruta de aprendizaje");
-    MapNode.TitleCard.trigger("");
-    MapNode.TxtCard.trigger([]);
+
+    nodeRM.Card.trigger(
+        {
+            year: "Ruta de aprendizaje",
+            txt: "",
+            desc: []
+        }
+    );
 
 }
 

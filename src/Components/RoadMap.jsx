@@ -1,6 +1,5 @@
 
-import React, { useRef, useState, useCallback, useReducer, useEffect } from 'react';
-import { PipeIco, PipeRM } from '../Functions/roadmap';
+import React, { useRef, useCallback, useReducer, useEffect } from 'react';
 import { initRoadmap } from '../Functions/roadmap.js';
 
 
@@ -15,13 +14,34 @@ let icoSrc = [
 ]
 
 
+let nodes = {
+
+    RoadMap: {
+        node: null,
+        trigger: null
+    },
+    Tree: {
+        node: null,
+        trigger: null
+    },
+    Card: {
+        node: null,
+        trigger: null
+    },
+
+    Icons: []
+}
+
+
+
 export function RoadMap() {
 
     let refRM = useRef();
+ 
 
     useEffect(() => {
-        PipeRM("RoadMap", refRM, null);
-        initRoadmap();
+        nodes.RoadMap.node = refRM;
+        initRoadmap(nodes);
     }, [refRM]);
 
     return (
@@ -44,15 +64,16 @@ export function RoadMapTree() {
     let refTree = useRef();
 
     useEffect(() => {
-        PipeRM("Tree", refTree, null);
+        nodes.Tree.node = refTree;
     }, [refTree]);
 
     return (
+
         <div ref={refTree} className="RoadMapTree" style={{ visibility: "hidden" }}>
 
             <CardData
-
             />
+
             {icoSrc.map((ico, index) =>
                 <div key={index + "i"}>
                     <Icons
@@ -66,13 +87,18 @@ export function RoadMapTree() {
 }
 
 
-
 export function CardData() {
 
     let refData = useRef();
 
+    const [data, trigger] = useReducer(
+        getData
+    );
+
+
     useEffect(() => {
-        PipeRM("Card", refData, null);
+        nodes.Card.node = refData;
+        nodes.Card.trigger = trigger;
     }, [refData]);
 
     return (
@@ -83,14 +109,7 @@ export function CardData() {
                 <img src="resources/slots/drag_ico.png" alt="err" />
             </div>
 
-            <DateBox
-            />
-
-            <TitleBox
-            />
-
-            <DescriptionBox
-            />
+            {data}
 
         </div>
     );
@@ -98,111 +117,19 @@ export function CardData() {
 
 
 
-function DateBox() {
 
-    const [year, setYear] = useState("Ruta de aprendizaje");
+let id = 0;
 
-    let refDate = useRef();
-
-    useEffect(() => {
-        PipeRM("DateCard", refDate, setYear);
-    }, [setYear, refDate]);
-
-    return (
-        <div ref={refDate} className="boxDate">
-            {year}
-        </div>
-
-    );
-}
-
-
-function TitleBox() {
-
-    const [titleTxt, setTitle] = useState("");
-
-    let refTitle = useRef();
-
-    useEffect(() => {
-        PipeRM("TitleCard", refTitle, setTitle);
-    }, [setTitle, refTitle]);
-
-    return (
-        <div ref={refTitle} className="boxTitle">
-            {titleTxt}
-        </div>
-    );
-}
-
-
-    let degrees;
-
-function selector(state, newstate) {
-
-    if (typeof newstate.desc === 'undefined') {
-        return;
-    }
-
-
-    console.log("degrees " + newstate.degree);
-
-    if (typeof newstate.degree !== 'undefined') {
-
-        degrees =
-            <>
-               
-                <li> <i className='fa fa-graduation-cap' aria-hidden='true'></i> {newstate.degree}</li>
-            </>
-
-    }
-
-    return (
-        newstate.desc.map((txt, index) =>
-            <>
-                <li key={index + "rm"}>
-                    {txt}
-                </li>
-            </>
-        )
-    )
-
-}
-
-
-function DescriptionBox() {
-
-    const [state, launcher] = useReducer(selector);
-
-    let refDesc = useRef();
-
-    useEffect(() => {
-        PipeRM("TxtCard", refDesc, launcher);
-    }, [launcher, refDesc]);
-
-    return (
-        <div ref={refDesc} className="boxDescription">
-            <ul>
-                {state}
-                {degrees}
-            </ul>
-        </div>
-    );
-}
-
-
-let contIcosSet = 0;
 export function Icons(p) {
 
-
-    if (contIcosSet !== 0) {
-        contIcosSet = 0;
+    if (id !== 0) {
+        id = 0;
     }
 
     const refIco = useCallback(node => {
         if (node !== null) {
-
-            PipeIco(node, contIcosSet);
-            contIcosSet++;
+            nodes.Icons[id] = node
+            id++;
         }
     }, []);
 
@@ -212,3 +139,51 @@ export function Icons(p) {
         </div>
     );
 }
+
+
+
+
+function getData(state, newstate) {
+
+    if (typeof newstate.desc === 'undefined') {
+        return;
+    }
+
+    let gradIco;
+
+    if (typeof newstate.degree !== 'undefined') {
+
+        gradIco =
+            <li>
+                <i className='fa fa-graduation-cap' aria-hidden='true'> </i>
+                {newstate.degree}
+            </li>
+
+    }
+
+    let desc = (
+        newstate.desc.map((txt, index) =>
+            <li key={index + "desc"}>
+                {txt}
+            </li>
+        )
+    );
+
+    return (
+        <>
+            <div className="boxDate">
+                {newstate.year}
+            </div>
+
+            <div className="boxTitle">
+                {newstate.txt}
+            </div>
+
+            <div className="boxDescription">
+                {desc}
+                {gradIco}
+            </div>
+        </>
+    );
+}
+

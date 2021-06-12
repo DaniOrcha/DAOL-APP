@@ -74,6 +74,11 @@
         border-right: 3vmin solid #00FFFF;
         border-bottom: 2vmin solid transparent;
     }
+    
+/*     .boxData.animation {
+        animation: Opacity 1s;
+    } */
+
 
 .boxDate {
     border-radius: 10px;
@@ -99,9 +104,9 @@
     padding-left: 10px;
 }
 
-    .boxTitle.animation {
+/*     .boxTitle.animation {
         animation: Opacity 1s;
-    }
+    } */
 
 
 .boxDescription {
@@ -115,12 +120,12 @@
     .boxDescription li {
         margin: 5px;
     }
-
+/* 
     .boxDescription.animation {
         animation: Opacity 1s;
-    }
+    } */
 
-
+/* 
 @keyframes Opacity {
     0% {
         opacity: 0;
@@ -148,7 +153,7 @@
         left: 11px;
     }
 }
-
+ */
 
 .imgIco {
     display: block;
