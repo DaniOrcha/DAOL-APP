@@ -3,6 +3,14 @@
     let hasTouchscreen = 'ontouchstart' in window;
     let imgID, img, lens, lensIco, removeIco = false;
 
+    
+
+
+    export function init() {  //provisional !!!
+        eControl = [];
+        removeIco = false;
+    }
+
 export function imageZoom(_imgID) {
 
     if (typeof _imgID === 'object') {
@@ -12,11 +20,11 @@ export function imageZoom(_imgID) {
 
         imgID = _imgID;
     }
-
+ 
     img = document.getElementById(imgID);
 
     if (!isExist()) {
-        setLens();
+        createLens();
     }
 
     function isExist() {
@@ -30,7 +38,7 @@ export function imageZoom(_imgID) {
     }
 
 
-    function setLens() {
+    function createLens() {
         lens = document.createElement("DIV");
         lens.setAttribute("class", "lens");
         img.parentElement.insertBefore(lens, img);
@@ -39,13 +47,13 @@ export function imageZoom(_imgID) {
         lens.style.backgroundSize = (img.width * 4) + "px " + (img.height * 4) + "px";
 
         if (!removeIco) {
-            removeIco = true
+            removeIco = true 
             lensIco = document.querySelectorAll('.lensIco');
-            lensIco.forEach(icoLens => {
-                icoLens.remove();
+            lensIco.forEach(l => {
+                l.remove();
             });
         }
-
+ 
         if (hasTouchscreen) {
             lens.addEventListener("touchstart", start);
             lens.addEventListener("touchmove", moveLens);
@@ -55,6 +63,7 @@ export function imageZoom(_imgID) {
             lens.addEventListener("mousemove", moveLens);
             img.addEventListener("mousemove", moveLens);
         }
+        
         eControl.push(imgID);
     }
 

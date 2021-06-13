@@ -1,14 +1,12 @@
 
 import Head from '../Components/Header';
-import Footer from '../Components/Footer';
 
 import { useEffect } from 'react';
 
 
 import gData from '../storage/imggalery.json';
 import { ImgWithZoom } from '../Components/cards';
-
-
+ 
 function ImageGallery() {
 
     useEffect(() => {
@@ -18,12 +16,12 @@ function ImageGallery() {
 
     return (
         < >
-            <script type="text/javascript" src="../Functions/lens.js"></script>
             <div className="bodyContainer">
+
                 <Head
-                    lines="1"
-                    line1="Galería Electrónica"
+                    txt={["Galería Electrónica"]}
                 />
+
                 <div className="container flex around">
 
                     {gData.gallery.map(imgs =>
@@ -39,8 +37,6 @@ function ImageGallery() {
                 </div>
 
             </div>
-
-            <Footer />
         </ >
     );
 }

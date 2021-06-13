@@ -5,9 +5,9 @@ var AnimationLineRm;
 var AnimationLinePF;
 var AnimationLineAb;
 
-window.onload = () => {
-    set();
-};
+// window.onload = () => {
+//     set();
+// };
  
 function set(){ //provisional while migration
     AnimationLineRm = document.getElementById("lineAnimRM");

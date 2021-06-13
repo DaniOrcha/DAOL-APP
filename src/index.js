@@ -1,10 +1,10 @@
 
 import React from 'react';
-import ReactDOM from 'react-dom';  
+import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
- 
+
 import './Styles/mainstyle.css';
-import './Styles/portfolio.css';   
+import './Styles/portfolio.css';
 
 import MainPage from './Pages/MainPage';
 import Unity from './Pages/Unity';
@@ -14,11 +14,18 @@ import Automation from './Pages/Automation';
 import Electronic from './Pages/Electronic';
 import Contact from './Pages/Contact';
 import Visit from './Pages/Visits';
-import ImageGallery from './Pages/Imagegallery'; 
- 
+import ImageGallery from './Pages/Imagegallery';
+
+
+import Navbar from './Components/navbar';
+import Footer from './Components/Footer';
+
 
 ReactDOM.render(
     <Router>
+
+        < Navbar />
+
         <Switch>
             <Route exact path="/" component={withRouter(MainPage)} />
             <Route path="/Unity" component={withRouter(Unity)} />
@@ -28,9 +35,14 @@ ReactDOM.render(
             <Route path="/Electronic" component={withRouter(Electronic)} />
             <Route path="/Contact" component={withRouter(Contact)} />
             <Route path="/Visits" component={withRouter(Visit)} />
-            <Route path="/Imagegallery" component={withRouter(ImageGallery)} /> 
+            <Route path="/Imagegallery" component={withRouter(ImageGallery)} />
         </Switch>
-    </Router>,
+
+        <Footer />
+
+    </Router>
+
+
+    ,
     document.getElementById('root')
 );
- 

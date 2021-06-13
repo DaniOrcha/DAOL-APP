@@ -2,7 +2,6 @@
 import React, { useRef, useState } from 'react'
 
 import Head from '../Components/Header';
-import Footer from '../Components/Footer';
 
 import { WriteComent, read } from '../Functions/visits';
 import { messengerClass } from '../Functions/messenger';
@@ -35,10 +34,12 @@ function Visit() {
     return (
         <>
             <div className="bodyContainer">
+
                 <Head
-                    lines="2"
-                    line1="Visitas"
-                    line2="Deja tu mensaje :)"
+                    txt={[
+                        "Visitas",
+                        "Deja tu mensaje :)"
+                    ]}
                 />
 
                 <div id="boxComents" className="BrownBox Visit Center">
@@ -57,7 +58,6 @@ function Visit() {
                 </div>
 
             </div>
-            <Footer />
         </>
     );
 }

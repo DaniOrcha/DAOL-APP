@@ -1,6 +1,5 @@
 
 import Head from '../Components/Header';
-import Footer from '../Components/Footer';
 
 import { useEffect } from 'react';
 
@@ -13,7 +12,12 @@ function Ethereum() {
     return (
 
         < >
-            <div className="bodyContainer">
+            <div className="bodyContainer"> 
+
+                <Head
+                    txt={["Ethereum"]}
+                />
+
                 <Head
                     lines="1"
                     line1="Ethereum"
@@ -32,18 +36,18 @@ function Ethereum() {
                     <h3>Redes e interfaces:</h3>
                     <ul>
                         <li><span style={{ color: "#bf80ff", fontWeight: "bold" }} >Red Ethereum: </span>La base del token, donde se realizan las operaciones de
-                         compra venta e interactua con otro contrato de  <a href="https://provable.xyz/" rel="noreferrer noopener" target="_blank">Provable</a> que
-                         hace de interface con la red HTTP.
-                    </li>
+                            compra venta e interactua con otro contrato de  <a href="https://provable.xyz/" rel="noreferrer noopener" target="_blank">Provable</a> que
+                            hace de interface con la red HTTP.
+                        </li>
                         <br />
                         <li><span style={{ color: "#66b3ff", fontWeight: "bold" }}>Red HTTP: </span>Necesaria para calcular el valor del token en el momento de la transacción.
-                        Una consulta del token al contrato de Provable recibe como respuestas los
-                        datos en formato JSON alojados en el servidor de la Web del token.
-                    </li>
+                            Una consulta del token al contrato de Provable recibe como respuestas los
+                            datos en formato JSON alojados en el servidor de la Web del token.
+                        </li>
                         <br />
                         <li><span style={{ color: "#b3b3b3", fontWeight: "bold" }}>Red FTP: </span>Usada solo por el dueño del contrato para el control del activo que representa el token. Todos los datos y movimientos son
-                        auditoados externamente con acceso completo a los tenedores de tokens.
-                    </li>
+                            auditoados externamente con acceso completo a los tenedores de tokens.
+                        </li>
                     </ul>
 
 
@@ -76,7 +80,7 @@ function Ethereum() {
                     <h3>Simulador del contrato SCC:</h3>
                     <ul>
                         <li>La tabla de la derecha recibe los inputs del usuario para una operación de compra
-                     venta de tokens para comprobar las ganancias o pérdidas netas después de las comisiones.</li>
+                            venta de tokens para comprobar las ganancias o pérdidas netas después de las comisiones.</li>
                         <br />
                         <li>La tabla de la izquierda muestra los datos de la simulación.</li>
                         <br />
@@ -101,7 +105,6 @@ function Ethereum() {
                 </div>
 
             </div>
-            <Footer />
         </ >
     );
 }

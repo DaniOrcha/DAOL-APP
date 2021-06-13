@@ -1,6 +1,7 @@
 
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { imageZoom } from '../Functions/lens.js';
+import { imageZoom, init } from '../Functions/lens.js';
 
 
 export function Card(obj) {
@@ -86,6 +87,11 @@ export function BlockProyect(obj) {
 export function ImgWithZoom(props) {
     const id = props.id;
     const icoLens = "../resources/lensico.png";
+
+    useEffect(()=>{
+        init();
+    });
+
     return (
         <div className="lensContainer" onMouseEnter={() => { imageZoom({ id }); }}>
             <img id={props.id} src={props.srcImg} className={props.class} alt="err" />

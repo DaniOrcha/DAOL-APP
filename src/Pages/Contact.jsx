@@ -2,7 +2,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 
 import Head from '../Components/Header';
-import Footer from '../Components/Footer';
 
 import { GetMyData, SendMail } from '../Functions/contact';
 import { messengerClass } from '../Functions/messenger';
@@ -41,10 +40,11 @@ function Contact() {
     return (
         <>
             <div className="bodyContainer">
+
                 <Head
-                    lines="1"
-                    line1="Contacto"
+                    txt={["Contacto"]}
                 />
+                
                 <div className="container noPadding">
 
                     <div className="BrownBox Contact">
@@ -67,7 +67,6 @@ function Contact() {
                 </div>
 
             </div>
-            <Footer />
         </>
     );
 }

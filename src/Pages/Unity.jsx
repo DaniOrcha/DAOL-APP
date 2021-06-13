@@ -1,6 +1,5 @@
 
 import Head from '../Components/Header';
-import Footer from '../Components/Footer';
 import { useEffect } from 'react';
 import { CardRef } from '../Components/cards';
 import unityData from '../storage/unity.json';
@@ -16,8 +15,7 @@ function Unity() {
             <div className="bodyContainer">
 
                 <Head
-                    lines="1"
-                    line1="Unity"
+                    txt={["Unity"]}
                 />
 
                 <div className="container">
@@ -39,12 +37,10 @@ function Unity() {
                     <hr />
 
                     <h3><li>Freelance para otros proyectos en la implementación de clases de personajes, creación base de datos de items en JSON, sistema de inventario, encriptado, guardado y carga de datos.</li></h3>
-       
+
                 </div>
-   
+
             </div>
-        
-            <Footer />
         </ >
     );
 }

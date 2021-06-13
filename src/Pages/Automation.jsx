@@ -1,6 +1,5 @@
 
 import Head from '../Components/Header';
-import Footer from '../Components/Footer';
 import { useEffect } from 'react';
 import { BlockProyect } from '../Components/cards';
 import proyectData from '../storage/proyects.json';
@@ -23,8 +22,7 @@ function Automation() {
             <div className="bodyContainer">
 
                 <Head
-                    lines="1"
-                    line1="Automatización"
+                    txt={["Automatización"]}
                 />
 
                 <div className="container">
@@ -39,12 +37,9 @@ function Automation() {
                     )}
 
                 </div>
+
             </div>
-
-            <Footer />
-
         </>
-
     );
 }
 

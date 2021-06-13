@@ -37,7 +37,6 @@ let nodes = {
 export function RoadMap() {
 
     let refRM = useRef();
- 
 
     useEffect(() => {
         nodes.RoadMap.node = refRM;
@@ -45,6 +44,7 @@ export function RoadMap() {
     }, [refRM]);
 
     return (
+
         <div ref={refRM} className="container animations">
 
             <div id="lineAnimRM" className="lineAnim"></div>
@@ -59,7 +59,7 @@ export function RoadMap() {
 }
 
 
-export function RoadMapTree() {
+function RoadMapTree() {
 
     let refTree = useRef();
 
@@ -87,14 +87,14 @@ export function RoadMapTree() {
 }
 
 
-export function CardData() {
+function CardData() {
 
     let refData = useRef();
 
     const [data, trigger] = useReducer(
-        getData
-    );
 
+        getData
+    ); 
 
     useEffect(() => {
         nodes.Card.node = refData;
@@ -120,7 +120,7 @@ export function CardData() {
 
 let id = 0;
 
-export function Icons(p) {
+function Icons(p) {
 
     if (id !== 0) {
         id = 0;
@@ -134,6 +134,7 @@ export function Icons(p) {
     }, []);
 
     return (
+        
         <div ref={refIco} className="boxIcon">
             <img src={p.src} className="imgIco" alt="err" />
         </div>
@@ -151,23 +152,14 @@ function getData(state, newstate) {
 
     let gradIco;
 
-    if (typeof newstate.degree !== 'undefined') {
-
-        gradIco =
+    if (typeof newstate.degree !== 'undefined') { 
+        gradIco = (
             <li>
                 <i className='fa fa-graduation-cap' aria-hidden='true'> </i>
                 {newstate.degree}
             </li>
-
+        ); 
     }
-
-    let desc = (
-        newstate.desc.map((txt, index) =>
-            <li key={index + "desc"}>
-                {txt}
-            </li>
-        )
-    );
 
     return (
         <>
@@ -180,8 +172,15 @@ function getData(state, newstate) {
             </div>
 
             <div className="boxDescription">
-                {desc}
+
+                {newstate.desc.map((txt, index) => 
+                    <li key={index + "desc"}>
+                        {txt}
+                    </li>
+                )}
+
                 {gradIco}
+
             </div>
         </>
     );

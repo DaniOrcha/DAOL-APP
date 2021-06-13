@@ -104,10 +104,10 @@ function dragTouch(event) {
             Card.style.top = (Card.offsetTop - pos1) + "px";
             TextIndex();
         }
-        else if (Card.offsetTop <= icoPos[0]) {
+        else if (Card.offsetTop < icoPos[0]) {
             Card.style.top = icoPos[0] + "px";
         }
-        else if (Card.offsetTop >= icoPos[icoPos.length - 1]) {
+        else if (Card.offsetTop > icoPos[icoPos.length - 1]) {
             Card.style.top = icoPos[icoPos.length - 1] + "px";
         }
     }
