@@ -1,26 +1,18 @@
 
 import Head from '../Components/Header';
 
-import { useEffect } from 'react';
-
 function Ethereum() {
 
-    useEffect(() => {
-        document.title = "Ethereum";
-    });
+    let docTitle = (document.title = "Ethereum");
 
     return (
-
         < >
-            <div className="bodyContainer"> 
+            {docTitle}
+
+            <div className="bodyContainer">
 
                 <Head
                     txt={["Ethereum"]}
-                />
-
-                <Head
-                    lines="1"
-                    line1="Ethereum"
                 />
 
                 <div className="container">

@@ -1,5 +1,6 @@
 .frames {
     width: 215px;  
+    height: 250px;
     padding-bottom: 5px;
     margin: 2vmin;
     display: inline-table;
@@ -130,10 +131,13 @@
     z-index: 1;
 }
 
+/* remove */
 .lens.show {
     opacity: 1;
     cursor: zoom-in;
 }
+
+
 .lens:hover {
     opacity: 1;
     cursor: zoom-in;

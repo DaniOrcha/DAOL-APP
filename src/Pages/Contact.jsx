@@ -1,5 +1,5 @@
 
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import Head from '../Components/Header';
 
@@ -9,7 +9,6 @@ import { messengerClass } from '../Functions/messenger';
 
 function Contact() {
 
-    useEffect(() => { document.title = "Contacto"; });
 
     const Messenger = new messengerClass();
 
@@ -37,14 +36,18 @@ function Contact() {
         }
     }
 
+    let docTitle = (document.title = "Contacto");
+
     return (
         <>
+            {docTitle}
+            
             <div className="bodyContainer">
 
                 <Head
                     txt={["Contacto"]}
                 />
-                
+
                 <div className="container noPadding">
 
                     <div className="BrownBox Contact">

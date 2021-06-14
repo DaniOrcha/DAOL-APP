@@ -69,7 +69,7 @@ function RoadMapTree() {
 
     return (
 
-        <div ref={refTree} className="RoadMapTree" style={{ visibility: "hidden" }}>
+        <div ref={refTree} className="RoadMapTree" >
 
             <CardData
             />

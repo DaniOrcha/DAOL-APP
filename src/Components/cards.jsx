@@ -1,7 +1,7 @@
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { imageZoom, init } from '../Functions/lens.js';
+import { imageLens, initLens } from '../Functions/lens.js';
 
 
 export function Card(obj) {
@@ -16,7 +16,6 @@ export function Card(obj) {
 
 
 export function CardRef(obj) {
-    console.log("unity: " + obj);
     return (
         <a href={obj.link} className="frames" rel="noreferrer noopener" target="_blank">
             <img src={obj.src} alt="err" className="image card" />
@@ -48,7 +47,7 @@ export function BlockProyect(obj) {
             <Link to={obj.alink.path}  >
                 <h4>{obj.alink.txt} </h4>
             </Link>
-        );  
+        );
     }
 
     return (
@@ -84,17 +83,18 @@ export function BlockProyect(obj) {
 
 
 
-export function ImgWithZoom(props) {
-    const id = props.id;
-    const icoLens = "../resources/lensico.png";
+export function ImgWithLens(props) {
 
-    useEffect(()=>{
-        init();
+    const icoLens = "../resources/lensico.png";
+    const imgRef = useRef();
+
+    useEffect(() => {
+        initLens();
     });
 
     return (
-        <div className="lensContainer" onMouseEnter={() => { imageZoom({ id }); }}>
-            <img id={props.id} src={props.srcImg} className={props.class} alt="err" />
+        <div className="lensContainer" onMouseEnter={() => { imageLens(imgRef); }}>
+            <img ref={imgRef} src={props.srcImg} className={props.class} alt="err" />
             <img src={icoLens} className="lensIco" alt="err" />
         </div>
     )
@@ -115,7 +115,7 @@ export function BlockProyect2sideAndLens(obj) {
 
                 {obj.imgLef.map(imgl =>
                     <div key={imgl.id + "l"}>
-                        <ImgWithZoom
+                        <ImgWithLens
                             srcImg={imgl.src}
                             id={imgl.id}
                             class={imgl.class}
@@ -139,7 +139,7 @@ export function BlockProyect2sideAndLens(obj) {
 
                     {obj.imgRight.map(imgr =>
                         <div key={imgr.id + "r"}>
-                            <ImgWithZoom
+                            <ImgWithLens
                                 srcImg={imgr.src}
                                 id={imgr.id}
                                 class={imgr.class}

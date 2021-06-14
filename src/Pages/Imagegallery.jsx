@@ -1,21 +1,18 @@
 
 import Head from '../Components/Header';
 
-import { useEffect } from 'react';
-
-
 import gData from '../storage/imggalery.json';
-import { ImgWithZoom } from '../Components/cards';
- 
+import { ImgWithLens } from '../Components/cards';
+
+
 function ImageGallery() {
 
-    useEffect(() => {
-        document.title = "Galería Electrónica";
-    });
-
+    let docTitle = (document.title = "Galería Electrónica");
 
     return (
         < >
+            {docTitle}
+
             <div className="bodyContainer">
 
                 <Head
@@ -25,13 +22,15 @@ function ImageGallery() {
                 <div className="container flex around">
 
                     {gData.gallery.map(imgs =>
+
                         <div key={imgs.id + "g"}>
-                            <ImgWithZoom
+                            <ImgWithLens
                                 srcImg={imgs.src}
                                 id={imgs.id}
                                 class={gData.meta.class}
                             />
                         </div>
+                        
                     )}
 
                 </div>

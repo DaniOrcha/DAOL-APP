@@ -1,17 +1,13 @@
 
 import Head from '../Components/Header';
-import { useEffect } from 'react';
 import proyectData from '../storage/proyects.json';
 import { BlockProyect } from '../Components/cards';
 
 
 function Electronic() {
 
-    useEffect(() => {
-        document.title = "Electrónica";
-    });
-
     let objs = [];
+    let docTitle = (document.title = "Electrónica");
 
     Object.entries(proyectData.Electronic).forEach(([key]) => {
         objs.push(proyectData.Electronic[key]);
@@ -19,6 +15,8 @@ function Electronic() {
 
     return (
         < >
+            {docTitle}
+
             <div className="bodyContainer">
 
                 <Head

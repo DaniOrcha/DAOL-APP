@@ -28,14 +28,17 @@ function Portfolio() {
             <div ref={refCards} className="flex center hide">
 
                 {cardsJson.map((card, index) =>
+
                     <div key={index + "c"}>
                         <Card
                             {...card} 
                         />
                     </div>
+
                 )}
 
             </div>
+            
         </div>
     );
 }

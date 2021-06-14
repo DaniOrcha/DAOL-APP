@@ -1,16 +1,12 @@
 
 import Head from '../Components/Header';
-import { useEffect } from 'react';
 import { BlockProyect } from '../Components/cards';
 import proyectData from '../storage/proyects.json';
 
 function Automation() {
 
-    useEffect(() => {
-        document.title = "Automatización";
-    });
-
     let objs = [];
+    let docTitle = (document.title = "Automatización");
 
     Object.entries(proyectData.Automation).forEach(([key]) => {
         objs.push(proyectData.Automation[key]);
@@ -19,6 +15,8 @@ function Automation() {
 
     return (
         <>
+            {docTitle}
+
             <div className="bodyContainer">
 
                 <Head
@@ -26,18 +24,21 @@ function Automation() {
                 />
 
                 <div className="container">
+
                     <h2>Diseño de sistemas automatizados</h2>
 
                     {objs.map((obj, index) =>
+
                         <div key={index + "g"} className="flex center">
                             <BlockProyect
                                 {...obj}
                             />
                         </div>
+
                     )}
 
-                </div>
-
+                </div> 
+                
             </div>
         </>
     );

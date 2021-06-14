@@ -28,12 +28,13 @@ export function initRoadmap(nodeData) {
     RoadMap.addEventListener("mouseleave", () => { HideTree(); });
 
     Tree = nodeData.Tree.node.current;
+    Tree.style.visibility = "hidden";
 
     Card = nodeData.Card.node.current;
     Card.addEventListener("mouseenter", () => { SlotsShow(); lightedGrab(); });
     Card.addEventListener("mouseleave", () => { removeGrab(); });
     Card.addEventListener("mousedown", () => { cursorGrabbing(); });
-    Card.addEventListener("mouseup", () => { removeGrabing(); });
+    Card.addEventListener("mouseup", () => { removeGrabing(); }); 
 
     let hasTouchscreen = 'ontouchstart' in window;
     if (hasTouchscreen) {
