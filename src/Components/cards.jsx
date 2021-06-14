@@ -3,6 +3,9 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { imageLens, initLens } from '../Functions/lens.js';
 
+import { WriteComent } from '../Functions/visits';
+
+import { messengerClass } from '../Functions/messenger';
 
 export function Card(obj) {
     return (
@@ -154,3 +157,53 @@ export function BlockProyect2sideAndLens(obj) {
     );
 }
 
+
+
+//reordenar servicios
+export function FormMessenger(pr) { 
+
+    const Messenger = new messengerClass();
+
+    let refName = useRef();
+    let refMsg = useRef();
+    let refForm = useRef();
+ 
+    function send(e) {  
+        e.preventDefault();
+
+        Messenger.data.name = refName.current.value;
+        Messenger.data.message = refMsg.current.value;
+        Messenger.data.action = pr.action;
+
+        if (Messenger.execute()) {
+            refName.current.value = "";
+            refMsg.current.value = "";
+            if(pr.action === "sendMail"){ 
+                refForm.current.remove();
+            }
+        }  
+    }
+
+
+    return (
+        
+        <form ref={refForm} className="BrownBox" onSubmit={send} >
+
+            <h3>{pr.header}</h3>
+
+            <label htmlFor="nombre">
+                <p>Nombre:</p>
+            </label>
+            <input type="text" name="nombre" ref={refName} required />
+
+            <label htmlFor="mensaje">
+                <p>Mensaje:</p>
+            </label>
+            <textarea name="mensaje" rows="5" ref={refMsg} required></textarea>
+
+            <input type="submit" name="submit" value="Enviar" className="Button" />
+
+        </form>
+    )
+
+}

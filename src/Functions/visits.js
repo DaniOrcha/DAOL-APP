@@ -6,7 +6,7 @@ export function read() {
     let payload = {
         action: 'readDDBB'
     };
-    axios.post('https://daol.es/dbmanager.php', payload)
+     axios.post('https://daol.es/dbmanager.php', payload) 
 
         .then(function (response) {
             let data = response.data;
@@ -28,7 +28,7 @@ export function WriteComent(_comment) {
     };
 
 
-    axios.post('https://daol.es/dbmanager.php', payload)
+   axios.post('https://daol.es/dbmanager.php', payload) 
 
         .then(function () {
             let newData = [{
