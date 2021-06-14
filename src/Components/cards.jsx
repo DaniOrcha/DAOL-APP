@@ -159,16 +159,49 @@ export function BlockProyect2sideAndLens(obj) {
 
 
 
+export function PostIt(obj) {
+
+    console.log("POST: " + JSON.stringify(obj.obj));
+ 
+
+    return (
+        obj.obj.map((o, index) =>
+
+            <div key={index + "p"} className="Postit">
+                <h3>{o.NameUser}</h3>
+                <p>{o.DateStamp}</p>
+                <p>{o.TextUser} </p>
+            </div>
+
+        )
+
+
+
+    );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 //reordenar servicios
-export function FormMessenger(pr) { 
+export function FormMessenger(pr) {
 
     const Messenger = new messengerClass();
 
     let refName = useRef();
     let refMsg = useRef();
     let refForm = useRef();
- 
-    function send(e) {  
+
+    function send(e) {
         e.preventDefault();
 
         Messenger.data.name = refName.current.value;
@@ -176,17 +209,19 @@ export function FormMessenger(pr) {
         Messenger.data.action = pr.action;
 
         if (Messenger.execute()) {
+
             refName.current.value = "";
             refMsg.current.value = "";
-            if(pr.action === "sendMail"){ 
+
+            if (pr.action === "sendMail") {
                 refForm.current.remove();
             }
-        }  
+        }
     }
 
 
     return (
-        
+
         <form ref={refForm} className="BrownBox" onSubmit={send} >
 
             <h3>{pr.header}</h3>

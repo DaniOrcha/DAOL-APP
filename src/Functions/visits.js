@@ -1,22 +1,31 @@
+
 const axios = require('axios').default;
 
+let refComments;
+let trigger;
 
-export function read() {
 
-    let payload = {
+export function read(_trigger, _refComments) {
+
+    refComments = _refComments;
+    trigger = _trigger;
+
+    const payload = {
         action: 'readDDBB'
     };
-     axios.post('https://daol.es/dbmanager.php', payload) 
+
+    axios.post('https://daol.es/dbmanager.php', payload)
 
         .then(function (response) {
             let data = response.data;
-            proccesData(data);
+            console.log("data: ")
+            trigger(data);
         })
         .catch(function (error) {
             console.error(error);
         });
-
 }
+
 
 
 export function WriteComent(_comment) {
@@ -27,16 +36,15 @@ export function WriteComent(_comment) {
         mensaje: _comment.message
     };
 
-
-   axios.post('https://daol.es/dbmanager.php', payload) 
+    axios.post('https://daol.es/dbmanager.php', payload)
 
         .then(function () {
-            let newData = [{
+            let newData = {
                 NameUser: _comment.name,
                 DateStamp: new Date().toISOString().substring(0, 10),
                 TextUser: _comment.message
-            }]
-            proccesData(newData);
+            }
+            addDiv(newData);
 
         })
         .catch(function (error) {
@@ -46,22 +54,20 @@ export function WriteComent(_comment) {
 
 
 
-function proccesData(data) {
+//evtia renderizar todos los postit
+//revisar con rect create  
+function addDiv(data) {
 
-    let countKey = Object.keys(data).length;
+    const box = refComments.current;
+    const name = document.createElement("DIV");
 
-    let ComentsContainer, DivName, DivText;
-    ComentsContainer = document.getElementById("boxComents");
+    name.setAttribute("class", "Postit");
 
-    for (let i = 0; i < countKey; i++) {
+    box.appendChild(name);
 
-        DivName = document.createElement("DIV");
-        DivName.setAttribute("class", "Postit");
-        ComentsContainer.appendChild(DivName);
-        DivName.innerHTML = "<h3>" + data[i].NameUser + "</h3>" + data[i].DateStamp;
+    name.innerHTML =
+        "<h3>" + data.NameUser + "</h3>" +
+        "<p>" + data.DateStamp + "</p>" +
+        "<p>" + data.TextUser + "</p>";
 
-        DivText = document.createElement("DIV");
-        DivName.appendChild(DivText);
-        DivText.innerHTML = data[i].TextUser;
-    }
 }

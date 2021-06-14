@@ -131,12 +131,10 @@
     z-index: 1;
 }
 
-/* remove */
 .lens.show {
     opacity: 1;
     cursor: zoom-in;
 }
-
 
 .lens:hover {
     opacity: 1;
@@ -144,8 +142,7 @@
 } 
 
 
-.lensIco {
-    /* background-color: red; */
+.lensIco { 
     position: absolute;
     z-index: 1;
     top: 33%;

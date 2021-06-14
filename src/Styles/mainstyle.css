@@ -105,38 +105,20 @@ a {
     .BrownBox.Contact h3, p {
         margin: 5px;
     }
-
-    .BrownBox.Visit {
-        font-family: HomemadeApple, Arial, Verdana, sans-serif;
-        box-shadow: 0px 0px 5px 7px #b39709;
-        color: #FFDA19;
-        overflow: hidden;
-        filter: brightness(1);
-    }
-
-        .BrownBox.Visit h3 {
-            margin: 0px;
-            font-size: 15pt;
-            color: #00ffff;
-        }
-
-        .BrownBox.Visit p {
-            margin: 0px;
-        }
-
-        .BrownBox.Visit.Center {
-            flex-direction: row;
-            justify-content: space-around;
-            box-shadow: none;
-        }
-
-
+ 
 
 .Postit {
+    font-family: HomemadeApple, Arial, Verdana, sans-serif;
     margin: 10px;
-    box-shadow: 0px 29px 29px -20px #1b1a15;
+    box-shadow: 0px 29px 29px -20px #FFDA19; 
     padding: 10px;
     border-radius: 9px;
+    color: #FFDA19;
+}
+
+.Postit h3 {
+    margin: 0px; 
+    color: #00ffff;
 }
 
 

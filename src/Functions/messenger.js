@@ -22,10 +22,10 @@ export class messengerClass {
             typeof this.data.message !== 'undefined' &&
             this.data.message.trim() !== '') {
   
-            switch (this.data.action) { 
+            switch (this.data.action) {   //make async with return 
 
                 case "sendMsg":
-                    WriteComent(this.data);   //make async whit return 
+                    WriteComent(this.data);   
                     return true;
 
                 case "sendMail":

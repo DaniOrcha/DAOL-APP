@@ -1,21 +1,23 @@
 
-import React, {  useState } from 'react' 
-import Head from '../Components/Header'; 
-import {  read } from '../Functions/visits';   
+import React, { useState, useRef, useEffect } from 'react'
+import Head from '../Components/Header';
+import { read } from '../Functions/visits';
 
-import { FormMessenger } from '../Components/cards';
+import { FormMessenger, PostIt } from '../Components/cards';
+
+
 
 function Visit() {
 
- 
-    const [isLoad, setisLoad] = useState(false);
+    const [load, setLoad] = useState([]);
 
-    if (isLoad === false) {
-        read();
-        setisLoad(true);
-        document.title = "Visitas";
-    }
- 
+    let refComments = useRef();
+
+    useEffect(() => {
+        document.title = "Visitas"
+        read(setLoad, refComments);
+    }, [setLoad]);
+
 
     return (
         <>
@@ -28,18 +30,23 @@ function Visit() {
                     ]}
                 />
 
-                <div id="boxComents" className="BrownBox Visit Center">
-                    <div id="lineAnimRM" className="lineAnim"></div>
-                </div> 
+                <div ref={refComments} className="container animations flex around">
+                    <div className="lineAnim"></div>
+
+                    <PostIt
+                        obj={load}
+                    />
+
+                </div>
 
                 <div className="container noPadding">
 
-                    <FormMessenger 
-                        header = "Deja tu mensaje: "
-                        action = "sendMsg"
+                    <FormMessenger
+                        header="Deja tu mensaje: "
+                        action="sendMsg"
                     />
 
-                </div> 
+                </div>
 
             </div>
         </>
