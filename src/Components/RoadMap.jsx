@@ -149,7 +149,8 @@ function Icons(p) {
             <img src={p.src} className="imgIco" alt="err" />
         </div>
     );
-}
+} 
+
 
 
 
