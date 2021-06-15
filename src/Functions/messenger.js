@@ -6,12 +6,12 @@ import {   SendMail } from '../Functions/contact';
 
 export class messengerClass {
 
-    constructor() {
+    constructor(name, message, action) {
 
         this.data = {
-            name: "",
-            message: "",
-            action: ""
+            name: name,
+            message: message,
+            action: action
         }
     }
 

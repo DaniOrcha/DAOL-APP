@@ -1,9 +1,7 @@
 
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { imageLens, initLens } from '../Functions/lens.js';
-
-import { WriteComent } from '../Functions/visits';
+import { imageLens, initLens } from '../Functions/lens.js'; 
 
 import { messengerClass } from '../Functions/messenger';
 
@@ -161,9 +159,6 @@ export function BlockProyect2sideAndLens(obj) {
 
 export function PostIt(obj) {
 
-    console.log("POST: " + JSON.stringify(obj.obj));
- 
-
     return (
         obj.obj.map((o, index) =>
 
@@ -174,19 +169,8 @@ export function PostIt(obj) {
             </div>
 
         )
-
-
-
     );
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -195,18 +179,16 @@ export function PostIt(obj) {
 //reordenar servicios
 export function FormMessenger(pr) {
 
-    const Messenger = new messengerClass();
 
     let refName = useRef();
     let refMsg = useRef();
     let refForm = useRef();
 
+
     function send(e) {
         e.preventDefault();
 
-        Messenger.data.name = refName.current.value;
-        Messenger.data.message = refMsg.current.value;
-        Messenger.data.action = pr.action;
+        const Messenger = new messengerClass(refName.current.value, refMsg.current.value, pr.action);
 
         if (Messenger.execute()) {
 

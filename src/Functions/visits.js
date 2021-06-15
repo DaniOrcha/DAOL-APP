@@ -17,8 +17,7 @@ export function read(_trigger, _refComments) {
     axios.post('https://daol.es/dbmanager.php', payload)
 
         .then(function (response) {
-            let data = response.data;
-            console.log("data: ")
+            let data = response.data; 
             trigger(data);
         })
         .catch(function (error) {

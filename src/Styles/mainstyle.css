@@ -49,16 +49,13 @@ a {
     .container.expand {
         padding-bottom: 30vmin;
     }
-
     .container.animations {
         overflow: hidden;
         filter: brightness(1);
     }
-
     .container h1 {
         color: #12B3B3;
     }
-
     .container.noPadding {
         padding: unset;
         display: flow-root;

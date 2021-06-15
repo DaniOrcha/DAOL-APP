@@ -14,6 +14,9 @@
 .RoadMapTree {
     margin-left: 8vw; 
 }
+.RoadMapTree.hide {
+    display: none;
+}
 
 .boxIcon {
     border: 2px solid #FFDA19;

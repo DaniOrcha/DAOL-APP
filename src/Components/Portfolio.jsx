@@ -2,24 +2,27 @@
 import { Card } from '../Components/cards';
 import cardsJson from '../storage/portfolio.json';
 import React, { useEffect, useRef } from 'react';
-import { initPortfolio } from '../Functions/portfolio';
 
+import { AnimatorLine } from '../Class/linesAnimator';
 
 
 function Portfolio() {
 
     let refPortfolio = useRef();
     let refCards = useRef();
+    let refLine = useRef();
+
+    const animatorLinePF = new AnimatorLine(refPortfolio, refCards, refLine, "pf");
 
     useEffect(() => {
-        initPortfolio(refPortfolio, refCards);
-    }, []);
+        animatorLinePF.init();
+    });
 
     return (
 
         <div ref={refPortfolio} className="container animations">
 
-            <div id="lineAnimPF" className="lineAnim"></div>
+            <div ref={refLine} id="lineAnimPF" className="lineAnim"></div>
 
             <div className="fontHead">
                 Portfolio
@@ -31,14 +34,14 @@ function Portfolio() {
 
                     <div key={index + "c"}>
                         <Card
-                            {...card} 
+                            {...card}
                         />
                     </div>
 
                 )}
 
             </div>
-            
+
         </div>
     );
 }

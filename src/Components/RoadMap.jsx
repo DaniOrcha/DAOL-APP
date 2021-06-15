@@ -2,6 +2,8 @@
 import React, { useRef, useCallback, useReducer, useEffect } from 'react';
 import { initRoadmap } from '../Functions/roadmap.js';
 
+import { AnimatorLine } from '../Class/linesAnimator';
+
 
 let icoSrc = [
     "resources/slots/react.png",
@@ -37,17 +39,24 @@ let nodes = {
 export function RoadMap() {
 
     let refRM = useRef();
+    let refLine = useRef();
+
+    //pendiente
+    // const animatorLineAb = new AnimatorLine(refAbout, refCard, refLine, "ab");  
+
 
     useEffect(() => {
         nodes.RoadMap.node = refRM;
         initRoadmap(nodes);
+        const animatorLineRm = new AnimatorLine(refRM, nodes.Tree.node, refLine, "rm");
+        animatorLineRm.init();
     }, [refRM]);
 
     return (
 
         <div ref={refRM} className="container animations">
 
-            <div id="lineAnimRM" className="lineAnim"></div>
+            <div ref={refLine} id="lineAnimRM" className="lineAnim"></div>
 
             <div className="fontHead">RoadMap</div>
 
@@ -63,13 +72,14 @@ function RoadMapTree() {
 
     let refTree = useRef();
 
+
     useEffect(() => {
         nodes.Tree.node = refTree;
     }, [refTree]);
 
     return (
 
-        <div ref={refTree} className="RoadMapTree" >
+        <div ref={refTree} className="RoadMapTree hide" >
 
             <CardData
             />
@@ -94,7 +104,7 @@ function CardData() {
     const [data, trigger] = useReducer(
 
         getData
-    ); 
+    );
 
     useEffect(() => {
         nodes.Card.node = refData;
@@ -134,7 +144,7 @@ function Icons(p) {
     }, []);
 
     return (
-        
+
         <div ref={refIco} className="boxIcon">
             <img src={p.src} className="imgIco" alt="err" />
         </div>
@@ -152,13 +162,13 @@ function getData(state, newstate) {
 
     let gradIco;
 
-    if (typeof newstate.degree !== 'undefined') { 
+    if (typeof newstate.degree !== 'undefined') {
         gradIco = (
             <li>
                 <i className='fa fa-graduation-cap' aria-hidden='true'> </i>
                 {newstate.degree}
             </li>
-        ); 
+        );
     }
 
     return (
@@ -173,7 +183,7 @@ function getData(state, newstate) {
 
             <div className="boxDescription">
 
-                {newstate.desc.map((txt, index) => 
+                {newstate.desc.map((txt, index) =>
                     <li key={index + "desc"}>
                         {txt}
                     </li>

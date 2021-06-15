@@ -1,13 +1,9 @@
-import {
-    ShowAnimationLine,
-    HideAnimationLine
-} from '../Functions/main.js';
 
 import roadData from '../storage/roadMap.json';
 
 const roadObj = roadData;
 
-let Tree;
+let Tree;  //refact over
 let RoadMap;
 let Card;
 let IcoId = 0;
@@ -28,7 +24,7 @@ export function initRoadmap(nodeData) {
     RoadMap.addEventListener("mouseleave", () => { HideTree(); });
 
     Tree = nodeData.Tree.node.current;
-    Tree.style.visibility = "hidden";
+    // Tree.style.visibility = "hidden";
 
     Card = nodeData.Card.node.current;
     Card.addEventListener("mouseenter", () => { SlotsShow(); lightedGrab(); });
@@ -150,20 +146,14 @@ function TextIndex() {
 }
 
 
-function ShowTree() {
-    Tree.style.visibility = "visible";
-    RoadMap.classList.add("expand");
-    RoadMap.classList.remove("animations");
-    HideAnimationLine();
+function ShowTree() { 
+    RoadMap.classList.add("expand");  
     resetData();
 }
 
 function HideTree() {
-    SlotsHide();
-    Tree.style.visibility = "hidden";
-    RoadMap.classList.remove("expand");
-    RoadMap.classList.add("animations");
-    ShowAnimationLine();
+    SlotsHide(); 
+    RoadMap.classList.remove("expand");  
 }
 
 function SlotsShow() {
