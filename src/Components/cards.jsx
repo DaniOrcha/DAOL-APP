@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { imageLens, initLens } from '../Functions/lens.js'; 
 
-import { messengerClass } from '../Functions/messenger';
+import { messengerClass } from '../Classes/messenger';
 
 export function Card(obj) {
     return (
@@ -173,10 +173,7 @@ export function PostIt(obj) {
 }
 
 
-
-
-
-//reordenar servicios
+ 
 export function FormMessenger(pr) {
 
 

@@ -3,36 +3,30 @@ import roadData from '../storage/roadMap.json';
 
 const roadObj = roadData;
 
-let Tree;  //refact over
+let nodes;
 let RoadMap;
 let Card;
-let IcoId = 0;
-let pos = 0;
-
-
-let nodeRM;
 let icoPos = [];
+let icoIndex = 0;
+let m_icoIndex = 0;
 
 
 export function initRoadmap(nodeData) {
 
-    nodeRM = nodeData;
-
+    nodes = nodeData;
     RoadMap = nodeData.RoadMap.node.current;
 
     RoadMap.addEventListener("mouseenter", () => { ShowTree(); });
     RoadMap.addEventListener("mouseleave", () => { HideTree(); });
 
-    Tree = nodeData.Tree.node.current;
-    // Tree.style.visibility = "hidden";
-
     Card = nodeData.Card.node.current;
     Card.addEventListener("mouseenter", () => { SlotsShow(); lightedGrab(); });
     Card.addEventListener("mouseleave", () => { removeGrab(); });
     Card.addEventListener("mousedown", () => { cursorGrabbing(); });
-    Card.addEventListener("mouseup", () => { removeGrabing(); }); 
+    Card.addEventListener("mouseup", () => { removeGrabing(); });
 
     let hasTouchscreen = 'ontouchstart' in window;
+
     if (hasTouchscreen) {
         dragTouch(Card);
     } else {
@@ -122,10 +116,10 @@ function TextIndex() {
     for (let i = 0; i < icoPos.length; i++) {
 
         if (i === icoPos.length - 1) {
-            if (IcoId !== i) {
-                pos = IcoId;
-                IcoId = i;
-                setData(IcoId, pos);
+            if (icoIndex !== i) {
+                m_icoIndex = icoIndex;
+                icoIndex = i;
+                setData(icoIndex, m_icoIndex);
                 return;
             }
             return;
@@ -133,10 +127,10 @@ function TextIndex() {
 
         if (boxDataY >= icoPos[i] && boxDataY < icoPos[i + 1]) {
 
-            if (IcoId !== i) {
-                let pos = IcoId;
-                IcoId = i;
-                setData(IcoId, pos);
+            if (icoIndex !== i) {
+                m_icoIndex = icoIndex;
+                icoIndex = i;
+                setData(icoIndex, m_icoIndex);
                 return;
             }
             return;
@@ -146,56 +140,55 @@ function TextIndex() {
 }
 
 
-function ShowTree() { 
-    RoadMap.classList.add("expand");  
+function ShowTree() {
+    RoadMap.classList.add("expand");
     resetData();
 }
 
 function HideTree() {
-    SlotsHide(); 
-    RoadMap.classList.remove("expand");  
+    SlotsHide();
+    RoadMap.classList.remove("expand");
 }
 
 function SlotsShow() {
 
-    nodeRM.Icons.forEach(element => {
+    nodes.Icons.forEach(element => {
         element.classList.add('Show');
     });
 
-    icoPos = nodeRM.Icons.map((x) => {
+    icoPos = nodes.Icons.map((x) => {
         return x.offsetTop;
     })
 
-
-    setData(IcoId, pos);
+    setData(icoIndex, m_icoIndex);
 }
 
 
 function SlotsHide() {
 
-    nodeRM.Icons.forEach(element => {
+    nodes.Icons.forEach(element => {
         element.classList.remove('Icolighted');
         element.classList.remove('Show');
     });
 
     Card.style.top = icoPos[0] + "px";
-    Card.classList.remove('lighted'); 
-    IcoId = 0;
-    pos = 0;
+    Card.classList.remove('lighted');
+    icoIndex = 0;
+    m_icoIndex = 0;
 
 }
 
 
-function setData(index, pos) {
+function setData(index, m_icoIndex) {
 
-    nodeRM.Icons[pos].classList.remove('Icolighted');
-    nodeRM.Icons[index].classList.add('Icolighted');
+    nodes.Icons[m_icoIndex].classList.remove('Icolighted');
+    nodes.Icons[index].classList.add('Icolighted');
 
     /*  
 
     MapNode.Card.node.current.classList.add('animation');*/
 
-    nodeRM.Card.trigger(roadObj[index]);
+    nodes.Card.trigger(roadObj[index]);
 
 
     /*setTimeout(() => {
@@ -206,7 +199,7 @@ function setData(index, pos) {
 
 function resetData() {
 
-    nodeRM.Card.trigger(
+    nodes.Card.trigger(
         {
             year: "Ruta de aprendizaje",
             txt: "",

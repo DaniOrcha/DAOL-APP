@@ -1,14 +1,50 @@
-
 const axios = require('axios').default;
 
-let refComments;
-let trigger;
+
+export function GetMyData(_setEmail, _setPhone) {
+
+    let payload = { action: 'getMyData' };
+
+    axios.post('https://daol.es/dbmanager.php', payload) 
+
+        .then(function (response) {
+            let data = response.data[0];
+            _setEmail(data.myEmail);
+            _setPhone(data.myPhone);
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+}
 
 
-export function read(_trigger, _refComments) {
+export function SendMail(_data) {
+
+    let payload = {
+        action: 'mailer',
+        name: _data.name,
+        message: _data.message
+    };
+
+    axios.post('https://daol.es/mailer.php', payload)
+
+        .then(function (response) {
+            alert("Mensaje enviado");
+
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+}
+
+
+ 
+let refComments; 
+
+export function readComments(_trigger, _refComments) {
 
     refComments = _refComments;
-    trigger = _trigger;
+    let trigger = _trigger;
 
     const payload = {
         action: 'readDDBB'
@@ -50,20 +86,13 @@ export function WriteComent(_comment) {
             console.error(error);
         });
 }
-
-
-
-//evtia renderizar todos los postit
-//revisar con rect create  
-function addDiv(data) {
-
+ 
+//evita renderizar todos los postit revisar fn react
+function addDiv(data) { 
     const box = refComments.current;
-    const name = document.createElement("DIV");
-
-    name.setAttribute("class", "Postit");
-
-    box.appendChild(name);
-
+    const name = document.createElement("DIV"); 
+    name.setAttribute("class", "Postit"); 
+    box.appendChild(name); 
     name.innerHTML =
         "<h3>" + data.NameUser + "</h3>" +
         "<p>" + data.DateStamp + "</p>" +

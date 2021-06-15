@@ -3,7 +3,7 @@ import { Card } from '../Components/cards';
 import cardsJson from '../storage/portfolio.json';
 import React, { useEffect, useRef } from 'react';
 
-import { AnimatorLine } from '../Class/linesAnimator';
+import { AnimatorLine } from '../Classes/linesAnimator';
 
 
 function Portfolio() {

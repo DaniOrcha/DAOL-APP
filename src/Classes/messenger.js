@@ -1,13 +1,10 @@
 
-//reordenar servicios 
-import { WriteComent } from '../Functions/visits'; 
-import {   SendMail } from '../Functions/contact';
+import {WriteComent, SendMail} from '../Services/dbManager';
  
 
 export class messengerClass {
 
-    constructor(name, message, action) {
-
+    constructor(name, message, action) { 
         this.data = {
             name: name,
             message: message,

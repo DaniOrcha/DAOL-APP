@@ -1,10 +1,8 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import Head from '../Components/Header';
-import { read } from '../Functions/visits';
-
+import { readComments } from '../Services/dbManager'; 
 import { FormMessenger, PostIt } from '../Components/cards';
-
 
 
 function Visit() {
@@ -15,7 +13,7 @@ function Visit() {
 
     useEffect(() => {
         document.title = "Visitas"
-        read(setLoad, refComments);
+        readComments(setLoad, refComments);
     }, [setLoad]);
 
 

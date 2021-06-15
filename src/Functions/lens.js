@@ -9,7 +9,6 @@ export function initLens() {
     }
 }
 
-
 export function imageLens(_imgRef) {
     img = _imgRef.current;
     createLens();
@@ -19,14 +18,11 @@ export function imageLens(_imgRef) {
 
 
 function createLens() {
-
     lens = document.createElement("DIV");
     lens.setAttribute("class", "lens");
-
-    img.parentElement.insertBefore(lens, img);
-
     lens.style.backgroundImage = "url('" + img.src + "')";
     lens.style.backgroundSize = (img.width * 4) + "px " + (img.height * 4) + "px";
+    img.parentElement.insertBefore(lens, img);
 }
 
 
@@ -55,7 +51,6 @@ function start(e) {
 function moveLens(e) {
 
     if (e.cancelable) { e.preventDefault(); }
-
     let pos, x, y;
 
     if (hasTouchscreen) {
@@ -90,8 +85,7 @@ function moveLens(e) {
 
 
 function getCursorPos(e) {
-    let a, x = 0,
-        y = 0;
+    let a, x = 0, y = 0;
     a = img.getBoundingClientRect();
     x = e.pageX - a.left;
     y = e.pageY - a.top;
@@ -105,8 +99,7 @@ function getCursorPos(e) {
 
 
 function getTouchPos(e) {
-    let a, x = 0,
-        y = 0;
+    let a, x = 0, y = 0;
     try {
         a = img.getBoundingClientRect();
         x = e.touches[0].pageX - a.left;

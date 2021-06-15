@@ -2,7 +2,7 @@
 import React, { useRef, useCallback, useReducer, useEffect } from 'react';
 import { initRoadmap } from '../Functions/roadmap.js';
 
-import { AnimatorLine } from '../Class/linesAnimator';
+import { AnimatorLine } from '../Classes/linesAnimator';
 
 
 let icoSrc = [

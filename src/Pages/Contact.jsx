@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react' 
 import Head from '../Components/Header';
 
-import { GetMyData } from '../Functions/contact';  
+import { GetMyData } from '../Services/dbManager'; 
 import { FormMessenger } from '../Components/cards';
 
 
