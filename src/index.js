@@ -3,8 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 
-import './Styles/mainstyle.css';
-import './Styles/portfolio.css';
+import Navbar from './Components/navbar';
+import Footer from './Components/Footer';
 
 import MainPage from './Pages/MainPage';
 import Unity from './Pages/Unity';
@@ -17,11 +17,12 @@ import Visit from './Pages/Visits';
 import ImageGallery from './Pages/Imagegallery';
 
 
-import Navbar from './Components/navbar';
-import Footer from './Components/Footer';
+import './Styles/portfolio.css';
+import './Styles/main.css';
 
 
 ReactDOM.render(
+    
     <Router>
 
         < Navbar />

@@ -17,20 +17,16 @@ let icoSrc = [
 
 
 let nodes = {
-
     RoadMap: {
         node: null,
-        trigger: null
     },
     Tree: {
         node: null,
-        trigger: null
     },
     Card: {
         node: null,
         trigger: null
     },
-
     Icons: []
 }
 
@@ -40,10 +36,6 @@ export function RoadMap() {
 
     let refRM = useRef();
     let refLine = useRef();
-
-    //pendiente
-    // const animatorLineAb = new AnimatorLine(refAbout, refCard, refLine, "ab");  
-
 
     useEffect(() => {
         nodes.RoadMap.node = refRM;
@@ -56,9 +48,11 @@ export function RoadMap() {
 
         <div ref={refRM} className="container animations">
 
-            <div ref={refLine} id="lineAnimRM" className="lineAnim"></div>
+            <div ref={refLine} className="lineAnim"></div>
 
-            <div className="fontHead">RoadMap</div>
+            <div className="container--txtHead">
+                RoadMap
+            </div>
 
             <RoadMapTree
             />
@@ -149,7 +143,7 @@ function Icons(p) {
             <img src={p.src} className="imgIco" alt="err" />
         </div>
     );
-} 
+}
 
 
 

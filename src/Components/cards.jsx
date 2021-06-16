@@ -53,7 +53,7 @@ export function BlockProyect(obj) {
 
     return (
 
-        <div className="boxHorizontal">
+        <div className="container__proyect">
             <hr />
             <div className="TxtColor">
                 <h3>{obj.title}</h3>
@@ -201,7 +201,7 @@ export function FormMessenger(pr) {
 
     return (
 
-        <form ref={refForm} className="BrownBox" onSubmit={send} >
+        <form ref={refForm} className="BrownBox flex column" onSubmit={send} >
 
             <h3>{pr.header}</h3>
 

@@ -24,7 +24,7 @@ function Portfolio() {
 
             <div ref={refLine} id="lineAnimPF" className="lineAnim"></div>
 
-            <div className="fontHead">
+            <div className="container--txtHead">
                 Portfolio
             </div>
 

@@ -33,7 +33,7 @@ function Contact() {
 
                 <div className="container noPadding">
 
-                    <div className="BrownBox Contact">
+                    <div className="BrownBox contact">
                         <p>Email:</p>
                         <div><h3>{email}</h3></div>
                         <p>Teléfono:</p>

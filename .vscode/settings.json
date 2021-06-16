@@ -1,3 +1,5 @@
 {
-    "editor.mouseWheelZoom": true
+    "editor.mouseWheelZoom": true,
+    "prettier.useTabs": true,
+    "prettier.embeddedLanguageFormatting": "off"
 }

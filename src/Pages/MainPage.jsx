@@ -26,7 +26,7 @@ class MainPage extends React.Component {
                     <Head
                         txt={[
                             "Daniel Orcha Lorenzo",
-                            "Programador de software + Diseño de sistemas automatizados"
+                            "Programador de software & Diseño de sistemas automatizados"
                         ]}
                     />
 

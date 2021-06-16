@@ -6,14 +6,14 @@ function Head(props) {
 
         props.txt.length > 1 ?
 
-            <div className="Shadow">
+            <div className="header">
                 <h1>{props.txt[0]}</h1>
                 <h2>{props.txt[1]}</h2>
             </div>
 
             :
 
-            <div className="Shadow">
+            <div className="header">
                 <h1>{props.txt[0]}</h1>
             </div>
 

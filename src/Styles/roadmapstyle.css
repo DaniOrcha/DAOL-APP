@@ -1,5 +1,5 @@
 
-
+/* 
 .fontHead {
     text-align: center;
     font-size: 34pt;
@@ -8,11 +8,13 @@
     filter: drop-shadow(2px -1px 1px #12B3B3);
     margin-bottom: 20px;
     margin-top: 10px;
-}
+} */
 
 
 .RoadMapTree {
-    margin-left: 8vw; 
+    /* margin-left: 8vw;   */
+    margin-left: 8vw;
+    margin-top: 1rem;
 }
 .RoadMapTree.hide {
     display: none;
