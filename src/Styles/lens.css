@@ -1,0 +1,53 @@
+
+.lensContainer {
+    position: relative;
+}
+
+.lensContainer.left {
+    float: left;
+}
+
+
+.lens {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    width: 30vh;
+    height: 30vh;
+    opacity: 0;
+    z-index: 1;
+}
+
+.lens.show {
+    opacity: 1;
+    cursor: zoom-in;
+}
+
+.lens:hover {
+    opacity: 1;
+    cursor: zoom-in;
+} 
+
+
+.lensIco { 
+    position: absolute;
+    z-index: 1;
+    top: 33%;
+    left: 43%;
+    width: 25px;
+    animation: lensAnim 5s linear infinite;
+}
+
+
+@keyframes lensAnim {
+    0% {
+        opacity: 1;
+    }
+    10% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

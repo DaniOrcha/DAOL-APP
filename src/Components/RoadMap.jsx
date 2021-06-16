@@ -3,6 +3,7 @@ import React, { useRef, useCallback, useReducer, useEffect } from 'react';
 import { initRoadmap } from '../Functions/roadmap.js';
 
 import { AnimatorLine } from '../Classes/linesAnimator';
+import '../Styles/roadmapstyle.css';
 
 
 let icoSrc = [
@@ -73,7 +74,7 @@ function RoadMapTree() {
 
     return (
 
-        <div ref={refTree} className="RoadMapTree hide" >
+        <div ref={refTree} className="roadMap hide" >
 
             <CardData
             />
@@ -107,9 +108,9 @@ function CardData() {
 
     return (
 
-        <div className="boxData" ref={refData}>
+        <div className="roadMap__data" ref={refData}>
 
-            <div className="dragIco">
+            <div className="roadMap__data__dragIco">
                 <img src="resources/slots/drag_ico.png" alt="err" />
             </div>
 
@@ -139,8 +140,8 @@ function Icons(p) {
 
     return (
 
-        <div ref={refIco} className="boxIcon">
-            <img src={p.src} className="imgIco" alt="err" />
+        <div ref={refIco} className="roadMap__icon">
+            <img src={p.src} className="roadMap__icon--img " alt="err" />
         </div>
     );
 }
@@ -168,15 +169,15 @@ function getData(state, newstate) {
 
     return (
         <>
-            <div className="boxDate">
+            <div className="roadMap__data__date">
                 {newstate.year}
             </div>
 
-            <div className="boxTitle">
+            <div className="roadMap__data__title">
                 {newstate.txt}
             </div>
 
-            <div className="boxDescription">
+            <div className="roadMap__data__description">
 
                 {newstate.desc.map((txt, index) =>
                     <li key={index + "desc"}>

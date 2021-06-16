@@ -3,6 +3,7 @@ import Head from '../Components/Header';
 import { BlockProyect2sideAndLens } from '../Components/cards';
 import pData from '../storage/proyects2sideAndLens.json';
 
+import '../Styles/lens.css';
 
 function IoT() {
 

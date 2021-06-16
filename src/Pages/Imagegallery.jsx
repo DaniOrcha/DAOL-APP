@@ -4,6 +4,7 @@ import Head from '../Components/Header';
 import gData from '../storage/imggalery.json';
 import { ImgWithLens } from '../Components/cards';
 
+import '../Styles/lens.css';
 
 function ImageGallery() {
 

@@ -7,7 +7,7 @@ import { messengerClass } from '../Classes/messenger';
 
 export function Card(obj) {
     return (
-        <Link to={obj.link} className="frames">
+        <Link to={obj.link} className="container__card">
             <img src={obj.src} alt="err" className="image card" />
             <h2>{obj.tittle}</h2>
             <h4>{obj.description}</h4>
@@ -18,7 +18,7 @@ export function Card(obj) {
 
 export function CardRef(obj) {
     return (
-        <a href={obj.link} className="frames" rel="noreferrer noopener" target="_blank">
+        <a href={obj.link} className="container__card" rel="noreferrer noopener" target="_blank">
             <img src={obj.src} alt="err" className="image card" />
             <h2>{obj.tittle}</h2>
             <h4>{obj.description}</h4>
@@ -35,6 +35,25 @@ export function ImgWithDescription(props) {
         </div>
     );
 }
+
+
+export function ImgWithLens(props) {
+
+    const icoLens = "../resources/lensico.png";
+    const imgRef = useRef();
+
+    useEffect(() => {
+        initLens();
+    });
+
+    return (
+        <div className="lensContainer" onMouseEnter={() => { imageLens(imgRef); }}>
+            <img ref={imgRef} src={props.srcImg} className={props.class} alt="err" />
+            <img src={icoLens} className="lensIco" alt="err" />
+        </div>
+    )
+}
+
 
 
 export function BlockProyect(obj) {
@@ -55,7 +74,7 @@ export function BlockProyect(obj) {
 
         <div className="container__proyect">
             <hr />
-            <div className="TxtColor">
+            <div className="container--txtColor">
                 <h3>{obj.title}</h3>
             </div>
 
@@ -84,31 +103,12 @@ export function BlockProyect(obj) {
 
 
 
-export function ImgWithLens(props) {
-
-    const icoLens = "../resources/lensico.png";
-    const imgRef = useRef();
-
-    useEffect(() => {
-        initLens();
-    });
-
-    return (
-        <div className="lensContainer" onMouseEnter={() => { imageLens(imgRef); }}>
-            <img ref={imgRef} src={props.srcImg} className={props.class} alt="err" />
-            <img src={icoLens} className="lensIco" alt="err" />
-        </div>
-    )
-}
-
-
-
 export function BlockProyect2sideAndLens(obj) {
 
     return (
         <>
             <hr />
-            <div className="TxtColor">
+            <div className="container--txtColor">
                 <h3>{obj.title}</h3>
             </div>
 
@@ -124,7 +124,7 @@ export function BlockProyect2sideAndLens(obj) {
                     </div>
                 )}
 
-                <div className="ListTxtBlock">
+                <div className="container__txt">
                     <h4>
                         <ul>
                             {obj.desc.map((txt, index) =>

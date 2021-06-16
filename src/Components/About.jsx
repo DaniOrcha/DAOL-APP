@@ -19,7 +19,7 @@ function About() {
 
     return (
 
-        <div ref={refAbout} className="container animations txtHead">
+        <div ref={refAbout} className="container animations">
 
             <div ref={refLine} className="lineAnim"></div>
 

@@ -1,51 +1,15 @@
+ 
 
-/* 
-.fontHead {
-    text-align: center;
-    font-size: 34pt;
-    font-weight: bold;
-    color: #12B3B3;
-    filter: drop-shadow(2px -1px 1px #12B3B3);
-    margin-bottom: 20px;
-    margin-top: 10px;
-} */
-
-
-.RoadMapTree {
-    /* margin-left: 8vw;   */
+.roadMap { 
     margin-left: 8vw;
     margin-top: 1rem;
 }
-.RoadMapTree.hide {
+.roadMap.hide {
     display: none;
 }
 
-.boxIcon {
-    border: 2px solid #FFDA19;
-    border-radius: 10px;
-    position: absolute;
-    height: 4vw;
-    width: 4vw;
-    margin-bottom: 25px;
-    background-color: #4c5567;
-}
-
-    .boxIcon.Show {
-        position: static;
-    }
-
-    .boxIcon.Icolighted {
-        border: 2px solid #00FFFF;
-        background-color: #00FFFF;
-        box-shadow: 3px 0px 3px 0px #00FFFF;
-    }
-
-.dragIco {
-    float: right;
-}
-
-.boxData {
-    border: 2px solid #FFDA19;
+.roadMap__data {
+    border: 2px solid var(--color-warm1);
     border-radius: 5px;
     padding: 1%;
     position: absolute;
@@ -57,12 +21,12 @@
     font-size: 15pt;
 }
 
-.boxData.lighted {
-        border: 1px solid #00FFFF;
-        box-shadow: -3px 0px 3px 0px #00FFFF;
+.roadMap__data.lighted {
+        border: 1px solid var(--color-cold1);
+        box-shadow: -3px 0px 3px 0px var(--color-cold1);
     }
 
-    .boxData.grab {
+    .roadMap__data.grab {
         cursor: grab;
     }
 
@@ -70,13 +34,13 @@
         cursor: grabbing;
     }
 
-    .boxData::before {
+    .roadMap__data::before {
         content: "";
         margin-left: -4.7vmin;
         margin-top: -0.5vw;
         position: absolute;
         border-top: 2vmin solid transparent;
-        border-right: 3vmin solid #00FFFF;
+        border-right: 3vmin solid var(--color-cold1);
         border-bottom: 2vmin solid transparent;
     }
     
@@ -84,26 +48,30 @@
         animation: Opacity 1s;
     } */
 
+.roadMap__data__dragIco {
+    float: right;
+}
 
-.boxDate {
+
+.roadMap__data__date {
     border-radius: 10px;
     padding-left: 7px; 
     width: 70%;
-    color: #12B3B3;
+    color: var(--color-cold2);
     font-weight: bold;
     position: absolute;
     left: 11px;
 }
-.boxDate.color {
+/* .roadMap__data__date.color {
     background: linear-gradient(to right, #000000, #ffffff);
 }
-.boxDate.animation {
+.roadMap__data__date.animation {
     animation: Opacity 1s;
     animation: Sizer 1s;
-}
+} */
 
-.boxTitle {
-    color: #ffda19;
+.roadMap__data__title {
+    color: var(--color-warm1);
     font-weight: bold;
     margin-top: 35px;
     padding-left: 10px;
@@ -114,21 +82,53 @@
     } */
 
 
-.boxDescription {
+.roadMap__data__description {
     padding-left: 5px;
     margin-bottom: 1em;
 }
 
-    .boxDescription ul {
+    .roadMap__data__description ul {
         margin-top: 10px;
     }
-    .boxDescription li {
+    .roadMap__data__description li {
         margin: 5px;
     }
 /* 
     .boxDescription.animation {
         animation: Opacity 1s;
     } */
+
+
+
+
+    .roadMap__icon {
+        border: 2px solid var(--color-warm1);
+        border-radius: 10px;
+        position: absolute;
+        height: 4vw;
+        width: 4vw;
+        margin-bottom: 25px;
+        background-color: #4c5567;
+    }
+    
+        .roadMap__icon.Show {
+            position: static;
+        }
+    
+        .roadMap__icon.Icolighted {
+            border: 2px solid var(--color-cold1);
+            background-color: var(--color-cold1);
+            box-shadow: 3px 0px 3px 0px var(--color-cold1);
+        }
+    
+
+.roadMap__icon--img {
+    display: block;
+    margin: auto;
+    margin-top: 10%;
+    width: 75%;
+    height: 75%;
+}
 
 /* 
 @keyframes Opacity {
@@ -160,34 +160,25 @@
 }
  */
 
-.imgIco {
-    display: block;
-    margin: auto;
-    margin-top: 10%;
-    width: 75%;
-    height: 75%;
-}
-
 
 
 @media screen and (max-width: 850px) {
 
-    .boxData {
+    .roadMap {
+        margin-left: 1vw;
+    }
+    .roadMap__data {
         width: auto; 
         margin-left: 12vw;
         min-width: 75vw;
     }
-    .boxDate {
+    .roadMap__data__date {
        width: 70%;  
         /*  min-width: 65vw; */
-    }
-
-    .boxIcon {
+    } 
+    .roadMap__icon {
         height: 7vw;
         width: 7vw;
     }
 
-    .RoadMapTree {
-        margin-left: 1vw;
-    }
 }

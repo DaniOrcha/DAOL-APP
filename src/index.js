@@ -17,8 +17,8 @@ import Visit from './Pages/Visits';
 import ImageGallery from './Pages/Imagegallery';
 
 
-import './Styles/portfolio.css';
 import './Styles/main.css';
+import './Styles/images.css';
 
 
 ReactDOM.render(

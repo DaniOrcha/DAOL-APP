@@ -1,15 +1,13 @@
 import React from 'react';
  
+import Head from '../Components/Header';
+import { RoadMap } from '../Components/RoadMap';
 import Portfolio from '../Components/Portfolio';
 import About from '../Components/About'; 
 
-import '../Styles/roadmapstyle.css';
 import '../Styles/animations.css';
  
 
-import { RoadMap } from '../Components/RoadMap';
-
-import Head from '../Components/Header';
 
 class MainPage extends React.Component {
 
