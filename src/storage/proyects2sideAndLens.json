@@ -16,23 +16,24 @@
         ],
         "imgRight": [
             {
-                "src": "../resources/iot/iot1.jpg",
+                "src": "../resources/electronic/gallery/20.jpg",
                 "id": "iot1",
                 "class": "image square"
             },
             {
-                "src": "../resources/iot/iot2.jpg",
+                "src": "../resources/electronic/gallery/21.jpg",
                 "id": "iot2",
                 "class": "image square"
             }
         ]
     },
     "Client": {
-        "title": "IoT Ciente Web de temperatura, humedad y calidad del aire:",
+        "title": "Ciente Web de temperatura, humedad y calidad del aire:",
         "desc": [
-            "Dispositivo con función de cliente.",
-            "Envía a un servidor los datos de temperatura, Humedad y Calidad del aire obtenidos mediante sensores.",
-            "Los datos se almacenan en una BBDD y se visualizan mediante un navegador Web accediendo a la URL de la aplicación."
+            "Dispositivo IoT cliente web.",
+            "Conectado a internet mediante wifi.",
+            "Envía a un servidor los datos de temperatura, humedad y calidad del aire obtenidos mediante sensores.",
+            "Los datos se almacenan en una BBDD y se visualizan mediante una aplicación web."
         ],
         "imgLef": [
             {

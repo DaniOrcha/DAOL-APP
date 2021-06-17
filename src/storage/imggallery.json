@@ -1,0 +1,140 @@
+{
+    "meta":{
+        "class":"image square",
+        "icoLensSrc": "../resources/lensico.png"
+    },
+    "gallery": [
+        {
+            "src": "../resources/electronic/gallery/1.jpg",
+            "id": "img1"
+        },
+        {
+            "src": "../resources/electronic/gallery/2.jpg",
+            "id": "img2"
+        },
+        {
+            "src": "../resources/electronic/gallery/3.jpg",
+            "id": "img3"
+        },
+        {
+            "src": "../resources/electronic/gallery/4.jpg",
+            "id": "img4"
+        },
+        {
+            "src": "../resources/electronic/gallery/5.jpg",
+            "id": "img5"
+        },
+        {
+            "src": "../resources/electronic/gallery/6.jpg",
+            "id": "img6"
+        },
+        {
+            "src": "../resources/electronic/gallery/7.jpg",
+            "id": "img7"
+        },
+        {
+            "src": "../resources/electronic/gallery/8.jpg",
+            "id": "img8"
+        },
+        {
+            "src": "../resources/electronic/gallery/9.jpg",
+            "id": "img9"
+        },
+        {
+            "src": "../resources/electronic/gallery/10.jpg",
+            "id": "img10"
+        },
+        {
+            "src": "../resources/electronic/gallery/11.jpg",
+            "id": "img11"
+        },
+        {
+            "src": "../resources/electronic/gallery/12.jpg",
+            "id": "img12"
+        },
+        {
+            "src": "../resources/electronic/gallery/13.jpg",
+            "id": "img13"
+        },
+        {
+            "src": "../resources/electronic/gallery/14.jpg",
+            "id": "img14"
+        },
+        {
+            "src": "../resources/electronic/gallery/15.jpg",
+            "id": "img15"
+        },
+        {
+            "src": "../resources/electronic/gallery/16.jpg",
+            "id": "img16"
+        },
+        {
+            "src": "../resources/electronic/gallery/17.jpg",
+            "id": "img17"
+        }, 
+        {
+            "src": "../resources/electronic/gallery/18.jpg",
+            "id": "img18"
+        },
+        {
+            "src": "../resources/electronic/gallery/19.jpg",
+            "id": "img19"
+        },
+        {
+            "src": "../resources/electronic/gallery/20.jpg",
+            "id": "img20"
+        },
+        {
+            "src": "../resources/electronic/gallery/21.jpg",
+            "id": "img21"
+        },
+        {
+            "src": "../resources/electronic/gallery/22.jpg",
+            "id": "img22"
+        },
+        {
+            "src": "../resources/electronic/gallery/23.jpg",
+            "id": "img23"
+        },
+        {
+            "src": "../resources/electronic/gallery/24.jpg",
+            "id": "img24"
+        },
+        {
+            "src": "../resources/electronic/gallery/25.jpg",
+            "id": "img25"
+        },
+        {
+            "src": "../resources/electronic/gallery/26.jpg",
+            "id": "img26"
+        },
+        {
+            "src": "../resources/electronic/gallery/27.jpg",
+            "id": "img27"
+        },
+        {
+            "src": "../resources/electronic/gallery/28.jpg",
+            "id": "img28"
+        },
+        {
+            "src": "../resources/electronic/gallery/29.jpg",
+            "id": "img29"
+        },
+        {
+            "src": "../resources/electronic/gallery/30.jpg",
+            "id": "img30"
+        },
+        {
+            "src": "../resources/electronic/gallery/31.jpg",
+            "id": "img31"
+        },
+        {
+            "src": "../resources/electronic/gallery/32.jpg",
+            "id": "img32"
+        },
+        {
+            "src": "../resources/electronic/gallery/33.jpg",
+            "id": "img33"
+        }
+    ]
+}

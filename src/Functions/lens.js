@@ -3,17 +3,15 @@ let hasTouchscreen = 'ontouchstart' in window;
 let img, lens, lensIco, removeIco = false;
 
 
-export function initLens() {
-    if (removeIco) {
-        removeIco = !removeIco;
-    }
+export function resetIco() {
+    if (removeIco) { removeIco = false; }
 }
 
 export function imageLens(_imgRef) {
     img = _imgRef.current;
     createLens();
     addEvents();
-    removeIcoLens();
+    if (!removeIco) { removeIcoLens(); }
 }
 
 
@@ -117,11 +115,9 @@ function getTouchPos(e) {
 
 
 function removeIcoLens() {
-    if (!removeIco) {
-        removeIco = true
-        lensIco = document.querySelectorAll('.lensIco');
-        lensIco.forEach(l => {
-            l.remove();
-        });
-    }
+    removeIco = true
+    lensIco = document.querySelectorAll('.lensIco');
+    lensIco.forEach(l => {
+        l.remove();
+    });
 }

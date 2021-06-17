@@ -38,15 +38,15 @@ function About() {
                         <br /><br />Mis conocimientos de programación abarcan desde la electrónica digital,
                         registros de bits y "Bitwise", a la programación orientada a objetos y bases de datos.
 
-                        <br /><br />He programado como profesional en la industria para sistemas DCS. Y como freelance y hobby, drivers para sensores, webs, tokens Ethereum ERC20 y videojuegos 2D/3D.
-                        Actualmente desarrollo nuevas app´s web en ReactJS.
+                        <br /><br />He programado como profesional en la industria para sistemas DCS. Y como freelance, webs, drivers para sensores, tokens Ethereum ERC20 y videojuegos 2D/3D.
+                        Actualmente desarrollo webs en React.
 
                         <br /><br />Puedo adaptarme a cualquier tecnología y lenguaje de programación en función de las necesidades.
                     </h3>
 
                 </div>
 
-                <h5>Amante de los retos y la innovación. Disfruto programando y del código elegante. Siempre aprendiendo.</h5>
+                <h5>Amante de los retos y la innovación. Comprometido con la excelencia. Siempre aprendiendo.</h5>
 
             </div>
 

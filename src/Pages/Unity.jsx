@@ -1,17 +1,18 @@
 
-import Head from '../Components/Header';
-import { useEffect } from 'react';
+import Head from '../Components/Header'; 
 import { CardRef } from '../Components/cards';
 import unityData from '../storage/unity.json';
 
 
 
 function Unity() {
-
-    useEffect(() => { document.title = "Unity"; });
+ 
+    let docTitle = (document.title = "IoT");
 
     return (
         < >
+            {docTitle}
+
             <div className="bodyContainer">
 
                 <Head

@@ -39,11 +39,11 @@ export function SendMail(_data) {
 
 
  
-let refComments; 
+let refContainer; 
 
-export function readComments(_trigger, _refComments) {
+export function readComments(_trigger, _refContainer) {
 
-    refComments = _refComments;
+    refContainer = _refContainer;
     let trigger = _trigger;
 
     const payload = {
@@ -79,7 +79,7 @@ export function WriteComent(_comment) {
                 DateStamp: new Date().toISOString().substring(0, 10),
                 TextUser: _comment.message
             }
-            addDiv(newData);
+            addPostit(newData);
 
         })
         .catch(function (error) {
@@ -88,12 +88,12 @@ export function WriteComent(_comment) {
 }
  
 //evita renderizar todos los postit revisar fn react
-function addDiv(data) { 
-    const box = refComments.current;
-    const name = document.createElement("DIV"); 
-    name.setAttribute("class", "Postit"); 
-    box.appendChild(name); 
-    name.innerHTML =
+function addPostit(data) { 
+    const container = refContainer.current;
+    const postit = document.createElement("DIV"); 
+    postit.setAttribute("class", "Postit"); 
+    container.appendChild(postit); 
+    postit.innerHTML =
         "<h3>" + data.NameUser + "</h3>" +
         "<p>" + data.DateStamp + "</p>" +
         "<p>" + data.TextUser + "</p>";

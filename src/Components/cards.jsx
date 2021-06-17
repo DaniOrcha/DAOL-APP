@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { imageLens, initLens } from '../Functions/lens.js'; 
+import { imageLens, resetIco } from '../Functions/lens.js';
 
 import { messengerClass } from '../Classes/messenger';
 
@@ -40,10 +40,10 @@ export function ImgWithDescription(props) {
 export function ImgWithLens(props) {
 
     const icoLens = "../resources/lensico.png";
-    const imgRef = useRef();
+    const imgRef = useRef(); 
 
     useEffect(() => {
-        initLens();
+        resetIco();
     });
 
     return (
@@ -52,8 +52,7 @@ export function ImgWithLens(props) {
             <img src={icoLens} className="lensIco" alt="err" />
         </div>
     )
-}
-
+} 
 
 
 export function BlockProyect(obj) {
@@ -173,14 +172,12 @@ export function PostIt(obj) {
 }
 
 
- 
-export function FormMessenger(pr) {
 
+export function FormMessenger(pr) {
 
     let refName = useRef();
     let refMsg = useRef();
     let refForm = useRef();
-
 
     function send(e) {
         e.preventDefault();

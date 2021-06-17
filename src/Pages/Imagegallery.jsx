@@ -1,7 +1,7 @@
 
 import Head from '../Components/Header';
 
-import gData from '../storage/imggalery.json';
+import gData from '../storage/imggallery.json';
 import { ImgWithLens } from '../Components/cards';
 
 import '../Styles/lens.css';

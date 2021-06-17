@@ -9,11 +9,11 @@ function Visit() {
 
     const [load, setLoad] = useState([]);
 
-    let refComments = useRef();
+    let refContainer = useRef();
 
     useEffect(() => {
         document.title = "Visitas"
-        readComments(setLoad, refComments);
+        readComments(setLoad, refContainer);
     }, [setLoad]);
 
 
@@ -28,7 +28,7 @@ function Visit() {
                     ]}
                 />
 
-                <div ref={refComments} className="container animations flex around">
+                <div ref={refContainer} className="container animations flex around">
                     <div className="lineAnim"></div>
 
                     <PostIt
