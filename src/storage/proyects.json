@@ -43,7 +43,7 @@
             "alink": {"path" : "/Imagegallery",
             "txt": "Galería de imágenes"},
             "img": {
-                "src": "../resources/electronic/clks1.jpg",
+                "src": "../resources/electronic/gallery/23.jpg",
                 "description": "Dispositivo en impresión 3D"
             }
         },

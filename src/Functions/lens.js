@@ -1,6 +1,6 @@
 
 let hasTouchscreen = 'ontouchstart' in window;
-let img, lens, lensIco, removeIco = false;
+let img, lens, lensIco, removeIco = false, isActive = false;
 
 
 export function resetIco() {
@@ -8,14 +8,17 @@ export function resetIco() {
 }
 
 export function imageLens(_imgRef) {
-    img = _imgRef.current;
-    createLens();
-    addEvents();
-    if (!removeIco) { removeIcoLens(); }
+    if (!isActive) {
+        img = _imgRef.current;
+        createLens();
+        addEvents();
+        if (!removeIco) { removeIcoLens(); }
+    }
 }
 
 
 function createLens() {
+    isActive = true;
     lens = document.createElement("DIV");
     lens.setAttribute("class", "lens");
     lens.style.backgroundImage = "url('" + img.src + "')";
@@ -39,6 +42,7 @@ function addEvents() {
 
 function removeLens() {
     lens.remove();
+    isActive = false;
 }
 
 function start(e) {

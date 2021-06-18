@@ -58,7 +58,7 @@
     border-radius: 115px;
     margin: auto;
     padding: 18px;
-    box-shadow: 0px 0px 0px 18px #b39709;
-    background-color: #ffda19;
+    box-shadow: 0px 0px 0px 18px var(--color-warm2);
+    background-color: var(--color-warm1);
 }
  

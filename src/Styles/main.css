@@ -21,7 +21,9 @@ a {
 	color: lime;
 }
 .activeLink {
-	background-color: red;
+	background-color:  var(--color-warm1);
+	color: black !important;
+	font-weight: bold;
 }
 
 body {
@@ -96,7 +98,7 @@ body {
 	padding-bottom: 5px;
 	margin: 2vmin;
 	display: inline-table;
-	border: 1px solid #ffda19;
+	border: 1px solid var(--color-warm1);
 	border-radius: 5px;
 	background-color: #414958;
 	text-align: center;
@@ -105,8 +107,8 @@ body {
 }
 
 .container__card:hover {
-	border: 1px solid #00ffff;
-	box-shadow: 0px 0px 6px 5px #00ffff;
+	border: 1px solid var(--color-cold1);
+	box-shadow: 0px 0px 6px 5px var(--color-cold1);
 	cursor: pointer;
 }
 
@@ -160,8 +162,8 @@ hr {
 .Button {
 	width: 100%;
 	padding: 0.5rem;
-	color: #ffda19;
-	background-color: #292e38;
+	color: var(--color-warm1);
+	background-color: var(--color-container);
 	font-size: 12pt;
 	font-weight: bold;
 	margin-top: 5px;
@@ -169,14 +171,14 @@ hr {
 
 .footer {
 	height: 10vh;
-	background-color: #b39709;
-	color: #ffda19;
+	background-color: var(--color-warm2);
+	color: var(--color-warm1);
 	text-align: center;
 	padding: 1em;
 }
 
 .navbar {
-	background-color: #21242c;
+	background-color: #21242c; 
 	z-index: 2;
 	position: fixed;
 	top: 0;
@@ -196,15 +198,15 @@ hr {
 .Postit {
 	font-family: HomemadeApple, Arial, Verdana, sans-serif;
 	margin: 10px;
-	box-shadow: 0px 29px 29px -20px #ffda19;
+	box-shadow: 0px 29px 29px -20px var(--color-warm1);
 	padding: 10px;
 	border-radius: 9px;
-	color: #ffda19;
+	color: var(--color-warm1);
 }
 
 .Postit h3 {
 	margin: 0px;
-	color: #00ffff;
+	color: var(--color-cold1);
 }
 
 @media screen and (max-width: 850px) {

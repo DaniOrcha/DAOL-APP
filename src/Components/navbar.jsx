@@ -1,13 +1,13 @@
 
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
     return (
         <div className="navbar">
-            <Link to='/'><i className="fa fa-fw fa-home"></i> Inicio</Link>
-            <Link to='/Contact'><i className="fa fa-handshake-o"></i> Contacto</Link>
-            <Link to='/Visits'><i className="fa fa-comments-o"></i> Visitas</Link>   
+            <NavLink to='/' activeClassName="activeLink" exact={true}><i className="fa fa-fw fa-home"></i> Inicio</NavLink>
+            <NavLink to='/Contact' activeClassName="activeLink"><i className="fa fa-handshake-o"></i> Contacto</NavLink>
+            <NavLink to='/Visits' activeClassName="activeLink"><i className="fa fa-comments-o"></i> Visitas</NavLink>   
         </div>
     ); 
 }
