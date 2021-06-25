@@ -14,6 +14,11 @@ function Visit() {
     useEffect(() => {
         document.title = "Visitas"
         readComments(setLoad, refContainer);
+        
+        return () => {
+            setLoad({});  
+          };
+
     }, [setLoad]);
 
 
@@ -28,7 +33,7 @@ function Visit() {
                     ]}
                 />
 
-                <div ref={refContainer} className="container animations flex around">
+                <div aria-label="postBoard" ref={refContainer} className="container animations flex around">
                     <div className="lineAnim"></div>
 
                     <PostIt

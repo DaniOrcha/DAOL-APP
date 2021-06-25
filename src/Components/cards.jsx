@@ -7,7 +7,7 @@ import { messengerClass } from '../Classes/messenger';
 
 export function Card(obj) {
     return (
-        <Link to={obj.link} className="container__card">
+        <Link to={obj.link} className="container__card" role="link">
             <img src={obj.src} alt="err" className="image card" />
             <h2>{obj.tittle}</h2>
             <h4>{obj.description}</h4>
@@ -18,7 +18,7 @@ export function Card(obj) {
 
 export function CardRef(obj) {
     return (
-        <a href={obj.link} className="container__card" rel="noreferrer noopener" target="_blank">
+        <a href={obj.link} className="container__card" rel="noreferrer noopener" target="_blank" role="link">
             <img src={obj.src} alt="err" className="image card" />
             <h2>{obj.tittle}</h2>
             <h4>{obj.description}</h4>
@@ -40,25 +40,24 @@ export function ImgWithDescription(props) {
 export function ImgWithLens(props) {
 
     const icoLens = "../resources/lensico.png";
-    const imgRef = useRef(); 
+    const imgRef = useRef();
 
     useEffect(() => {
         resetIco();
     });
 
     return (
-        <div className="lensContainer" onMouseEnter={() => { imageLens(imgRef); }}>
-            <img ref={imgRef} src={props.srcImg} className={props.class} alt="err" />
-            <img src={icoLens} className="lensIco" alt="err" />
+        <div aria-label = "lensContainer" className="lensContainer" onMouseEnter={() => { imageLens(imgRef); }}>
+            <img aria-label = {props.id} ref={imgRef} src={props.srcImg} className={props.class} alt="err" />
+            <img aria-label = "ico"  src={icoLens} className="lensIco" alt="err" />
         </div>
     )
-} 
+}
 
 
 export function BlockProyect(obj) {
 
     let aLink;
-
 
     if (typeof obj.alink !== 'undefined') {
 
@@ -156,8 +155,7 @@ export function BlockProyect2sideAndLens(obj) {
 
 
 
-export function PostIt(obj) {
-
+export function PostIt(obj) { 
     return (
         obj.obj.map((o, index) =>
 
@@ -191,26 +189,26 @@ export function FormMessenger(pr) {
 
             if (pr.action === "sendMail") {
                 refForm.current.remove();
+                alert("Mensaje enviado");
             }
         }
     }
 
-
     return (
 
-        <form ref={refForm} className="BrownBox flex column" onSubmit={send} >
+        <form aria-label="form" ref={refForm} className="BrownBox flex column" onSubmit={send} >
 
             <h3>{pr.header}</h3>
 
-            <label htmlFor="nombre">
+            <label>
                 <p>Nombre:</p>
+                <input aria-label="Nombre" defaultValue="" type="text" ref={refName} required />
             </label>
-            <input type="text" name="nombre" ref={refName} required />
 
-            <label htmlFor="mensaje">
+            <label>
                 <p>Mensaje:</p>
+                <textarea aria-label="Mensaje" defaultValue="" rows="5" ref={refMsg} required></textarea>
             </label>
-            <textarea name="mensaje" rows="5" ref={refMsg} required></textarea>
 
             <input type="submit" name="submit" value="Enviar" className="Button" />
 

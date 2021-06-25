@@ -108,7 +108,6 @@ function dragTouch(event) {
     }
 }
 
-
 function TextIndex() {
 
     let boxDataY = Card.offsetTop + 25;
@@ -154,6 +153,7 @@ function SlotsShow() {
 
     nodes.Icons.forEach(element => {
         element.classList.add('Show');
+        element.setAttribute("aria-expanded", "true");
     });
 
     icoPos = nodes.Icons.map((x) => {
@@ -176,10 +176,10 @@ function SlotsHide() {
     icoIndex = 0;
     m_icoIndex = 0;
 
-}
+} 
 
-
-function setData(index, m_icoIndex) {
+//export only fort test
+export function setData(index, m_icoIndex) {
 
     nodes.Icons[m_icoIndex].classList.remove('Icolighted');
     nodes.Icons[index].classList.add('Icolighted');

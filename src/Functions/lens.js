@@ -8,8 +8,8 @@ export function resetIco() {
 }
 
 export function imageLens(_imgRef) {
-    if (!isActive) {
-        img = _imgRef.current;
+    if (!isActive) { 
+        img = _imgRef.current;  
         createLens();
         addEvents();
         if (!removeIco) { removeIcoLens(); }
@@ -21,9 +21,10 @@ function createLens() {
     isActive = true;
     lens = document.createElement("DIV");
     lens.setAttribute("class", "lens");
+    lens.setAttribute("aria-label", "lens");
     lens.style.backgroundImage = "url('" + img.src + "')";
-    lens.style.backgroundSize = (img.width * 4) + "px " + (img.height * 4) + "px";
-    img.parentElement.insertBefore(lens, img);
+    lens.style.backgroundSize = (img.width * 4) + "px " + (img.height * 4) + "px"; 
+    img.parentElement.insertBefore(lens, img); 
 }
 
 

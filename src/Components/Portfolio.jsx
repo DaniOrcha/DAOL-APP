@@ -3,32 +3,32 @@ import { Card } from '../Components/cards';
 import cardsJson from '../storage/portfolio.json';
 import React, { useEffect, useRef } from 'react';
 
-import { AnimatorLine } from '../Classes/linesAnimator';
+import MainControler from '../Classes/mainControler';
 
 
 function Portfolio() {
 
     let refPortfolio = useRef();
-    let refCards = useRef();
+    let refComponent = useRef();
     let refLine = useRef();
 
-    const animatorLinePF = new AnimatorLine(refPortfolio, refCards, refLine, "pf");
 
     useEffect(() => {
+        const animatorLinePF = new MainControler(refPortfolio, refComponent, refLine, "linePF");
         animatorLinePF.init();
     });
 
     return (
 
-        <div ref={refPortfolio} className="container animations">
+        <div ref={refPortfolio} aria-label="container" aria-expanded="false" className="container animations">
 
-            <div ref={refLine} id="lineAnimPF" className="lineAnim"></div>
+            <div ref={refLine} aria-hidden="false" className="lineAnim"></div>
 
             <div className="container--txtHead">
                 Portfolio
             </div>
 
-            <div ref={refCards} className="flex center hide">
+            <div ref={refComponent} aria-hidden="true" className="flex center hide">
 
                 {cardsJson.map((card, index) =>
 

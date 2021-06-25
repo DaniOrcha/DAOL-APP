@@ -2,7 +2,7 @@
 import React, { useRef, useCallback, useReducer, useEffect } from 'react';
 import { initRoadmap } from '../Functions/roadmap.js';
 
-import { AnimatorLine } from '../Classes/linesAnimator';
+import MainControler from '../Classes/mainControler';
 import '../Styles/roadmapstyle.css';
 
 
@@ -41,15 +41,15 @@ export function RoadMap() {
     useEffect(() => {
         nodes.RoadMap.node = refRM;
         initRoadmap(nodes);
-        const animatorLineRm = new AnimatorLine(refRM, nodes.Tree.node, refLine, "rm");
+        const animatorLineRm = new MainControler(refRM, nodes.Tree.node, refLine, "lineRm");
         animatorLineRm.init();
     }, [refRM]);
 
     return (
 
-        <div ref={refRM} className="container animations">
+        <div ref={refRM} aria-label="container" aria-expanded="false" className="container animations">
 
-            <div ref={refLine} className="lineAnim"></div>
+            <div ref={refLine} aria-hidden="false" className="lineAnim"></div>
 
             <div className="container--txtHead">
                 RoadMap
@@ -62,11 +62,10 @@ export function RoadMap() {
     );
 }
 
-
-function RoadMapTree() {
+//export only for test
+export function RoadMapTree() {
 
     let refTree = useRef();
-
 
     useEffect(() => {
         nodes.Tree.node = refTree;
@@ -74,7 +73,7 @@ function RoadMapTree() {
 
     return (
 
-        <div ref={refTree} className="roadMap hide" >
+        <div ref={refTree} aria-label="tree" aria-hidden="true" className="roadMap hide" >
 
             <CardData
             />
@@ -108,7 +107,7 @@ function CardData() {
 
     return (
 
-        <div className="roadMap__data" ref={refData}>
+        <div aria-label="CardData" className="roadMap__data" ref={refData}>
 
             <div className="roadMap__data__dragIco">
                 <img src="resources/slots/drag_ico.png" alt="err" />
@@ -140,7 +139,7 @@ function Icons(p) {
 
     return (
 
-        <div ref={refIco} className="roadMap__icon">
+        <div ref={refIco} aria-label="icons" aria-expanded="false" className="roadMap__icon">
             <img src={p.src} className="roadMap__icon--img " alt="err" />
         </div>
     );
@@ -153,7 +152,7 @@ function Icons(p) {
 function getData(state, newstate) {
 
     if (typeof newstate.desc === 'undefined') {
-        return;
+        return state;
     }
 
     let gradIco;

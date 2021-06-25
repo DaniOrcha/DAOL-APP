@@ -1,33 +1,33 @@
 
 
 import React, { useEffect, useRef } from 'react';
-import { AnimatorLine } from '../Classes/linesAnimator';
+import MainControler from '../Classes/mainControler';
 
 
 function About() {
 
     let refAbout = useRef();
-    let refCard = useRef();
+    let refComponent = useRef();
     let refLine = useRef();
 
-    const animatorLineAb = new AnimatorLine(refAbout, refCard, refLine, "ab");
 
     useEffect(() => {
+        const animatorLineAb = new MainControler(refAbout, refComponent, refLine, "lineAbout");
         animatorLineAb.init();
     });
 
 
     return (
 
-        <div ref={refAbout} className="container animations">
+        <div ref={refAbout} aria-label="container" aria-expanded="false" className="container animations">
 
-            <div ref={refLine} className="lineAnim"></div>
+            <div ref={refLine} aria-hidden="false" ref={refLine} className="lineAnim"></div>
 
             <div className="container--txtHead">
                 Sobre mi
             </div>
 
-            <div ref={refCard} className="container--about flex hide">
+            <div ref={refComponent} aria-hidden="true" className="container--about flex hide" >
 
                 <img src="../resources/portfolio/meb.jpg" className="ImageAbout" alt="err" />
 

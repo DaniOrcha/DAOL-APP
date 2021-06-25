@@ -5,7 +5,8 @@ export function GetMyData(_setEmail, _setPhone) {
 
     let payload = { action: 'getMyData' };
 
-    axios.post('https://daol.es/dbmanager.php', payload) 
+    //axios.post('https://daol.es/dbmanager.php', payload)
+    axios.post('http://localhost/dbmanager.php', payload)
 
         .then(function (response) {
             let data = response.data[0];
@@ -26,10 +27,10 @@ export function SendMail(_data) {
         message: _data.message
     };
 
-    axios.post('https://daol.es/mailer.php', payload)
+    //axios.post('https://daol.es/mailer.php', payload)
+    axios.post('http://localhost/mailer.php', payload)
 
-        .then(function (response) {
-            alert("Mensaje enviado");
+        .then(function () {
 
         })
         .catch(function (error) {
@@ -38,8 +39,8 @@ export function SendMail(_data) {
 }
 
 
- 
-let refContainer; 
+
+let refContainer;
 
 export function readComments(_trigger, _refContainer) {
 
@@ -50,10 +51,12 @@ export function readComments(_trigger, _refContainer) {
         action: 'readDDBB'
     };
 
-    axios.post('https://daol.es/dbmanager.php', payload)
+    //axios.post('https://daol.es/dbmanager.php', payload)
+    axios.post('http://localhost/dbmanager.php', payload)
 
         .then(function (response) {
-            let data = response.data; 
+            let data = response.data;
+            // console.log("DATA; " + JSON.stringify(data));
             trigger(data);
         })
         .catch(function (error) {
@@ -71,28 +74,23 @@ export function WriteComent(_comment) {
         mensaje: _comment.message
     };
 
-    axios.post('https://daol.es/dbmanager.php', payload)
+    //axios.post('https://daol.es/dbmanager.php', payload)
+    axios.post('http://localhost/dbmanager.php', payload)
 
-        .then(function () {
-            let newData = {
-                NameUser: _comment.name,
-                DateStamp: new Date().toISOString().substring(0, 10),
-                TextUser: _comment.message
-            }
-            addPostit(newData);
+        .then(function (response) {
+            addPostit(response.data);
 
         })
         .catch(function (error) {
             console.error(error);
         });
 }
- 
-//evita renderizar todos los postit revisar fn react
+
 function addPostit(data) { 
     const container = refContainer.current;
-    const postit = document.createElement("DIV"); 
-    postit.setAttribute("class", "Postit"); 
-    container.appendChild(postit); 
+    const postit = document.createElement("DIV");
+    postit.setAttribute("class", "Postit");
+    container.appendChild(postit);
     postit.innerHTML =
         "<h3>" + data.NameUser + "</h3>" +
         "<p>" + data.DateStamp + "</p>" +

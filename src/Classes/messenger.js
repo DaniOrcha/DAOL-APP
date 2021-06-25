@@ -1,10 +1,10 @@
 
-import {WriteComent, SendMail} from '../Services/dbManager';
- 
+import { WriteComent, SendMail } from '../Services/dbManager';
+
 
 export class messengerClass {
 
-    constructor(name, message, action) { 
+    constructor(name, message, action) {
         this.data = {
             name: name,
             message: message,
@@ -18,26 +18,29 @@ export class messengerClass {
             this.data.name.trim() !== '' &&
             typeof this.data.message !== 'undefined' &&
             this.data.message.trim() !== '') {
-  
+
             switch (this.data.action) {   //make async with return 
 
                 case "sendMsg":
-                    WriteComent(this.data);   
+                    WriteComent(this.data);
                     return true;
 
                 case "sendMail":
                     SendMail(this.data);
                     return true;
 
+                case "only for test form": 
+                return true;
+
                 default:
                     alert("err at send message")
-                    return false; 
-            } 
- 
+                    return false;
+            }
+
         }
 
         return false;
     }
- 
+
 }
 

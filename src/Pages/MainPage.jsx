@@ -5,8 +5,7 @@ import { RoadMap } from '../Components/RoadMap';
 import Portfolio from '../Components/Portfolio';
 import About from '../Components/About'; 
 
-import '../Styles/animations.css';
- 
+import '../Styles/animations.css'; 
 
 
 class MainPage extends React.Component {
