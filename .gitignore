@@ -10,8 +10,11 @@
 
 # production
 /build 
-./public/resources
- 
+/public/resources
+/.vscode
+/package.json 
+/src/setupTests.js
+/src/reportWebVitals.js
 
 # misc
 .DS_Store
