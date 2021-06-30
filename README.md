@@ -1,2 +1,8 @@
 #DAOL app
-programed with React
+web portfolio
+
+#Framework
+React
+
+#Testing
+React Testing Library
