@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { Menu } from './menu';
-import { useLocation } from 'react-router-dom'
+// import { useLocation } from 'react-router-dom'
 
 export function Navbar() {
     return (
         <>
             <div className="navbar">
-                <NavLink to='/' activeClassName="activeLink" exact={true}><i className="fa fa-fw fa-home"></i> Inicio</NavLink>
-                <NavLink to='/Contact' activeClassName="activeLink"><i className="fa fa-handshake-o"></i> Contacto</NavLink>
-                <NavLink to='/Visits' activeClassName="activeLink"><i className="fa fa-comments-o"></i> Visitas</NavLink>
+                <NavLink to='/' activeClassName="activeLink" exact={true}><i className="fa fa-fw fa-home fa-lg"></i> </NavLink>
+                <NavLink to='/Contact' activeClassName="activeLink"><i className="fa fa-handshake-o fa-lg"></i> </NavLink>
+                <NavLink to='/Visits' activeClassName="activeLink"><i className="fa fa-comments-o  fa-lg"></i> </NavLink>
+                <a href="https://github.com/DaniOrcha/DAOL-APP" rel="noreferrer noopener" target="_blank"><i className="fa fa-github fa-lg"></i> </a>
             </div>
             <Menu />
         </>
@@ -26,24 +27,27 @@ export function Head(props) {
 
 export function Footer() {
 
-    const location = useLocation();
+    /* const location = useLocation();
     let test;
-
     location.pathname === '/' ?
         test = (
             <>
                 <h4>Programmed with React. Last full APP coverage:</h4>
-                <img src="../resources/fulltest.png" alt="err" />
+                <img src="../resources/fulltest.png" alt="err" /><i className="fa fa-github"></i>
             </>
         )
         :
-        test = "";
+        test = ""; */
+
+
 
     return (
         <div className="footer" >
             <h5>DAOL ELECTRONICS ®</h5>
-            <br></br>
-            {test}
+            <a href="https://github.com/DaniOrcha/DAOL-APP" rel="noreferrer noopener" target="_blank">
+                <img src="../resources/GitHub.png" alt="err" />
+            </a>
+            {/* {test} */}
         </div>
     );
 }
