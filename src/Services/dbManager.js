@@ -1,10 +1,10 @@
 
 const axios = require('axios').default;
 
-let dispatch ;
+let dispatch;
 
 export function queryServer(payload, handler) {
-    
+
     dispatch = handler;
     let serverService;
 
@@ -17,22 +17,20 @@ export function queryServer(payload, handler) {
             break;
     }
 
-    // axios.post('https://daol.es/' + serverService, payload)  
-    axios.post('http://localhost/' + serverService, payload)
+    axios.post('https://daol.es/' + serverService, payload)
 
-        .then(function (response) { 
-            setdata(response.data); 
+        .then(function (response) {
+            setdata(response.data);
         })
 
-        .catch(function (error) { 
+        .catch(function (error) {
             alert("ops, algo salió mal");
-              console.error(error);
-        });  
+            console.error(error);
+        });
 }
 
 
- //export for test
-export function setdata(data) {    
-    dispatch(data);  
+//export for test
+export function setdata(data) {
+    dispatch(data);
 }
-  
