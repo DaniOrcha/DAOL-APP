@@ -1,6 +1,5 @@
 
 import { render, fireEvent, screen } from '@testing-library/react'
-
 import {
   Card, CardRef, ImgWithDescription, ImgWithLens,
   BlockProyect, BlockProyect2sideAndLens, PostIt, FormMessenger
@@ -229,23 +228,24 @@ test('postits', async () => {
   ];
   render(
     <PostIt
-      obj={fakePostits}
+      data={fakePostits}
     />
   );
-  await screen.findByText('Daniel', { exact: true });
-  await screen.findByText('Holaa soy Carlos', { exact: true });
-}) 
+  expect(screen.getByText('Daniel')).toBeInTheDocument();
+  expect(screen.getByText('Holaa soy Carlos')).toBeInTheDocument();
+})
 
 
-test('FormMessenger: throw class Messenger should delete textboxs', async () => {
+
+
+test('FormMessenger: ', async () => {
 
   render(
     <FormMessenger
-      header="Deja tu mensaje: "
-      action="only for test form"
+      header="TEST "
+      action="TEST "
     />);
 
-  const form = screen.getByLabelText('form');
   const nombre = screen.getByLabelText('Nombre');
   const mensaje = screen.getByLabelText('Mensaje');
   const button = screen.getByRole('button', { name: 'Enviar' });
@@ -260,6 +260,7 @@ test('FormMessenger: throw class Messenger should delete textboxs', async () => 
 
   expect(nombre.value).toBe('');
   expect(mensaje.value).toBe('');
+
 
 })
 

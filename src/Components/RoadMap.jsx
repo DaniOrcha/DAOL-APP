@@ -1,12 +1,9 @@
-
 import React, { useRef, useCallback, useReducer, useEffect } from 'react';
-import { initRoadmap } from '../Functions/roadmap.js';
 
-import MainControler from '../Classes/mainControler';
-import '../Styles/roadmapstyle.css';
+import MainController from '../Classes/mainController';
+import rmController from '../Classes/roadController';  
 
-
-let icoSrc = [
+const icoSrc = [
     "resources/slots/react.png",
     "resources/slots/unity.png",
     "resources/slots/ethereum.png",
@@ -17,37 +14,23 @@ let icoSrc = [
 ]
 
 
-let nodes = {
-    RoadMap: {
-        node: null,
-    },
-    Tree: {
-        node: null,
-    },
-    Card: {
-        node: null,
-        trigger: null
-    },
-    Icons: []
-}
+ 
 
-
+let reftree;
 
 export function RoadMap() {
 
-    let refRM = useRef();
-    let refLine = useRef();
+    const refRM = useRef();
+    const refLine = useRef();
 
-    useEffect(() => {
-        nodes.RoadMap.node = refRM;
-        initRoadmap(nodes);
-        const animatorLineRm = new MainControler(refRM, nodes.Tree.node, refLine, "lineRm");
-        animatorLineRm.init();
+    useEffect(() => { 
+        MainController.init("rm", refRM, reftree, refLine);
+        rmController.addContainerEvents(refRM.current); 
     }, [refRM]);
 
     return (
 
-        <div ref={refRM} aria-label="container" aria-expanded="false" className="container animations">
+        <div ref={refRM} aria-label="container" aria-expanded="false" className="container animations flex center">
 
             <div ref={refLine} aria-hidden="false" className="lineAnim"></div>
 
@@ -62,13 +45,13 @@ export function RoadMap() {
     );
 }
 
-//export only for test
+//export for test
 export function RoadMapTree() {
 
-    let refTree = useRef();
+    const refTree = useRef();
 
     useEffect(() => {
-        nodes.Tree.node = refTree;
+        reftree = refTree;
     }, [refTree]);
 
     return (
@@ -93,16 +76,12 @@ export function RoadMapTree() {
 
 function CardData() {
 
-    let refData = useRef();
+    const refData = useRef();
+    const [data, dispatch] = useReducer(setData);
 
-    const [data, trigger] = useReducer(
-
-        getData
-    );
-
-    useEffect(() => {
-        nodes.Card.node = refData;
-        nodes.Card.trigger = trigger;
+    useEffect(() => { 
+        rmController.nodes.cardNode = { ref: refData, fn: dispatch };
+        rmController.addCardEvents(refData.current);
     }, [refData]);
 
     return (
@@ -128,11 +107,12 @@ function Icons(p) {
 
     if (id !== 0) {
         id = 0;
+        rmController.nodes.icons = []; 
     }
 
     const refIco = useCallback(node => {
-        if (node !== null) {
-            nodes.Icons[id] = node
+        if (node !== null) { 
+            rmController.nodes.iconsNodes = node;
             id++;
         }
     }, []);
@@ -149,9 +129,9 @@ function Icons(p) {
 
 
 
-function getData(state, newstate) {
+function setData(state, newstate) {
 
-    if (typeof newstate.desc === 'undefined') {
+    if (typeof newstate === 'undefined') {
         return state;
     }
 

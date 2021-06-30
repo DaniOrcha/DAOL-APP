@@ -1,9 +1,10 @@
 
-import Head from '../Components/Header';
+import { Head } from '../Components/overall';
+
 
 function Ethereum() {
 
-    let docTitle = (document.title = "Ethereum");
+    const docTitle = (document.title = "Ethereum");
 
     return (
         < >

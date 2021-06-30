@@ -1,17 +1,19 @@
 
-import Head from '../Components/Header';
+import { Head } from '../Components/overall';
 import proyectData from '../storage/proyects.json';
 import { BlockProyect } from '../Components/cards';
+
 
 
 function Electronic() {
 
     let objs = [];
-    let docTitle = (document.title = "Electrónica");
 
     Object.entries(proyectData.Electronic).forEach(([key]) => {
         objs.push(proyectData.Electronic[key]);
     });
+
+    const docTitle = (document.title = "Electrónica");
 
     return (
         < >

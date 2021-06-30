@@ -1,17 +1,16 @@
 
 import { render, fireEvent, screen } from '@testing-library/react'
 import { act } from 'react-dom/test-utils';
- 
-import { RoadMap } from '../Components/RoadMap'; 
 
-import { setData } from '../Functions/roadmap.js';
-import roadData from '../storage/roadMap.json'; 
+import { RoadMap } from '../Components/RoadMap';
+import roadData from '../storage/roadMap.json';
+import roadController from '../Classes/roadController'
+
+//mocked class ignore lines animations which is tested in main page.
+jest.mock('../Classes/mainController', () => jest.requireActual('../__mocks__/mainController'))
 
 
-//mocked class ignore line animations which is tested in main page.
-jest.mock('../Classes/mainControler', () => jest.requireActual('../__mocks__/mainControler'))  
-
-test('RoadMap: expand container, show tree, assert data, restore', async () => { 
+test('RoadMap: expand container, show tree, assert data, restore', async () => {
 
   render(
     <RoadMap
@@ -27,9 +26,9 @@ test('RoadMap: expand container, show tree, assert data, restore', async () => {
 
   fireEvent.mouseEnter(screen.getByLabelText("container"));
 
-  expect(container).toHaveAttribute('aria-expanded', "true");  
+  expect(container).toHaveAttribute('aria-expanded', "true");
   expect(RMTree).toHaveAttribute('aria-hidden', "false");
-  expect(RMTree).not.toHaveClass('hide') 
+  expect(RMTree).not.toHaveClass('hide')
 
   expect(screen.getByText("Ruta de aprendizaje"));
 
@@ -39,14 +38,14 @@ test('RoadMap: expand container, show tree, assert data, restore', async () => {
 
   icons.forEach(element => {
     expect(element).toHaveAttribute('aria-expanded', "false");
-    expect(element).not.toHaveClass('Show') 
+    expect(element).not.toHaveClass('Show')
   });
 
   fireEvent.mouseEnter(cardData);
 
   icons.forEach(element => {
     expect(element).toHaveAttribute('aria-expanded', "true");
-    expect(element).toHaveClass('Show') 
+    expect(element).toHaveClass('Show')
   });
 
   expect(date).toHaveTextContent("Actual");
@@ -54,7 +53,7 @@ test('RoadMap: expand container, show tree, assert data, restore', async () => {
 
   for (let i = 0; i < icons.length; i++) {
     await act(async () => {
-      setData(i, 0);
+      roadController.setData(i, 0);
     });
     expect(cardData).toHaveTextContent(roadData[i].year);
     expect(cardData).toHaveTextContent(roadData[i].txt);
@@ -68,4 +67,5 @@ test('RoadMap: expand container, show tree, assert data, restore', async () => {
   expect(RMTree).toHaveClass('hide');
 
   jest.resetModules();
+
 })

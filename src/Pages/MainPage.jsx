@@ -1,29 +1,26 @@
 import React from 'react';
- 
-import Head from '../Components/Header';
+
+import { Head } from '../Components/overall';
 import { RoadMap } from '../Components/RoadMap';
 import Portfolio from '../Components/Portfolio';
-import About from '../Components/About'; 
+import About from '../Components/About';
 
-import '../Styles/animations.css'; 
 
 
 class MainPage extends React.Component {
 
     render() {
 
-        let docTitle = (document.title = "Daniel");
-
         return (
             <>
-                {docTitle}
+                {document.title = "Daniel"}
 
                 <div className="bodyContainer">
 
                     <Head
                         txt={[
                             "Daniel Orcha Lorenzo",
-                            "Programador de software & Diseño de sistemas automatizados"
+                            "Programador de software & Diseño de sistemas de producción automatizados"
                         ]}
                     />
 

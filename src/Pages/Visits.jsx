@@ -1,29 +1,46 @@
-
-import React, { useState, useRef, useEffect } from 'react'
-import Head from '../Components/Header';
-import { readComments } from '../Services/dbManager'; 
+import React, { useState, useRef } from 'react'
+import { Head } from '../Components/overall'; 
+import { queryServer } from '../Services/dbManager'; 
 import { FormMessenger, PostIt } from '../Components/cards';
 
 
+let dataLoaded = [];
+
 function Visit() {
 
-    const [load, setLoad] = useState([]);
+    const [update, setUpdate] = useState(false);
+    const refContainer = useRef();
+    const payloadPostits = { action: 'readPostits' };
+    const payloadForm = { action: 'writePostit' }; 
 
-    let refContainer = useRef();
+    const handlerPostitBoard = (data) => { 
+        dataLoaded = data;
+        setUpdate(!update);
+    }
+    const handlerForm = (data) => {
+        dataLoaded.push(data[0]); 
+        setForm(<h2>Gracias {data[0].NameUser} por su mensaje</h2>) 
+    }
 
-    useEffect(() => {
-        document.title = "Visitas"
-        readComments(setLoad, refContainer);
-        
-        return () => {
-            setLoad({});  
-          };
+    if (dataLoaded.length <= 0) { 
+        queryServer(payloadPostits, handlerPostitBoard);
+    }
 
-    }, [setLoad]);
+    const [formMessage, setForm] = useState(
+        <FormMessenger
+            header="Deja tu mensaje:"
+            action={payloadForm.action} 
+            handler={handlerForm}
 
+        />
+    ); 
+
+    const docTitle = (document.title = "Visitas");
 
     return (
         <>
+            {docTitle}
+
             <div className="bodyContainer">
 
                 <Head
@@ -37,18 +54,13 @@ function Visit() {
                     <div className="lineAnim"></div>
 
                     <PostIt
-                        obj={load}
+                        data={dataLoaded}
                     />
 
                 </div>
-
+                
                 <div className="container noPadding">
-
-                    <FormMessenger
-                        header="Deja tu mensaje: "
-                        action="sendMsg"
-                    />
-
+                    {formMessage}
                 </div>
 
             </div>

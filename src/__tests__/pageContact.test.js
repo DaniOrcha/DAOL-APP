@@ -1,48 +1,57 @@
- 
-import React from 'react' 
-import { render, fireEvent, screen } from '@testing-library/react' 
+
+import React from 'react'
+import { render, fireEvent, screen } from '@testing-library/react'
 
 import Contact from '../Pages/Contact'
- 
 
-test('getMyData', async () => { 
+import axios from 'axios';
+import { Response } from '../Services/dbManager'
+import { act } from 'react-dom/test-utils';
 
-  render(<Contact />);
 
-  const linkElement = screen.getByRole('button', {name:  'Mostrar Datos' });
+ test('getMyData: send mail, response mock show, button dessapear', async () => {
 
-  fireEvent.click(linkElement);
+  const axiosSpy = jest.spyOn(axios, 'post');
 
-  await screen.findByText('daniorcha@hotmail.com');
-  await screen.findByText('(+34) 675840609');
-   
-}); 
- 
+  render(
+    <Contact />
+  );
 
-test('send mail as alert message appear and form desappear', async () => {
-  
-  render(<Contact  />   );   
+  const button = screen.getByRole('button', { name: 'Mostrar Datos' }); 
+  fireEvent.click(button);
 
-  window.alert = jest.fn();
+  act(() => {
+    axiosSpy.mockResolvedValue(Response([{
+      myEmail: 'daniorcha@hotmail.com',
+      myPhone: '(+34) 675840609'
+    }]));
+  });
 
-  const form = screen.getByLabelText('form');
+  expect(screen.getByText('daniorcha@hotmail.com')).toBeInTheDocument();
+  expect(screen.getByText('(+34) 675840609')).toBeInTheDocument();
+  expect(button).not.toBeInTheDocument();
+
+  const NameUser = "User" 
   const nombre = screen.getByLabelText('Nombre');
   const mensaje = screen.getByLabelText('Mensaje');
-  const button = screen.getByRole('button', { name: 'Enviar' });   
- 
-  fireEvent.change(nombre, { target: { value: 'dani' } });
+  const buttone = screen.getByRole('button', { name: 'Enviar' });
+
+  fireEvent.change(nombre, { target: { value: NameUser } });
   fireEvent.change(mensaje, { target: { value: 'mensaje' } });
 
-  expect(nombre.value).toBe('dani');
-  expect(mensaje.value).toBe('mensaje'); 
-  
-  fireEvent.click(button); 
-  
-  expect(window.alert).toBeCalledWith('Mensaje enviado');
-  expect(form).not.toBeInTheDocument();  
+  expect(nombre.value).toBe(NameUser);
+  expect(mensaje.value).toBe('mensaje');
+
+  fireEvent.click(buttone);
+
+  act(() => {
+    axiosSpy.mockResolvedValueOnce(Response([NameUser]));
+  });
+
+  expect(screen.getByText('Gracias ' + NameUser + ' por su mensaje')).toBeInTheDocument();
+
 
 })
 
 
- 
  

@@ -3,8 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 
-import Navbar from './Components/navbar';
-import Footer from './Components/Footer';
+import { Navbar, Footer } from './Components/overall';
 
 import MainPage from './Pages/MainPage';
 import Unity from './Pages/Unity';
@@ -16,13 +15,14 @@ import Contact from './Pages/Contact';
 import Visit from './Pages/Visits';
 import ImageGallery from './Pages/Imagegallery';
 
-
 import './Styles/main.css';
 import './Styles/images.css';
+import './Styles/roadmapstyle.css';
+import './Styles/animations.css';
 
 
 ReactDOM.render(
-    
+
     <Router>
 
         < Navbar />

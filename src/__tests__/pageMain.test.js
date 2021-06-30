@@ -1,14 +1,7 @@
 
-import { render, fireEvent, screen } from '@testing-library/react'
-import Head from '../Components/Header';
-import { RoadMap } from '../Components/RoadMap';
-import Portfolio from '../Components/Portfolio';
-import About from '../Components/About';
-
-import MainPage from '../Pages/MainPage';
-
-import { BrowserRouter as Router } from 'react-router-dom';
-
+import { render, fireEvent, screen } from '@testing-library/react'  
+import MainPage from '../Pages/MainPage'; 
+import { BrowserRouter as Router } from 'react-router-dom'; 
 
 
 function testReposeState(container, line, card) {
@@ -18,6 +11,7 @@ function testReposeState(container, line, card) {
     expect(card).toHaveAttribute('aria-hidden', "true");
     expect(card).toHaveClass('hide'); 
 }
+
 function testOnMouseEnter(container, line, card) { 
     expect(container).toHaveAttribute('aria-expanded', "true");
     expect(line).toHaveAttribute('aria-hidden', "true");

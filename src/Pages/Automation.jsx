@@ -1,17 +1,19 @@
 
-import Head from '../Components/Header';
+import { Head } from '../Components/overall';
 import { BlockProyect } from '../Components/cards';
 import proyectData from '../storage/proyects.json';
+
+
 
 function Automation() {
 
     let objs = [];
-    let docTitle = (document.title = "Automatización");
 
     Object.entries(proyectData.Automation).forEach(([key]) => {
         objs.push(proyectData.Automation[key]);
     });
 
+    const docTitle = (document.title = "Automatización");
 
     return (
         <>
@@ -37,8 +39,8 @@ function Automation() {
 
                     )}
 
-                </div> 
-                
+                </div>
+
             </div>
         </>
     );

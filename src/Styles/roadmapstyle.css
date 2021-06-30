@@ -1,7 +1,12 @@
 .roadMap {
-	margin-left: 8vw;
 	margin-top: 1rem;
+	width: 90%;
+	background-color: #12b3b30f;
+	min-height: 8vw;
+	padding: 15px;
+	border-radius: 10px;
 }
+
 .roadMap.hide {
 	display: none;
 }
@@ -11,9 +16,9 @@
 	border-radius: 5px;
 	padding: 1%;
 	position: absolute;
-	margin-left: 12vmin;
-	margin-right: 7vw;
-	background-color: #263f48;
+	margin-left: 8vw;
+    background-color: #283640;
+	/* background-color: #263f48; */
 	width: 50vw;
 	z-index: 1;
 	font-size: 15pt;
@@ -59,6 +64,7 @@
 	position: absolute;
 	left: 11px;
 }
+
 /* .roadMap__data__date.color {
     background: linear-gradient(to right, #000000, #ffffff);
 }
@@ -86,9 +92,11 @@
 .roadMap__data__description ul {
 	margin-top: 10px;
 }
+
 .roadMap__data__description li {
 	margin: 5px;
 }
+
 /* 
     .boxDescription.animation {
         animation: Opacity 1s;
@@ -152,19 +160,15 @@
 }
  */
 
-@media screen and (max-width: 850px) {
-	.roadMap {
-		margin-left: 1vw;
-	}
+@media screen and (max-width: 1000px) {
 	.roadMap__data {
-		width: auto;
 		margin-left: 12vw;
-		min-width: 75vw;
+		min-width: 70vw;
 	}
-	.roadMap__data__date {
+	/*.roadMap__data__date {
 		width: 70%;
-		/*  min-width: 65vw; */
-	}
+		  min-width: 65vw; 
+	}*/
 	.roadMap__icon {
 		height: 7vw;
 		width: 7vw;

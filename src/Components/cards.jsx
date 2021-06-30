@@ -1,9 +1,7 @@
-
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { imageLens, resetIco } from '../Functions/lens.js';
-
-import { messengerClass } from '../Classes/messenger';
+import { queryServer } from '../Services/dbManager';
 
 export function Card(obj) {
     return (
@@ -18,7 +16,7 @@ export function Card(obj) {
 
 export function CardRef(obj) {
     return (
-        <a href={obj.link} className="container__card" rel="noreferrer noopener" target="_blank" role="link">
+        <a href={obj.link} className="container__card" rel="noreferrer noopener" target="_blank">
             <img src={obj.src} alt="err" className="image card" />
             <h2>{obj.tittle}</h2>
             <h4>{obj.description}</h4>
@@ -42,14 +40,14 @@ export function ImgWithLens(props) {
     const icoLens = "../resources/lensico.png";
     const imgRef = useRef();
 
-    useEffect(() => {
+    useEffect(() => { //rev
         resetIco();
     });
 
     return (
-        <div aria-label = "lensContainer" className="lensContainer" onMouseEnter={() => { imageLens(imgRef); }}>
-            <img aria-label = {props.id} ref={imgRef} src={props.srcImg} className={props.class} alt="err" />
-            <img aria-label = "ico"  src={icoLens} className="lensIco" alt="err" />
+        <div aria-label="lensContainer" className="lensContainer" onMouseEnter={() => { imageLens(imgRef); }}>
+            <img aria-label={props.id} ref={imgRef} src={props.srcImg} className={props.class} alt="err" />
+            <img aria-label="ico" src={icoLens} className="lensIco" alt="err" />
         </div>
     )
 }
@@ -155,9 +153,9 @@ export function BlockProyect2sideAndLens(obj) {
 
 
 
-export function PostIt(obj) { 
+export function PostIt(pr) {  
     return (
-        obj.obj.map((o, index) =>
+        pr.data.map((o, index) =>
 
             <div key={index + "p"} className="Postit">
                 <h3>{o.NameUser}</h3>
@@ -173,30 +171,27 @@ export function PostIt(obj) {
 
 export function FormMessenger(pr) {
 
-    let refName = useRef();
-    let refMsg = useRef();
-    let refForm = useRef();
+    const refName = useRef();
+    const refMsg = useRef();
 
     function send(e) {
         e.preventDefault();
 
-        const Messenger = new messengerClass(refName.current.value, refMsg.current.value, pr.action);
-
-        if (Messenger.execute()) {
-
-            refName.current.value = "";
-            refMsg.current.value = "";
-
-            if (pr.action === "sendMail") {
-                refForm.current.remove();
-                alert("Mensaje enviado");
-            }
+        const payload = {
+            name: refName.current.value,
+            message: refMsg.current.value,
+            action: pr.action
         }
+
+        queryServer(payload, pr.handler);
+
+        refName.current.value = "";
+        refMsg.current.value = ""; 
     }
 
     return (
 
-        <form aria-label="form" ref={refForm} className="BrownBox flex column" onSubmit={send} >
+        <form aria-label="form" className="BrownBox flex column" onSubmit={send} >
 
             <h3>{pr.header}</h3>
 

@@ -1,21 +1,18 @@
-
 import { Card } from '../Components/cards';
 import cardsJson from '../storage/portfolio.json';
 import React, { useEffect, useRef } from 'react';
 
-import MainControler from '../Classes/mainControler';
+import MainController from '../Classes/mainController';
 
 
 function Portfolio() {
 
-    let refPortfolio = useRef();
-    let refComponent = useRef();
-    let refLine = useRef();
-
+    const refPortfolio = useRef();
+    const refComponent = useRef();
+    const refLine = useRef();
 
     useEffect(() => {
-        const animatorLinePF = new MainControler(refPortfolio, refComponent, refLine, "linePF");
-        animatorLinePF.init();
+        MainController.init("pf", refPortfolio, refComponent, refLine);
     });
 
     return (

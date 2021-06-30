@@ -1,19 +1,19 @@
-
-import Head from '../Components/Header';
+import { Head } from '../Components/overall';
 import { BlockProyect2sideAndLens } from '../Components/cards';
 import pData from '../storage/proyects2sideAndLens.json';
 
-import '../Styles/lens.css';
+import '../Styles/lens.css'; 
+
 
 function IoT() {
 
     let objs = [];
-    let docTitle = (document.title = "IoT");
 
     Object.entries(pData).forEach(([key]) => {
         objs.push(pData[key]);
     });
 
+    const docTitle = (document.title = "IoT");
 
     return (
         < >

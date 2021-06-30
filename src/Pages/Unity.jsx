@@ -1,13 +1,12 @@
 
-import Head from '../Components/Header'; 
+import { Head } from '../Components/overall';
 import { CardRef } from '../Components/cards';
 import unityData from '../storage/unity.json';
 
 
-
 function Unity() {
  
-    let docTitle = (document.title = "IoT");
+    const docTitle = (document.title = "Unity");
 
     return (
         < >

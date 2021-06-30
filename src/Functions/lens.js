@@ -2,16 +2,15 @@
 let hasTouchscreen = 'ontouchstart' in window;
 let img, lens, lensIco, removeIco = false, isActive = false;
 
-
 export function resetIco() {
     if (removeIco) { removeIco = false; }
 }
 
 export function imageLens(_imgRef) {
-    if (!isActive) { 
-        img = _imgRef.current;  
+    if (!isActive) {
+        img = _imgRef.current;
         createLens();
-        addEvents();
+        hasTouchscreen ? addTouchEvents() : addMouseEvents();
         if (!removeIco) { removeIcoLens(); }
     }
 }
@@ -23,22 +22,24 @@ function createLens() {
     lens.setAttribute("class", "lens");
     lens.setAttribute("aria-label", "lens");
     lens.style.backgroundImage = "url('" + img.src + "')";
-    lens.style.backgroundSize = (img.width * 4) + "px " + (img.height * 4) + "px"; 
-    img.parentElement.insertBefore(lens, img); 
+    lens.style.backgroundSize = (img.width * 4) + "px " + (img.height * 4) + "px";
+    img.parentElement.insertBefore(lens, img);
 }
 
 
-function addEvents() {
-    if (hasTouchscreen) {
-        lens.addEventListener("touchstart", start);
-        lens.addEventListener("touchmove", moveLens);
-        lens.addEventListener("touchend", removeLens);
-        img.addEventListener("touchend", removeLens);
-        lens.classList.add('show');
-    } else {
-        lens.addEventListener("mousemove", moveLens);
-        lens.addEventListener("mouseleave", removeLens);
-    }
+
+function addTouchEvents() {
+    lens.addEventListener("touchstart", start);
+    lens.addEventListener("touchmove", moveLens);
+    lens.addEventListener("touchend", removeLens);
+    img.addEventListener("touchend", removeLens);
+    lens.classList.add('show');
+
+}
+
+function addMouseEvents() {
+    lens.addEventListener("mousemove", moveLens);
+    lens.addEventListener("mouseleave", removeLens);
 }
 
 function removeLens() {
@@ -56,11 +57,8 @@ function moveLens(e) {
     if (e.cancelable) { e.preventDefault(); }
     let pos, x, y;
 
-    if (hasTouchscreen) {
-        pos = getTouchPos(e);
-    } else {
-        pos = getCursorPos(e);
-    }
+    hasTouchscreen ? pos = getTouchPos(e) : pos = getCursorPos(e);
+
     try {
         x = pos.x;
         y = pos.y;
@@ -70,12 +68,8 @@ function moveLens(e) {
         if (y > img.height - lens.offsetHeight / 4) {
             y = img.height - lens.offsetHeight / 4;
         }
-        if (x < 0) {
-            x = 0;
-        }
-        if (y < 0) {
-            y = 0;
-        }
+        if (x < 0) { x = 0; }
+        if (y < 0) { y = 0; }
 
         lens.style.left = (x - img.width / 2) + "px";
         lens.style.top = (y - img.height / 2) + "px";

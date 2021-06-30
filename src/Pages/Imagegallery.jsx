@@ -1,14 +1,15 @@
 
-import Head from '../Components/Header';
+import { Head } from '../Components/overall';
 
 import gData from '../storage/imggallery.json';
 import { ImgWithLens } from '../Components/cards';
 
 import '../Styles/lens.css';
 
+
 function ImageGallery() {
 
-    let docTitle = (document.title = "Galería Electrónica");
+    const docTitle = (document.title = "Galería Electrónica");
 
     return (
         < >
@@ -31,7 +32,7 @@ function ImageGallery() {
                                 class={gData.meta.class}
                             />
                         </div>
-                        
+
                     )}
 
                 </div>
