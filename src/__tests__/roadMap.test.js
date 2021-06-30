@@ -52,7 +52,7 @@ test('RoadMap: expand container, show tree, assert data, restore', async () => {
   expect(screen.getByText("Actual"));
 
   for (let i = 0; i < icons.length; i++) {
-    await act(async () => {
+    act(() => {
       roadController.setData(i, 0);
     });
     expect(cardData).toHaveTextContent(roadData[i].year);
