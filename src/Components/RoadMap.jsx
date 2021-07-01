@@ -1,18 +1,8 @@
 import React, { useRef, useCallback, useReducer, useEffect } from 'react';
 
 import MainController from '../Classes/mainController';
-import rmController from '../Classes/roadController';  
-
-const icoSrc = [
-    "resources/slots/react.png",
-    "resources/slots/unity.png",
-    "resources/slots/ethereum.png",
-    "resources/slots/iot.png",
-    "resources/slots/robot.png",
-    "resources/slots/web.png",
-    "resources/slots/spectrum.png"
-]
-
+import rmController from '../Classes/roadController'; 
+import rmIcons from '../storage/rmIcons.json';
 
  
 
@@ -23,9 +13,9 @@ export function RoadMap() {
     const refRM = useRef();
     const refLine = useRef();
 
-    useEffect(() => { 
+    useEffect(() => {
         MainController.init("rm", refRM, reftree, refLine);
-        rmController.addContainerEvents(refRM.current); 
+        rmController.addContainerEvents(refRM.current);
     }, [refRM]);
 
     return (
@@ -61,7 +51,7 @@ export function RoadMapTree() {
             <CardData
             />
 
-            {icoSrc.map((ico, index) =>
+            {rmIcons.map((ico, index) =>
                 <div key={index + "i"}>
                     <Icons
                         src={ico}
@@ -79,7 +69,7 @@ function CardData() {
     const refData = useRef();
     const [data, dispatch] = useReducer(setData);
 
-    useEffect(() => { 
+    useEffect(() => {
         rmController.nodes.cardNode = { ref: refData, fn: dispatch };
         rmController.addCardEvents(refData.current);
     }, [refData]);
@@ -101,19 +91,16 @@ function CardData() {
 
 
 
-let id = 0;
 
 function Icons(p) {
 
-    if (id !== 0) {
-        id = 0;
-        rmController.nodes.icons = []; 
+    if (rmController.nodes.icons.length > 0) {
+        rmController.nodes.icons = [];
     }
 
     const refIco = useCallback(node => {
-        if (node !== null) { 
+        if (node !== null) {
             rmController.nodes.iconsNodes = node;
-            id++;
         }
     }, []);
 
