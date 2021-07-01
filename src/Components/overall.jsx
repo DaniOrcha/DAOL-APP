@@ -44,10 +44,10 @@ export function Footer() {
     return (
         <div className="footer" >
             <h5>DAOL ELECTRONICS ®</h5>
-            <a href="https://github.com/DaniOrcha/DAOL-APP" rel="noreferrer noopener" target="_blank">
+             {/* <a href="https://github.com/DaniOrcha/DAOL-APP" rel="noreferrer noopener" target="_blank">
                 <img src="../resources/GitHub.png" alt="err" />
             </a>
-            {/* {test} */}
+           {test} */}
         </div>
     );
 }
