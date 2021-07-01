@@ -22,13 +22,13 @@ import { act } from 'react-dom/test-utils';
 
   act(() => {
     axiosSpy.mockResolvedValue(Response([{
-      myEmail: 'daniorcha@hotmail.com',
-      myPhone: '(+34) 675840609'
+      myEmail: 'test@mail.com',
+      myPhone: '(+33) 123456789'
     }]));
   });
 
-  expect(screen.getByText('daniorcha@hotmail.com')).toBeInTheDocument();
-  expect(screen.getByText('(+34) 675840609')).toBeInTheDocument();
+  expect(screen.getByText('test@mail.com')).toBeInTheDocument();
+  expect(screen.getByText('(+33) 123456789')).toBeInTheDocument();
   expect(button).not.toBeInTheDocument();
 
   const NameUser = "User" 
