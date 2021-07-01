@@ -57,7 +57,9 @@ test('RoadMap: expand container, show tree, assert data, restore', async () => {
     });
     expect(cardData).toHaveTextContent(roadData[i].year);
     expect(cardData).toHaveTextContent(roadData[i].txt);
-    expect(cardData).toHaveTextContent(roadData[i].desc[0]);
+    roadData[i].desc.forEach(element => {
+      expect(cardData).toHaveTextContent(element);
+    });
   }
 
   fireEvent.mouseLeave(screen.getByLabelText("container"));
