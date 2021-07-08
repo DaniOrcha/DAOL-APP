@@ -30,7 +30,7 @@ function About() {
 
                 <div className="BrownBox">
 
-                    <h3>Hola, mi nombre es Daniel. Me apasiona la ciencia y la tecnología desde pequeño.
+                    <h3>Hola, soy Dani. Me apasiona la ciencia y la tecnología desde pequeño.
                         <br /><br />
                         Mis conocimientos de programación pasan por la electrónica,
                         registros de bits y "Bitwise", hasta la programación orientada a objetos y bases de datos.
