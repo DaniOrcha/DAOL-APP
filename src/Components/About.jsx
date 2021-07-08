@@ -26,7 +26,7 @@ function About() {
 
             <div ref={refComponent} aria-hidden="true" className="container--about flex column hide" >
 
-                <img src="../resources/portfolio/mec.jpg" className="ImageAbout" alt="err" />
+                <img src="../resources/portfolio/meb.jpg" className="ImageAbout" alt="err" />
 
                 <div className="BrownBox">
 
