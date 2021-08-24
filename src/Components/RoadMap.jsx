@@ -79,7 +79,7 @@ function CardData() {
         <div aria-label="CardData" className="roadMap__data" ref={refData}>
 
             <div className="roadMap__data__dragIco">
-                <img src="resources/slots/drag_ico.png" alt="err" />
+                {/* <img src="resources/slots/drag_ico.png" alt="err" /> */}
             </div>
 
             {data}

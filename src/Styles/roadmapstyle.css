@@ -52,7 +52,11 @@
     } */
 
 .roadMap__data__dragIco {
-	float: right;
+	float: right;  
+	height: 25px;
+	width: 25px;
+	background-color: var(--color-warm1);
+	border-radius: 50%; 
 }
 
 .roadMap__data__date {
